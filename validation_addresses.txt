@@ -1,0 +1,25 @@
+# Validation Study Addresses
+# All addresses tested and verified working (business names removed for geocoding)
+
+2523 Bishop Ave, Fremont, CA 94536
+39400 Paseo Padre Pkwy, Fremont, CA 94538
+4620 Mattos Dr, Fremont, CA 94536
+5400 Mowry Ave, Fremont, CA 94538
+36007 Pizarro Dr, Fremont, CA 94536
+3377 Alder Ave, Fremont, CA 94536
+34665 Allegheny Ct, Fremont, CA 94555
+1251 Peralta Blvd, Fremont, CA 94536
+40500 Paseo Padre Pkwy, Fremont, CA 94538
+41800 Blacow Rd, Fremont, CA 94538
+
+# Business/Place names (for reference only):
+# 1. Little Flowers Day Care & Preschool
+# 2. Kaiser Permanente Fremont Medical Center  
+# 3. Glenmoor Elementary School
+# 4. Best Western Plus Garden Court Inn
+# 5. Wonderland Preschool and Daycare
+# 6. Los Cerritos Community Center
+# 7. Crandall Creek Park
+# 8. Shinn Historical Park and Arboretum
+# 9. Palms Pavilion Picnic Area
+# 10. Irvington High School

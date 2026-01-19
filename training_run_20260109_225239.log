@@ -1,0 +1,195 @@
+================================================================================
+AQI PREDICTION MODEL TRAINING - WITH COMPREHENSIVE CHECKS
+================================================================================
+Started at: 2026-01-09 22:52:40
+
+Model Type: XGBoost
+
+Models will be saved to: /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/models
+Models directory exists: True
+
+Using XGBoost for training
+
+STEP 1: Preparing dataset with historical wind direction
+================================================================================
+================================================================================
+PREPARING FULL DATASET FOR TRAINING
+================================================================================
+
+Step 1: Loading PurpleAir sensor data...
+--------------------------------------------------------------------------------
+Loaded 17856 rows from sensor 148483
+Loaded 16635 rows from sensor 71443
+Loaded 13468 rows from sensor 56275
+Loaded 17747 rows from sensor 19683
+Loaded 8935 rows from sensor 286506
+Loaded 17780 rows from sensor 84117
+Loaded 17856 rows from sensor 18987
+Loaded 17737 rows from sensor 17895
+Loaded 17658 rows from sensor 114889
+Loaded 17795 rows from sensor 193337
+
+Total combined rows: 163467
+Number of sensors: 10
+Date range: 2025-01-01 08:00:00+00:00 to 2026-01-08 07:30:00+00:00
+
+Dataset date range: 2025-01-01 08:00:00+00:00 to 2026-01-08 07:30:00+00:00
+
+Step 2: Fetching historical wind direction from Meteostat...
+--------------------------------------------------------------------------------
+
+Fetching historical wind direction from Meteostat...
+Location: (37.5483, -121.9886)
+Date range: 2025-01-01 08:00:00 to 2026-01-08 07:30:00
+Warning: Meteostat returned no data. This may be due to network/SSL issues.
+Creating empty wind dataframe - model will train without wind features.
+
+Step 3: Merging wind direction with PurpleAir data...
+--------------------------------------------------------------------------------
+
+Merging wind direction data...
+Rows with non-null wdir: 0 / 163467 (0.00%)
+Warning: Only 0.0% of rows have wind direction data
+This may affect model performance. Check date range alignment.
+
+Converting wind direction to x, y components...
+Created wind_dir_x and wind_dir_y columns
+
+Sample of merged data (first 5 rows with wind direction):
+ sensor_id                time_stamp  pm2_5_atm  wdir  wind_dir_x  wind_dir_y
+     17895 2025-01-01 08:00:00+00:00       25.8   NaN         NaN         NaN
+     17895 2025-01-01 08:30:00+00:00       27.3   NaN         NaN         NaN
+     17895 2025-01-01 09:00:00+00:00       25.7   NaN         NaN         NaN
+     17895 2025-01-01 09:30:00+00:00       26.5   NaN         NaN         NaN
+     17895 2025-01-01 10:00:00+00:00       22.6   NaN         NaN         NaN
+
+Step 4: Adding sensor location data...
+--------------------------------------------------------------------------------
+
+Loaded location data for 10 sensors from /Users/vishalsivakumar/Downloads/PAIC Data 2 Months/sensor_locations.pkl
+Added location data. Sensors with locations: 100.0%
+
+Step 5: Cleaning data...
+--------------------------------------------------------------------------------
+Removed 5578 rows with invalid data (3.4%)
+Final dataset: 157889 rows, 10 sensors
+
+================================================================================
+DATASET PREPARATION COMPLETE
+================================================================================
+
+Dataset shape: (157889, 12)
+Date range: 2025-01-01 08:00:00+00:00 to 2026-01-08 07:30:00+00:00
+
+Columns: ['time_stamp', 'humidity', 'temperature', 'pm2_5_atm', 'sensor_id', 'timestamp_hour', 'wdir', 'wind_dir_x', 'wind_dir_y', 'latitude', 'longitude', 'name']
+
+Wind direction coverage: 0.00%
+
+Sample data:
+ sensor_id                time_stamp  pm2_5_atm  humidity  temperature  wdir  wind_dir_x  wind_dir_y
+     17895 2025-01-01 08:00:00+00:00       25.8        49           58   NaN         NaN         NaN
+     17895 2025-01-01 08:30:00+00:00       27.3        49           57   NaN         NaN         NaN
+     17895 2025-01-01 09:00:00+00:00       25.7        50           56   NaN         NaN         NaN
+     17895 2025-01-01 09:30:00+00:00       26.5        51           56   NaN         NaN         NaN
+     17895 2025-01-01 10:00:00+00:00       22.6        51           55   NaN         NaN         NaN
+     17895 2025-01-01 10:30:00+00:00       16.9        51           54   NaN         NaN         NaN
+     17895 2025-01-01 11:00:00+00:00       10.1        51           54   NaN         NaN         NaN
+     17895 2025-01-01 11:30:00+00:00        6.3        51           53   NaN         NaN         NaN
+     17895 2025-01-01 12:00:00+00:00        3.9        51           53   NaN         NaN         NaN
+     17895 2025-01-01 12:30:00+00:00        3.6        51           52   NaN         NaN         NaN
+
+Saved prepared dataset: /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/purpleair_complete_with_wind.csv
+
+STEP 2: Adding AQI calculations
+================================================================================
+
+STEP 3: Feature engineering
+================================================================================
+Using feature_engineering module from original pipeline
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 157889/157889
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Creating target variables...
+Removed 60 rows with missing targets (end of time series)
+Feature engineering complete. Final shape: (157829, 120)
+
+STEP 4: Running comprehensive checks
+================================================================================
+
+================================================================================
+CHECK 1: DATA LEAKAGE VERIFICATION
+================================================================================
+⚠️  Found 101 potential data leakage issues (showing first 5):
+  - Sensor 17895, row 2: Target mismatch. Expected 22.6, got 73.0
+  - Sensor 17895, row 3: Target mismatch. Expected 16.9, got 61.0
+  - Sensor 17895, row 4: Target mismatch. Expected 10.1, got 42.0
+  - Sensor 17895, row 5: Target mismatch. Expected 6.3, got 26.0
+  - Sensor 17895, row 6: Target mismatch. Expected 3.9, got 16.0
+  (Checking implementation more carefully...)
+
+================================================================================
+CHECK 3: WIND DIRECTION MERGE VERIFICATION
+================================================================================
+Total rows: 157,829
+Rows with wdir: 157,829 (100.00%)
+Rows missing wdir: 0 (0.00%)
+✓ Good wind direction coverage (100.00%)
+✓ Forward-fill verification: Rows within same hour have consistent wdir values
+⚠️  WARNING: Wind direction x, y components don't match wdir at row 0
+
+STEP 5: Creating time-based train/test split
+================================================================================
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 559, in _validate_comparison_value
+    self._check_compatible_with(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 542, in _check_compatible_with
+    self._assert_tzawareness_compat(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 788, in _assert_tzawareness_compat
+    raise TypeError(
+        "Cannot compare tz-naive and tz-aware datetime-like objects"
+    )
+TypeError: Cannot compare tz-naive and tz-aware datetime-like objects
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1006, in _cmp_method
+    other = self._validate_comparison_value(other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 562, in _validate_comparison_value
+    raise InvalidComparison(other) from err
+pandas.errors.InvalidComparison: 2025-11-01 00:00:00
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/train_with_checks.py", line 787, in <module>
+    main()
+    ~~~~^^
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/train_with_checks.py", line 714, in main
+    train_mask = df_features['time_stamp'] <= train_end_date
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 52, in __le__
+    return self._cmp_method(other, operator.le)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/series.py", line 6138, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 330, in comparison_op
+    res_values = op(lvalues, rvalues)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 52, in __le__
+    return self._cmp_method(other, operator.le)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1008, in _cmp_method
+    return invalid_comparison(self, other, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/invalid.py", line 40, in invalid_comparison
+    raise TypeError(f"Invalid comparison between dtype={left.dtype} and {typ}")
+TypeError: Invalid comparison between dtype=datetime64[ns, UTC] and Timestamp

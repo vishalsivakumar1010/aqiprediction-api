@@ -1,0 +1,254 @@
+================================================================================
+AQI PREDICTION MODEL TRAINING - WITH COMPREHENSIVE CHECKS
+================================================================================
+Started at: 2026-01-10 19:26:53
+
+Model Type: XGBoost
+
+Models will be saved to: /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/models
+Models directory exists: True
+
+Using XGBoost for training
+
+STEP 1: Loading dataset with Open-Meteo wind data
+================================================================================
+Loading Open-Meteo prepared dataset: /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/purpleair_complete_with_wind_openmeteo.csv
+✓ Loaded 163,467 rows from Open-Meteo dataset
+  Wind coverage: 163,467 / 163,467 (100.0%)
+
+STEP 2: Adding AQI calculations
+================================================================================
+
+STEP 3: Feature engineering
+================================================================================
+Using feature_engineering module from original pipeline
+Starting feature engineering...
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating target variables...
+Removed 60 rows with missing targets (end of time series)
+Feature engineering complete. Final shape: (163407, 111)
+
+STEP 4: Running comprehensive checks
+================================================================================
+
+================================================================================
+CHECK 1: DATA LEAKAGE VERIFICATION
+================================================================================
+⚠️  Found 101 potential data leakage issues (showing first 5):
+  - Sensor 17895, row 2: Target mismatch. Expected 22.6, got 73.0
+  - Sensor 17895, row 3: Target mismatch. Expected 16.9, got 61.0
+  - Sensor 17895, row 4: Target mismatch. Expected 10.1, got 42.0
+  - Sensor 17895, row 5: Target mismatch. Expected 6.3, got 26.0
+  - Sensor 17895, row 6: Target mismatch. Expected 3.9, got 16.0
+  (Checking implementation more carefully...)
+
+================================================================================
+CHECK 3: WIND DIRECTION MERGE VERIFICATION
+================================================================================
+Total rows: 163,407
+Rows with wdir: 163,407 (100.00%)
+Rows missing wdir: 0 (0.00%)
+✓ Good wind direction coverage (100.00%)
+✓ Forward-fill verification: Rows within same hour have consistent wdir values
+✓ Wind direction x, y components verified (cos/sin of wdir)
+
+Sample wind direction data:
+         time_stamp  sensor_id  wdir    wind_dir_x  wind_dir_y
+2025-01-01 00:00:00      17895    90  6.123234e-17    1.000000
+2025-01-01 00:30:00      17895    90  6.123234e-17    1.000000
+2025-01-01 01:00:00      17895   117 -4.539905e-01    0.891007
+2025-01-01 01:30:00      17895   117 -4.539905e-01    0.891007
+2025-01-01 02:00:00      17895   124 -5.591929e-01    0.829038
+2025-01-01 02:30:00      17895   124 -5.591929e-01    0.829038
+2025-01-01 03:00:00      17895   119 -4.848096e-01    0.874620
+2025-01-01 03:30:00      17895   119 -4.848096e-01    0.874620
+2025-01-01 04:00:00      17895    59  5.150381e-01    0.857167
+2025-01-01 04:30:00      17895    59  5.150381e-01    0.857167
+
+STEP 5: Creating time-based train/test split
+================================================================================
+
+================================================================================
+CHECK 2: TIME-BASED SPLIT VERIFICATION
+================================================================================
+Train period: 2025-01-01 00:00:00 to 2025-11-01 00:00:00
+Test period: 2025-11-01 00:00:00 to 2026-01-07 20:30:00
+Train rows: 130944, Test rows: 32472
+✓ Time-based split verified
+  - No overlap between train and test
+  - Temporal order preserved
+  - Train start: 2025-01-01 00:00:00
+  - Train end: 2025-11-01 00:00:00
+  - Test start: 2025-11-01 00:00:00
+  - Test end: 2026-01-07 20:30:00
+
+Feature columns (100):
+  First 10: ['day_of_month', 'day_of_week', 'day_of_week_cos', 'day_of_week_sin', 'day_of_year', 'hour', 'hour_cos', 'hour_sin', 'humidity', 'humidity_diff']
+  Last 10: ['temperature_rolling_min_4', 'temperature_rolling_min_6', 'temperature_rolling_std_12', 'temperature_rolling_std_2', 'temperature_rolling_std_24', 'temperature_rolling_std_4', 'temperature_rolling_std_6', 'wdir', 'wind_dir_x', 'wind_dir_y']
+
+STEP 6: Training baseline persistence models
+================================================================================
+NOTE: Baseline evaluated on TEST set for fair comparison with model performance
+
+================================================================================
+TRAINING BASELINE PERSISTENCE MODELS
+================================================================================
+
+Baseline 1h forecast:
+  MAE: 3.59 μg/m³
+  RMSE: 35.39 μg/m³
+  R²: 0.8915
+  Category Accuracy: 0.9318
+  Category Macro F1: 0.7619
+
+Baseline 3h forecast:
+  MAE: 7.35 μg/m³
+  RMSE: 67.88 μg/m³
+  R²: 0.5888
+  Category Accuracy: 0.8850
+  Category Macro F1: 0.6474
+
+STEP 7: Training main models (XGBoost/HistGradientBoosting)
+================================================================================
+
+================================================================================
+TRAINING MAIN MODELS
+================================================================================
+
+================================================================================
+Training models for 1h forecast
+================================================================================
+Training samples: 130,944
+Test samples: 32,472
+Features: 100
+
+Training 1h regression model...
+  MAE: 6.55 μg/m³
+  RMSE: 38.60 μg/m³
+  R²: 0.8708
+
+Training 1h classification model...
+  Category Accuracy: 0.9227
+  Category Macro F1: 0.6271
+
+Confusion Matrix (1h):
+                                 Good  Moderate  ...  Very Unhealthy  Hazardous
+Good                            16890       579  ...               0          1
+Moderate                         1095      9643  ...               0          7
+Unhealthy for Sensitive Groups      8       772  ...               0          5
+Unhealthy                           3        12  ...               0         13
+Very Unhealthy                      1         0  ...               0          4
+Hazardous                           0         0  ...               0        169
+
+[6 rows x 6 columns]
+
+Models saved:
+  /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/models/pm25_model_1h.pkl
+  /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/models/category_model_1h.pkl
+  /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/models/category_mapping_1h.pkl
+  /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/models/feature_columns_1h.pkl
+
+================================================================================
+Training models for 3h forecast
+================================================================================
+Training samples: 130,944
+Test samples: 32,472
+Features: 100
+
+Training 3h regression model...
+  MAE: 14.93 μg/m³
+  RMSE: 73.38 μg/m³
+  R²: 0.5193
+
+Training 3h classification model...
+  Category Accuracy: 0.7940
+  Category Macro F1: 0.5586
+
+Confusion Matrix (3h):
+                                 Good  Moderate  ...  Very Unhealthy  Hazardous
+Good                            16273      1195  ...               0         10
+Moderate                         4643      6096  ...               0         12
+Unhealthy for Sensitive Groups    125       657  ...               0          7
+Unhealthy                           9         6  ...               0         14
+Very Unhealthy                      2         0  ...               0          3
+Hazardous                           4         2  ...               0        159
+
+[6 rows x 6 columns]
+
+Models saved:
+  /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/models/pm25_model_3h.pkl
+  /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/models/category_model_3h.pkl
+  /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/models/category_mapping_3h.pkl
+  /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/models/feature_columns_3h.pkl
+
+================================================================================
+FINAL RESULTS - MODEL vs BASELINE
+================================================================================
+
+1H FORECAST PERFORMANCE:
+--------------------------------------------------------------------------------
+
+Regression (PM2.5 → AQI):
+  Baseline MAE: 3.59 μg/m³
+  Model MAE:    6.55 μg/m³
+  Improvement:  -82.7%
+  Baseline RMSE: 35.39 μg/m³
+  Model RMSE:    38.60 μg/m³
+  Improvement:   -9.1%
+  Model R²:      0.8708
+
+Classification (AQI Category):
+  Baseline Accuracy: 0.9318
+  Model Accuracy:    0.9227
+  Improvement:       -1.0%
+  Baseline Macro F1: 0.7619
+  Model Macro F1:    0.6271
+  Improvement:       -17.7%
+
+Confusion Matrix (1h):
+[[16890   579     0     0     0     1]
+ [ 1095  9643     8     2     0     7]
+ [    8   772     4     0     0     5]
+ [    3    12     1  3255     0    13]
+ [    1     0     0     0     0     4]
+ [    0     0     0     0     0   169]]
+
+3H FORECAST PERFORMANCE:
+--------------------------------------------------------------------------------
+
+Regression (PM2.5 → AQI):
+  Baseline MAE: 7.35 μg/m³
+  Model MAE:    14.93 μg/m³
+  Improvement:  -103.3%
+  Baseline RMSE: 67.88 μg/m³
+  Model RMSE:    73.38 μg/m³
+  Improvement:   -8.1%
+  Model R²:      0.5193
+
+Classification (AQI Category):
+  Baseline Accuracy: 0.8850
+  Model Accuracy:    0.7940
+  Improvement:       -10.3%
+  Baseline Macro F1: 0.6474
+  Model Macro F1:    0.5586
+  Improvement:       -13.7%
+
+Confusion Matrix (3h):
+[[16273  1195     0     0     0    10]
+ [ 4643  6096     0     0     0    12]
+ [  125   657     0     0     0     7]
+ [    9     6     0  3255     0    14]
+ [    2     0     0     0     0     3]
+ [    4     2     0     0     0   159]]
+
+================================================================================
+TRAINING COMPLETE!
+================================================================================
+
+Finished at: 2026-01-10 19:27:40
+
+Models saved to: /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/models/
+
+Next: Generate predict.py script to load models and make predictions

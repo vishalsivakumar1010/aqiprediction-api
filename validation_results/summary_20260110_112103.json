@@ -1,0 +1,16 @@
+{
+  "study_start": null,
+  "addresses": [
+    "2523 Bishop Ave",
+    "Fremont",
+    "CA 94536"
+  ],
+  "total_rounds": 0,
+  "total_predictions": 0,
+  "total_comparisons": 0,
+  "address_info": {
+    "2523 Bishop Ave": "None",
+    "Fremont": "None",
+    "CA 94536": "None"
+  }
+}

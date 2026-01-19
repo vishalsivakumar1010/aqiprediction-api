@@ -1,0 +1,16 @@
+round,timestamp,address,sensor_id,sensor_name,current_pm25,current_aqi,current_category,forecast_1h_pm25,forecast_1h_aqi,forecast_1h_category,forecast_3h_pm25,forecast_3h_aqi,forecast_3h_category
+1,2026-01-10 16:27:45.805268,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,25.3,79,Moderate,40.27,113,Unhealthy for Sensitive Groups,31.45,92,Moderate
+1,2026-01-10 16:27:46.136776,39400 Paseo Padre Pkwy,84117,Lake Elizabeth,8.0,33,Good,8.7,36,Good,9.39,39,Good
+1,2026-01-10 16:27:46.432420,"Fremont, CA 94538",19683,Glenmoor Gardens,5.9,25,Good,6.82,28,Good,7.19,30,Good
+1,2026-01-10 16:27:46.703306,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,5.9,25,Good,6.27,26,Good,5.42,23,Good
+1,2026-01-10 16:27:46.994775,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,5.3,22,Good,5.82,24,Good,6.75,28,Good
+1,2026-01-10 16:27:47.302010,36007 Pizarro Dr,18987,Fremont: Cabrillo,11.4,48,Good,11.28,47,Good,11.67,49,Good
+1,2026-01-10 16:27:47.601255,"Fremont, CA 94536",19683,Glenmoor Gardens,5.9,25,Good,6.3,26,Good,7.21,30,Good
+1,2026-01-10 16:27:47.901540,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,11.4,48,Good,11.28,47,Good,11.67,49,Good
+1,2026-01-10 16:27:48.208013,34665 Allegheny Ct,18987,Fremont: Cabrillo,11.4,48,Good,11.28,47,Good,11.67,49,Good
+1,2026-01-10 16:27:48.514774,"Fremont, CA 94555",19683,Glenmoor Gardens,5.9,25,Good,6.3,26,Good,7.21,30,Good
+1,2026-01-10 16:27:48.804270,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,3.9,16,Good,3.82,16,Good,3.7,15,Good
+1,2026-01-10 16:27:49.113260,40500 Paseo Padre Pkwy,84117,Lake Elizabeth,8.0,33,Good,8.32,35,Good,7.94,33,Good
+1,2026-01-10 16:27:49.405893,"Fremont, CA 94538",19683,Glenmoor Gardens,5.9,25,Good,6.3,26,Good,7.21,30,Good
+1,2026-01-10 16:27:49.691737,41800 Blacow Rd,84117,Lake Elizabeth,8.0,33,Good,8.32,35,Good,7.94,33,Good
+1,2026-01-10 16:27:49.985814,"Fremont, CA 94538",19683,Glenmoor Gardens,5.9,25,Good,6.3,26,Good,7.21,30,Good

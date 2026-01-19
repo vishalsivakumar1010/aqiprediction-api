@@ -1,0 +1,30 @@
+{
+  "study_start": "2026-01-10T16:28:15.572776",
+  "addresses": [
+    "2523 Bishop Ave, Fremont, CA 94536",
+    "39400 Paseo Padre Pkwy, Fremont, CA 94538",
+    "4620 Mattos Dr, Fremont, CA 94536",
+    "5400 Mowry Ave, Fremont, CA 94538",
+    "36007 Pizarro Dr, Fremont, CA 94536",
+    "3377 Alder Ave, Fremont, CA 94536",
+    "34665 Allegheny Ct, Fremont, CA 94555",
+    "1251 Peralta Blvd, Fremont, CA 94536",
+    "40500 Paseo Padre Pkwy, Fremont, CA 94538",
+    "41800 Blacow Rd, Fremont, CA 94538"
+  ],
+  "total_rounds": 12,
+  "total_predictions": 120,
+  "total_comparisons": 0,
+  "address_info": {
+    "2523 Bishop Ave, Fremont, CA 94536": "{'coordinates': (37.5633323, -121.9937215), 'sensor_id': 71443, 'sensor_name': 'MoonRiver', 'distance_km': 0.3037409328864104}",
+    "39400 Paseo Padre Pkwy, Fremont, CA 94538": "{'coordinates': (37.5521835, -121.972148), 'sensor_id': 148483, 'sensor_name': 'Fremont - Civic Center', 'distance_km': 0.22058689224550132}",
+    "4620 Mattos Dr, Fremont, CA 94536": "{'coordinates': (37.5445775, -122.0045827), 'sensor_id': 19683, 'sensor_name': 'Glenmoor Gardens', 'distance_km': 0.4593769690960496}",
+    "5400 Mowry Ave, Fremont, CA 94538": "{'coordinates': (37.5322758, -121.9999347), 'sensor_id': 193337, 'sensor_name': 'Glen Moore-York Dr.', 'distance_km': 0.46065690150418986}",
+    "36007 Pizarro Dr, Fremont, CA 94536": "{'coordinates': (37.5560593, -122.0294304), 'sensor_id': 18987, 'sensor_name': 'Fremont: Cabrillo', 'distance_km': 0.7244417129925875}",
+    "3377 Alder Ave, Fremont, CA 94536": "{'coordinates': (37.5674296, -122.0121793), 'sensor_id': 18987, 'sensor_name': 'Fremont: Cabrillo', 'distance_km': 1.5092383193425367}",
+    "34665 Allegheny Ct, Fremont, CA 94555": "{'coordinates': (37.5695878, -122.0395937), 'sensor_id': 18987, 'sensor_name': 'Fremont: Cabrillo', 'distance_km': 1.2845061586480568}",
+    "1251 Peralta Blvd, Fremont, CA 94536": "{'coordinates': (37.5655532, -121.9807782), 'sensor_id': 286506, 'sensor_name': '405 L Street', 'distance_km': 0.8770804302016474}",
+    "40500 Paseo Padre Pkwy, Fremont, CA 94538": "{'coordinates': (37.5428335, -121.9607153), 'sensor_id': 84117, 'sensor_name': 'Lake Elizabeth', 'distance_km': 0.3578734343497038}",
+    "41800 Blacow Rd, Fremont, CA 94538": "{'coordinates': (37.5243188, -121.9548298), 'sensor_id': 84117, 'sensor_name': 'Lake Elizabeth', 'distance_km': 2.3523019676494865}"
+  }
+}

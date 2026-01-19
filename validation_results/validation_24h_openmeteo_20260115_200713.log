@@ -1,0 +1,497 @@
+Loaded 10 addresses from validation_addresses_10.txt
+Using 10 addresses for validation study
+Loading models...
+✓ Models loaded: 2 horizons
+
+Geocoding addresses and finding nearest sensors...
+  Trying online geocoding: '2523 Bishop Ave, Fremont, CA 94536'
+  ✓ Found: 2523, Bishop Avenue, Shinn, Fremont, Alameda County, California, 94536, United States
+  ✓ 2523 Bishop Ave, Fremont, CA 94536: Sensor 71443 (MoonRiver) - 0.30 km
+  Trying online geocoding: '39400 Paseo Padre Pkwy, Fremont, CA 94538'
+  ✓ Found: Civic Center Drive & Stevenson Boulevard, 39400, Paseo Padre Parkway, Fremont, Alameda County, California, 94538, United States
+  ✓ 39400 Paseo Padre Pkwy, Fremont, CA 94538: Sensor 148483 (Fremont - Civic Center) - 0.22 km
+  Trying online geocoding: '4620 Mattos Dr, Fremont, CA 94536'
+  ✓ Found: 4620, Mattos Drive, Centerville District, Fremont, Alameda County, California, 94536, United States
+  ✓ 4620 Mattos Dr, Fremont, CA 94536: Sensor 19683 (Glenmoor Gardens) - 0.46 km
+  Trying online geocoding: '5400 Mowry Ave, Fremont, CA 94538'
+  ✓ Found: Best Western Garden Court Inn, 5400, Mowry Avenue, Fremont, Alameda County, California, 94538, United States
+  ✓ 5400 Mowry Ave, Fremont, CA 94538: Sensor 193337 (Glen Moore-York Dr.) - 0.46 km
+  Trying online geocoding: '36007 Pizarro Dr, Fremont, CA 94536'
+  ✓ Found: 36007, Pizarro Drive, Fremont, Alameda County, California, 94560, United States
+  ✓ 36007 Pizarro Dr, Fremont, CA 94536: Sensor 18987 (Fremont: Cabrillo) - 0.72 km
+  Trying online geocoding: '3377 Alder Ave, Fremont, CA 94536'
+  ✓ Found: Los Cerritos Community Center, 3377, Alder Avenue, Centerville District, Fremont, Alameda County, California, 94536, United States
+  ✓ 3377 Alder Ave, Fremont, CA 94536: Sensor 18987 (Fremont: Cabrillo) - 1.51 km
+  Trying online geocoding: '34665 Allegheny Ct, Fremont, CA 94555'
+  ✓ Found: 34665, Allegheny Court, Fremont, Alameda County, California, 94555, United States
+  ✓ 34665 Allegheny Ct, Fremont, CA 94555: Sensor 18987 (Fremont: Cabrillo) - 1.28 km
+  Trying online geocoding: '1251 Peralta Blvd, Fremont, CA 94536'
+  ✓ Found: Shinn Big House, 1251;1263;1269;1273, Peralta Boulevard, Shinn, Fremont, Alameda County, California, 94536, United States
+  ✓ 1251 Peralta Blvd, Fremont, CA 94536: Sensor 286506 (405 L Street) - 0.88 km
+  Trying online geocoding: '40500 Paseo Padre Pkwy, Fremont, CA 94538'
+  ✓ Found: 40500;40520, Paseo Padre Parkway, Fremont, Alameda County, California, 94538, United States
+  ✓ 40500 Paseo Padre Pkwy, Fremont, CA 94538: Sensor 84117 (Lake Elizabeth) - 0.36 km
+  Trying online geocoding: '41800 Blacow Rd, Fremont, CA 94538'
+  ✓ Found: Blacow Road, Irvington District, Fremont, Alameda County, California, 94538, United States
+  ✓ 41800 Blacow Rd, Fremont, CA 94538: Sensor 84117 (Lake Elizabeth) - 2.35 km
+
+======================================================================
+VALIDATION STUDY STARTING
+======================================================================
+Start time: 2026-01-15 20:07:31
+End time: 2026-01-16 20:07:31
+Duration: 24 hours
+Interval: 60 minutes
+Addresses: 10
+======================================================================
+
+>>> Running Round 1 immediately...
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 391, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_historical_wind_openmeteo(
+        latitude, longitude,
+        start_date_naive, end_date_naive,
+        wind_height=10
+    )
+TypeError: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 369, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_forecast_wind_openmeteo(latitude, longitude, forecast_days=forecast_days, wind_height=10)
+TypeError: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 391, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_historical_wind_openmeteo(
+        latitude, longitude,
+        start_date_naive, end_date_naive,
+        wind_height=10
+    )
+TypeError: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 369, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_forecast_wind_openmeteo(latitude, longitude, forecast_days=forecast_days, wind_height=10)
+TypeError: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 391, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_historical_wind_openmeteo(
+        latitude, longitude,
+        start_date_naive, end_date_naive,
+        wind_height=10
+    )
+TypeError: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 369, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_forecast_wind_openmeteo(latitude, longitude, forecast_days=forecast_days, wind_height=10)
+TypeError: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 391, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_historical_wind_openmeteo(
+        latitude, longitude,
+        start_date_naive, end_date_naive,
+        wind_height=10
+    )
+TypeError: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 369, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_forecast_wind_openmeteo(latitude, longitude, forecast_days=forecast_days, wind_height=10)
+TypeError: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 391, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_historical_wind_openmeteo(
+        latitude, longitude,
+        start_date_naive, end_date_naive,
+        wind_height=10
+    )
+TypeError: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 369, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_forecast_wind_openmeteo(latitude, longitude, forecast_days=forecast_days, wind_height=10)
+TypeError: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+
+======================================================================
+ROUND 1/24 - 2026-01-15 20:07:31
+======================================================================
+
+2523 Bishop Ave, Fremont, CA 94536
+  Sensor: MoonRiver (ID: 71443)
+  Current: PM2.5=20.30, AQI=68 (Moderate)
+Loading HISTORICAL data from: 71443 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:37:31.921879 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.561237, -121.99151)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.561237, -121.99151)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-16 04:07:31.880226+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 111)
+  1h Forecast: PM2.5=34.71, AQI=99 (Moderate)
+  3h Forecast: PM2.5=72.47, AQI=160 (Unhealthy)
+
+39400 Paseo Padre Pkwy, Fremont, CA 94538
+  Sensor: Fremont - Civic Center (ID: 148483)
+  Current: PM2.5=5.60, AQI=23 (Good)
+Loading HISTORICAL data from: 148483 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:37:32.184078 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.55336, -121.97416)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.55336, -121.97416)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-16 04:07:32.143402+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 111)
+  1h Forecast: PM2.5=5.50, AQI=23 (Good)
+  3h Forecast: PM2.5=5.98, AQI=25 (Good)
+
+4620 Mattos Dr, Fremont, CA 94536
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=38.20, AQI=108 (Unhealthy for Sensitive Groups)
+Loading HISTORICAL data from: 19683 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:37:32.431426 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.542088, -122.00043)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.542088, -122.00043)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-16 04:07:32.389807+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 111)
+  1h Forecast: PM2.5=24.66, AQI=77 (Moderate)
+  3h Forecast: PM2.5=25.57, AQI=79 (Moderate)
+
+5400 Mowry Ave, Fremont, CA 94538
+  Sensor: Glen Moore-York Dr. (ID: 193337)
+  Current: PM2.5=33.50, AQI=96 (Moderate)
+Loading HISTORICAL data from: 193337 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:37:32.698772 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.533764, -122.0048)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.533764, -122.0048)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-16 04:07:32.658632+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 111)
+  1h Forecast: PM2.5=19.63, AQI=67 (Moderate)
+  3h Forecast: PM2.5=21.30, AQI=70 (Moderate)
+
+36007 Pizarro Dr, Fremont, CA 94536
+  Sensor: Fremont: Cabrillo (ID: 18987)
+  Current: PM2.5=36.50, AQI=103 (Unhealthy for Sensitive Groups)
+Loading HISTORICAL data from: 18987 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:37:33.253836 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-16 04:07:33.211914+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 391, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_historical_wind_openmeteo(
+        latitude, longitude,
+        start_date_naive, end_date_naive,
+        wind_height=10
+    )
+TypeError: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 369, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_forecast_wind_openmeteo(latitude, longitude, forecast_days=forecast_days, wind_height=10)
+TypeError: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 391, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_historical_wind_openmeteo(
+        latitude, longitude,
+        start_date_naive, end_date_naive,
+        wind_height=10
+    )
+TypeError: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 369, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_forecast_wind_openmeteo(latitude, longitude, forecast_days=forecast_days, wind_height=10)
+TypeError: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 391, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_historical_wind_openmeteo(
+        latitude, longitude,
+        start_date_naive, end_date_naive,
+        wind_height=10
+    )
+TypeError: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 369, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_forecast_wind_openmeteo(latitude, longitude, forecast_days=forecast_days, wind_height=10)
+TypeError: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 391, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_historical_wind_openmeteo(
+        latitude, longitude,
+        start_date_naive, end_date_naive,
+        wind_height=10
+    )
+TypeError: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 369, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_forecast_wind_openmeteo(latitude, longitude, forecast_days=forecast_days, wind_height=10)
+TypeError: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 391, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_historical_wind_openmeteo(
+        latitude, longitude,
+        start_date_naive, end_date_naive,
+        wind_height=10
+    )
+TypeError: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 369, in fetch_current_wind_data_for_prediction
+    wind_df = fetch_forecast_wind_openmeteo(latitude, longitude, forecast_days=forecast_days, wind_height=10)
+TypeError: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 111)
+  1h Forecast: PM2.5=23.65, AQI=75 (Moderate)
+  3h Forecast: PM2.5=24.55, AQI=77 (Moderate)
+
+3377 Alder Ave, Fremont, CA 94536
+  Sensor: Fremont: Cabrillo (ID: 18987)
+  Current: PM2.5=36.50, AQI=103 (Unhealthy for Sensitive Groups)
+Loading HISTORICAL data from: 18987 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:37:33.496912 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-16 04:07:33.458181+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 111)
+  1h Forecast: PM2.5=23.65, AQI=75 (Moderate)
+  3h Forecast: PM2.5=24.55, AQI=77 (Moderate)
+
+34665 Allegheny Ct, Fremont, CA 94555
+  Sensor: Fremont: Cabrillo (ID: 18987)
+  Current: PM2.5=36.50, AQI=103 (Unhealthy for Sensitive Groups)
+Loading HISTORICAL data from: 18987 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:37:33.755172 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-16 04:07:33.716246+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 111)
+  1h Forecast: PM2.5=23.65, AQI=75 (Moderate)
+  3h Forecast: PM2.5=24.55, AQI=77 (Moderate)
+
+1251 Peralta Blvd, Fremont, CA 94536
+  Sensor: 405 L Street (ID: 286506)
+  Current: PM2.5=6.40, AQI=27 (Good)
+Loading HISTORICAL data from: 286506 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:37:33.998439 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.57263, -121.97636)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.57263, -121.97636)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-16 04:07:33.976796+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 111)
+  1h Forecast: PM2.5=6.53, AQI=27 (Good)
+  3h Forecast: PM2.5=6.71, AQI=28 (Good)
+
+40500 Paseo Padre Pkwy, Fremont, CA 94538
+  Sensor: Lake Elizabeth (ID: 84117)
+  Current: PM2.5=8.40, AQI=35 (Good)
+Loading HISTORICAL data from: 84117 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:37:34.236343 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.54408, -121.96445)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.54408, -121.96445)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-16 04:07:34.196370+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 111)
+  1h Forecast: PM2.5=8.59, AQI=36 (Good)
+  3h Forecast: PM2.5=7.68, AQI=32 (Good)
+
+41800 Blacow Rd, Fremont, CA 94538
+  Sensor: Lake Elizabeth (ID: 84117)
+  Current: PM2.5=8.40, AQI=35 (Good)
+Loading HISTORICAL data from: 84117 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:37:34.490193 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.54408, -121.96445)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_historical_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.54408, -121.96445)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-16 04:07:34.451299+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+⚠ Error fetching wind data from Open-Meteo: fetch_forecast_wind_openmeteo() got an unexpected keyword argument 'wind_height'
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 111)
+  1h Forecast: PM2.5=8.59, AQI=36 (Good)
+  3h Forecast: PM2.5=7.68, AQI=32 (Good)
+
+✓ Saved 10 predictions to validation_results/predictions_20260115_200731.csv
+✓ Updated summary: validation_results/summary_20260115_200731.json
+
+>>> Waiting 60.0 minutes until Round 2...

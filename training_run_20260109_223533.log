@@ -1,0 +1,69 @@
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/train_with_checks.py", line 629, in main
+    df = prepare_full_dataset(data_dir, latitude=37.5483, longitude=-121.9886)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/prepare_full_dataset.py", line 263, in prepare_full_dataset
+    wind_df = fetch_historical_wind_direction(latitude, longitude, start_date, end_date)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/prepare_full_dataset.py", line 100, in fetch_historical_wind_direction
+    timeseries = hourly(location, start=start_date, end=end_date)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/meteostat/api/hourly.py", line 80, in hourly
+    return data_service.fetch(req)
+           ~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/meteostat/core/data.py", line 170, in fetch
+    station_fragments = self._fetch_station_data(req, station)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/meteostat/core/data.py", line 130, in _fetch_station_data
+    filtered_providers = provider_service.filter_providers(req, station)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/meteostat/core/providers.py", line 153, in filter_providers
+    return list(filter(_filter, query.providers))
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/meteostat/core/providers.py", line 130, in _filter
+    if query.end and query.end < datetime.combine(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        provider.start, datetime.min.time()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "pandas/_libs/tslibs/timestamps.pyx", line 337, in pandas._libs.tslibs.timestamps._Timestamp.__richcmp__
+TypeError: can't compare offset-naive and offset-aware datetimes
+================================================================================
+AQI PREDICTION MODEL TRAINING - WITH COMPREHENSIVE CHECKS
+================================================================================
+Started at: 2026-01-09 22:35:33
+
+Model Type: XGBoost
+
+Models will be saved to: /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/models
+Models directory exists: True
+
+Using XGBoost for training
+
+STEP 1: Preparing dataset with historical wind direction
+================================================================================
+================================================================================
+PREPARING FULL DATASET FOR TRAINING
+================================================================================
+
+Step 1: Loading PurpleAir sensor data...
+--------------------------------------------------------------------------------
+Loaded 17856 rows from sensor 148483
+Loaded 16635 rows from sensor 71443
+Loaded 13468 rows from sensor 56275
+Loaded 17747 rows from sensor 19683
+Loaded 8935 rows from sensor 286506
+Loaded 17780 rows from sensor 84117
+Loaded 17856 rows from sensor 18987
+Loaded 17737 rows from sensor 17895
+Loaded 17658 rows from sensor 114889
+Loaded 17795 rows from sensor 193337
+
+Total combined rows: 163467
+Number of sensors: 10
+Date range: 2025-01-01 00:00:00-08:00 to 2026-01-07 23:30:00-08:00
+
+Dataset date range: 2025-01-01 00:00:00-08:00 to 2026-01-07 23:30:00-08:00
+
+Step 2: Fetching historical wind direction from Meteostat...
+--------------------------------------------------------------------------------
+
+Fetching historical wind direction from Meteostat...
+Location: (37.5483, -121.9886)
+Date range: 2025-01-01 00:00:00-08:00 to 2026-01-07 23:30:00-08:00
+Error preparing dataset: can't compare offset-naive and offset-aware datetimes

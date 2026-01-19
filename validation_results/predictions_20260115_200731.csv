@@ -1,0 +1,11 @@
+round,timestamp,address,sensor_id,sensor_name,current_pm25,current_aqi,current_category,forecast_1h_pm25,forecast_1h_aqi,forecast_1h_category,forecast_3h_pm25,forecast_3h_aqi,forecast_3h_category
+1,2026-01-15 20:07:31.950973,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,20.3,68,Moderate,34.71,99,Moderate,72.47,160,Unhealthy
+1,2026-01-15 20:07:32.209786,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,5.6,23,Good,5.5,23,Good,5.98,25,Good
+1,2026-01-15 20:07:32.458067,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,38.2,108,Unhealthy for Sensitive Groups,24.66,77,Moderate,25.57,79,Moderate
+1,2026-01-15 20:07:32.724086,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,33.5,96,Moderate,19.63,67,Moderate,21.3,70,Moderate
+1,2026-01-15 20:07:33.278537,"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,36.5,103,Unhealthy for Sensitive Groups,23.65,75,Moderate,24.55,77,Moderate
+1,2026-01-15 20:07:33.522137,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,36.5,103,Unhealthy for Sensitive Groups,23.65,75,Moderate,24.55,77,Moderate
+1,2026-01-15 20:07:33.780226,"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,36.5,103,Unhealthy for Sensitive Groups,23.65,75,Moderate,24.55,77,Moderate
+1,2026-01-15 20:07:34.022937,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,6.4,27,Good,6.53,27,Good,6.71,28,Good
+1,2026-01-15 20:07:34.261786,"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,8.4,35,Good,8.59,36,Good,7.68,32,Good
+1,2026-01-15 20:07:34.514730,"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,8.4,35,Good,8.59,36,Good,7.68,32,Good

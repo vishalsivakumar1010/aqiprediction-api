@@ -1,0 +1,3 @@
+round,timestamp,address,sensor_id,sensor_name,current_pm25,current_aqi,current_category,forecast_1h_pm25,forecast_1h_aqi,forecast_1h_category,forecast_3h_pm25,forecast_3h_aqi,forecast_3h_category
+5,2026-01-16 18:00:06.421311,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,27.3,83,Moderate,18.96,65,Moderate,16.86,61,Moderate
+5,2026-01-16 18:00:08.304526,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,6.9,29,Good,6.06,25,Good,6.04,25,Good

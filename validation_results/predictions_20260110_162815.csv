@@ -1,0 +1,121 @@
+round,timestamp,address,sensor_id,sensor_name,current_pm25,current_aqi,current_category,forecast_1h_pm25,forecast_1h_aqi,forecast_1h_category,forecast_3h_pm25,forecast_3h_aqi,forecast_3h_category
+1,2026-01-10 16:28:15.572776,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,25.2,79,Moderate,40.27,113,Unhealthy for Sensitive Groups,31.45,92,Moderate
+1,2026-01-10 16:28:15.908029,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,2.6,11,Good,3.22,13,Good,4.77,20,Good
+1,2026-01-10 16:28:16.247792,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,5.9,25,Good,6.68,28,Good,8.82,37,Good
+1,2026-01-10 16:28:16.569180,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,5.3,22,Good,6.21,26,Good,8.36,35,Good
+1,2026-01-10 16:28:16.919741,"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,11.4,48,Good,11.67,49,Good,25.16,78,Moderate
+1,2026-01-10 16:28:17.234438,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,11.4,48,Good,11.67,49,Good,25.16,78,Moderate
+1,2026-01-10 16:28:17.546324,"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,11.4,48,Good,11.67,49,Good,25.16,78,Moderate
+1,2026-01-10 16:28:17.848773,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,3.5,15,Good,3.87,16,Good,6.28,26,Good
+1,2026-01-10 16:28:18.165250,"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,8.0,33,Good,8.7,36,Good,9.39,39,Good
+1,2026-01-10 16:28:18.520544,"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,8.0,33,Good,8.7,36,Good,9.39,39,Good
+2,2026-01-10 17:28:37.138916,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,22.2,72,Moderate,36.53,104,Unhealthy for Sensitive Groups,21.36,70,Moderate
+2,2026-01-10 17:28:37.593712,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,2.3,10,Good,2.91,12,Good,4.77,20,Good
+2,2026-01-10 17:28:38.026146,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,7.4,31,Good,8.13,34,Good,9.76,41,Good
+2,2026-01-10 17:28:38.445989,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,7.3,30,Good,8.14,34,Good,10.08,42,Good
+2,2026-01-10 17:28:39.012123,"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,12.3,51,Moderate,12.89,53,Moderate,15.43,58,Moderate
+2,2026-01-10 17:28:39.447012,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,12.3,51,Moderate,12.89,53,Moderate,15.43,58,Moderate
+2,2026-01-10 17:28:39.939873,"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,12.3,51,Moderate,12.89,53,Moderate,15.43,58,Moderate
+2,2026-01-10 17:28:40.381962,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,4.8,20,Good,5.39,22,Good,7.43,31,Good
+2,2026-01-10 17:28:40.792203,"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,10.4,43,Good,11.31,47,Good,12.71,52,Moderate
+2,2026-01-10 17:28:41.221541,"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,10.4,43,Good,11.31,47,Good,12.71,52,Moderate
+3,2026-01-10 18:28:15.709072,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,20.6,69,Moderate,36.43,103,Unhealthy for Sensitive Groups,21.36,70,Moderate
+3,2026-01-10 18:28:16.143964,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,5.1,21,Good,7.22,30,Good,8.68,36,Good
+3,2026-01-10 18:28:16.573668,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,16.5,60,Moderate,32.92,95,Moderate,25.07,78,Moderate
+3,2026-01-10 18:28:17.033010,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,11.9,50,Good,12.62,52,Moderate,15.43,58,Moderate
+3,2026-01-10 18:28:17.486817,"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,13.0,53,Moderate,13.19,53,Moderate,16.07,59,Moderate
+3,2026-01-10 18:28:17.917685,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,13.0,53,Moderate,13.19,53,Moderate,16.07,59,Moderate
+3,2026-01-10 18:28:18.377522,"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,13.0,53,Moderate,13.19,53,Moderate,16.07,59,Moderate
+3,2026-01-10 18:28:18.798952,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,5.2,22,Good,6.28,26,Good,8.68,36,Good
+3,2026-01-10 18:28:19.245078,"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,11.7,49,Good,12.23,51,Moderate,15.43,58,Moderate
+3,2026-01-10 18:28:19.723553,"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,11.7,49,Good,12.23,51,Moderate,15.43,58,Moderate
+4,2026-01-10 19:28:15.755278,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,21.6,71,Moderate,36.53,104,Unhealthy for Sensitive Groups,21.36,70,Moderate
+4,2026-01-10 19:28:16.223549,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,2.6,11,Good,3.35,14,Good,5.17,22,Good
+4,2026-01-10 19:28:16.650745,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,23.7,75,Moderate,37.96,107,Unhealthy for Sensitive Groups,20.67,69,Moderate
+4,2026-01-10 19:28:17.079749,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,11.8,49,Good,12.23,51,Moderate,15.43,58,Moderate
+4,2026-01-10 19:28:17.509174,"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,12.0,50,Good,12.89,53,Moderate,15.43,58,Moderate
+4,2026-01-10 19:28:17.969330,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,12.0,50,Good,12.89,53,Moderate,15.43,58,Moderate
+4,2026-01-10 19:28:19.002548,"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,12.0,50,Good,12.89,53,Moderate,15.43,58,Moderate
+4,2026-01-10 19:28:19.398213,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,4.7,20,Good,5.39,22,Good,7.43,31,Good
+4,2026-01-10 19:28:19.811811,"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,10.8,45,Good,11.31,47,Good,14.41,56,Moderate
+4,2026-01-10 19:28:20.231065,"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,10.8,45,Good,11.31,47,Good,14.41,56,Moderate
+5,2026-01-10 20:28:15.664241,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,19.9,67,Moderate,36.29,103,Unhealthy for Sensitive Groups,20.71,69,Moderate
+5,2026-01-10 20:28:16.019079,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,3.9,16,Good,4.22,18,Good,6.37,27,Good
+5,2026-01-10 20:28:16.339596,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,13.2,53,Moderate,13.81,55,Moderate,16.36,60,Moderate
+5,2026-01-10 20:28:16.646212,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,10.1,42,Good,11.08,46,Good,12.31,51,Moderate
+5,2026-01-10 20:28:16.974668,"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,11.1,46,Good,11.49,48,Good,14.4,56,Moderate
+5,2026-01-10 20:28:17.302982,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,11.1,46,Good,11.49,48,Good,14.4,56,Moderate
+5,2026-01-10 20:28:17.617218,"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,11.1,46,Good,11.49,48,Good,14.4,56,Moderate
+5,2026-01-10 20:28:18.044734,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,4.4,18,Good,4.78,20,Good,6.7,28,Good
+5,2026-01-10 20:28:18.363456,"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,10.9,45,Good,11.16,46,Good,14.01,55,Moderate
+5,2026-01-10 20:28:18.689707,"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,10.9,45,Good,11.16,46,Good,14.01,55,Moderate
+6,2026-01-10 21:28:15.603459,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,18.2,64,Moderate,34.9,99,Moderate,14.46,56,Moderate
+6,2026-01-10 21:28:15.932954,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,3.2,13,Good,3.38,14,Good,5.39,22,Good
+6,2026-01-10 21:28:16.258207,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,12.1,51,Moderate,12.51,52,Moderate,13.16,53,Moderate
+6,2026-01-10 21:28:16.570775,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,9.2,38,Good,9.61,40,Good,9.21,38,Good
+6,2026-01-10 21:28:16.896008,"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,40.6,114,Unhealthy for Sensitive Groups,50.32,138,Unhealthy for Sensitive Groups,81.65,165,Unhealthy
+6,2026-01-10 21:28:17.359377,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,40.6,114,Unhealthy for Sensitive Groups,50.32,138,Unhealthy for Sensitive Groups,81.65,165,Unhealthy
+6,2026-01-10 21:28:17.970916,"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,40.6,114,Unhealthy for Sensitive Groups,50.32,138,Unhealthy for Sensitive Groups,81.65,165,Unhealthy
+6,2026-01-10 21:28:18.272866,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,11.2,47,Good,11.26,47,Good,12.49,52,Moderate
+6,2026-01-10 21:28:18.616168,"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,9.0,38,Good,9.33,39,Good,9.21,38,Good
+6,2026-01-10 21:28:18.937708,"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,9.0,38,Good,9.33,39,Good,9.21,38,Good
+7,2026-01-10 22:28:15.661978,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,16.8,61,Moderate,32.4,94,Moderate,19.56,67,Moderate
+7,2026-01-10 22:28:16.098585,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,6.3,26,Good,7.61,32,Good,7.21,30,Good
+7,2026-01-10 22:28:16.518997,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,33.1,95,Moderate,50.17,137,Unhealthy for Sensitive Groups,80.66,164,Unhealthy
+7,2026-01-10 22:28:16.929950,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,17.2,62,Moderate,33.13,95,Moderate,13.51,54,Moderate
+7,2026-01-10 22:28:17.350350,"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,20.9,70,Moderate,36.22,103,Unhealthy for Sensitive Groups,17.78,63,Moderate
+7,2026-01-10 22:28:17.813107,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,20.9,70,Moderate,36.22,103,Unhealthy for Sensitive Groups,17.78,63,Moderate
+7,2026-01-10 22:28:18.261424,"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,20.9,70,Moderate,36.22,103,Unhealthy for Sensitive Groups,17.78,63,Moderate
+7,2026-01-10 22:28:18.726512,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,4.4,18,Good,4.49,19,Good,5.37,22,Good
+7,2026-01-10 22:28:19.140040,"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,9.2,38,Good,9.46,39,Good,8.39,35,Good
+7,2026-01-10 22:28:19.551057,"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,9.5,40,Good,9.59,40,Good,8.39,35,Good
+8,2026-01-10 23:28:15.762464,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,15.7,59,Moderate,30.85,90,Moderate,22.29,72,Moderate
+8,2026-01-10 23:28:16.188993,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,4.2,18,Good,4.49,19,Good,5.37,22,Good
+8,2026-01-10 23:28:16.622422,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,28.6,86,Moderate,36.11,102,Unhealthy for Sensitive Groups,22.19,72,Moderate
+8,2026-01-10 23:28:17.035528,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,21.1,70,Moderate,35.88,102,Unhealthy for Sensitive Groups,17.89,63,Moderate
+8,2026-01-10 23:28:17.441824,"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,20.0,68,Moderate,36.24,103,Unhealthy for Sensitive Groups,18.98,65,Moderate
+8,2026-01-10 23:28:17.849339,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,20.0,68,Moderate,36.24,103,Unhealthy for Sensitive Groups,18.98,65,Moderate
+8,2026-01-10 23:28:18.253821,"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,20.0,68,Moderate,36.24,103,Unhealthy for Sensitive Groups,18.98,65,Moderate
+8,2026-01-10 23:28:18.637527,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,5.6,23,Good,5.88,24,Good,6.95,29,Good
+8,2026-01-10 23:28:19.055314,"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,9.1,38,Good,9.17,38,Good,8.39,35,Good
+8,2026-01-10 23:28:19.464925,"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,9.1,38,Good,9.17,38,Good,8.39,35,Good
+9,2026-01-11 00:28:15.669540,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,14.6,56,Moderate,29.65,88,Moderate,20.98,70,Moderate
+9,2026-01-11 00:28:16.012030,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,4.7,20,Good,4.93,21,Good,5.69,24,Good
+9,2026-01-11 00:28:16.368872,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,19.2,66,Moderate,35.51,101,Unhealthy for Sensitive Groups,18.18,64,Moderate
+9,2026-01-11 00:28:16.947584,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,12.3,51,Moderate,12.35,52,Moderate,12.35,52,Moderate
+9,2026-01-11 00:28:17.276312,"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,17.4,62,Moderate,34.3,98,Moderate,14.43,56,Moderate
+9,2026-01-11 00:28:17.643938,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,17.4,62,Moderate,34.3,98,Moderate,14.43,56,Moderate
+9,2026-01-11 00:28:17.967915,"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,17.4,62,Moderate,34.3,98,Moderate,14.43,56,Moderate
+9,2026-01-11 00:28:18.277637,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,6.2,26,Good,8.19,34,Good,8.24,34,Good
+9,2026-01-11 00:28:18.616822,"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,8.3,35,Good,8.54,36,Good,8.22,34,Good
+9,2026-01-11 00:28:18.951305,"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,8.3,35,Good,8.54,36,Good,8.22,34,Good
+10,2026-01-11 01:28:15.846152,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,12.9,53,Moderate,12.54,52,Moderate,12.55,52,Moderate
+10,2026-01-11 01:28:16.186761,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,5.4,23,Good,5.88,24,Good,6.68,28,Good
+10,2026-01-11 01:28:16.513302,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,12.8,52,Moderate,13.6,54,Moderate,13.5,54,Moderate
+10,2026-01-11 01:28:16.834839,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,12.4,52,Moderate,12.35,52,Moderate,12.35,52,Moderate
+10,2026-01-11 01:28:17.156558,"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,17.9,63,Moderate,35.3,100,Moderate,14.43,56,Moderate
+10,2026-01-11 01:28:17.472312,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,17.9,63,Moderate,35.3,100,Moderate,14.43,56,Moderate
+10,2026-01-11 01:28:17.796087,"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,17.9,63,Moderate,35.3,100,Moderate,14.43,56,Moderate
+10,2026-01-11 01:28:18.111821,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,6.1,25,Good,8.19,34,Good,8.24,34,Good
+10,2026-01-11 01:28:18.440927,"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,7.4,31,Good,7.59,32,Good,7.89,33,Good
+10,2026-01-11 01:28:18.800207,"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,7.4,31,Good,7.59,32,Good,7.89,33,Good
+11,2026-01-11 02:28:15.732734,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,11.5,48,Good,11.17,47,Good,11.74,49,Good
+11,2026-01-11 02:28:16.054421,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,2.0,8,Good,2.33,10,Good,3.07,13,Good
+11,2026-01-11 02:28:16.384178,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,12.4,52,Moderate,13.53,54,Moderate,13.37,54,Moderate
+11,2026-01-11 02:28:16.713444,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,19.3,66,Moderate,35.17,100,Moderate,17.28,62,Moderate
+11,2026-01-11 02:28:17.214837,"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,14.0,55,Moderate,14.22,55,Moderate,14.84,57,Moderate
+11,2026-01-11 02:28:17.554989,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,14.0,55,Moderate,14.22,55,Moderate,14.84,57,Moderate
+11,2026-01-11 02:28:18.196240,"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,14.0,55,Moderate,14.22,55,Moderate,14.84,57,Moderate
+11,2026-01-11 02:28:18.536718,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,6.7,28,Good,8.77,37,Good,8.61,36,Good
+11,2026-01-11 02:28:18.970993,"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,10.9,45,Good,10.77,45,Good,11.61,48,Good
+11,2026-01-11 02:28:19.292175,"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,10.9,45,Good,10.77,45,Good,11.61,48,Good
+12,2026-01-11 03:28:15.628728,"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,12.0,50,Good,12.3,51,Moderate,12.67,52,Moderate
+12,2026-01-11 03:28:15.991920,"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,1.0,4,Good,1.39,6,Good,2.59,11,Good
+12,2026-01-11 03:28:16.324913,"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,19.7,67,Moderate,36.52,104,Unhealthy for Sensitive Groups,19.26,66,Moderate
+12,2026-01-11 03:28:16.638888,"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,13.6,54,Moderate,13.48,54,Moderate,13.96,55,Moderate
+12,2026-01-11 03:28:16.962635,"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,11.6,48,Good,11.94,50,Good,14.09,55,Moderate
+12,2026-01-11 03:28:17.308970,"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,11.6,48,Good,11.94,50,Good,14.09,55,Moderate
+12,2026-01-11 03:28:17.637873,"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,11.6,48,Good,11.94,50,Good,14.09,55,Moderate
+12,2026-01-11 03:28:17.945700,"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,4.3,18,Good,5.73,24,Good,6.68,28,Good
+12,2026-01-11 03:28:18.370628,"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,6.2,26,Good,8.24,34,Good,7.74,32,Good
+12,2026-01-11 03:28:18.718317,"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,6.2,26,Good,8.24,34,Good,7.74,32,Good

@@ -1,0 +1,31 @@
+round,timestamp,address,sensor_id,sensor_name,current_pm25,current_aqi,current_category,forecast_1h_pm25,forecast_1h_aqi,forecast_1h_category,forecast_3h_pm25,forecast_3h_aqi,forecast_3h_category
+1,2026-01-10 11:24:32.930024,2523 Bishop Ave,71443,MoonRiver,22.2,72,Moderate,32.12,93,Moderate,43.25,120,Unhealthy for Sensitive Groups
+1,2026-01-10 11:24:33.188956,Fremont,19683,Glenmoor Gardens,9.2,38,Good,9.81,41,Good,7.21,30,Good
+1,2026-01-10 11:24:33.431121,CA 94536,71443,MoonRiver,22.2,72,Moderate,32.12,93,Moderate,43.25,120,Unhealthy for Sensitive Groups
+1,2026-01-10 11:24:33.685153,39400 Paseo Padre Pkwy,84117,Lake Elizabeth,9.0,38,Good,9.26,39,Good,7.43,31,Good
+1,2026-01-10 11:24:34.009580,Fremont,19683,Glenmoor Gardens,9.2,38,Good,9.81,41,Good,7.21,30,Good
+1,2026-01-10 11:24:34.288739,CA 94538,84117,Lake Elizabeth,9.3,39,Good,9.9,41,Good,6.19,26,Good
+1,2026-01-10 11:24:34.591003,4620 Mattos Dr,19683,Glenmoor Gardens,9.2,38,Good,9.81,41,Good,7.21,30,Good
+1,2026-01-10 11:24:34.815237,Fremont,19683,Glenmoor Gardens,9.2,38,Good,9.81,41,Good,7.21,30,Good
+1,2026-01-10 11:24:35.070433,CA 94536,71443,MoonRiver,22.2,72,Moderate,32.12,93,Moderate,43.25,120,Unhealthy for Sensitive Groups
+1,2026-01-10 11:24:35.319292,5400 Mowry Ave,193337,Glen Moore-York Dr.,5.0,21,Good,6.75,28,Good,3.0,13,Good
+1,2026-01-10 11:24:35.611464,Fremont,19683,Glenmoor Gardens,9.2,38,Good,9.81,41,Good,7.21,30,Good
+1,2026-01-10 11:24:35.849345,CA 94538,84117,Lake Elizabeth,9.0,38,Good,9.26,39,Good,7.43,31,Good
+1,2026-01-10 11:24:36.135604,36007 Pizarro Dr,18987,Fremont: Cabrillo,8.0,33,Good,7.98,33,Good,6.63,28,Good
+1,2026-01-10 11:24:36.392450,Fremont,19683,Glenmoor Gardens,9.2,38,Good,9.81,41,Good,7.21,30,Good
+1,2026-01-10 11:24:36.676909,CA 94536,71443,MoonRiver,22.2,72,Moderate,32.12,93,Moderate,43.25,120,Unhealthy for Sensitive Groups
+1,2026-01-10 11:24:36.951734,3377 Alder Ave,18987,Fremont: Cabrillo,8.0,33,Good,7.98,33,Good,6.63,28,Good
+1,2026-01-10 11:24:37.212031,Fremont,19683,Glenmoor Gardens,9.2,38,Good,9.81,41,Good,7.21,30,Good
+1,2026-01-10 11:24:37.433029,CA 94536,71443,MoonRiver,22.2,72,Moderate,32.12,93,Moderate,43.25,120,Unhealthy for Sensitive Groups
+1,2026-01-10 11:24:37.698066,34665 Allegheny Ct,18987,Fremont: Cabrillo,8.0,33,Good,7.98,33,Good,6.63,28,Good
+1,2026-01-10 11:24:37.937253,Fremont,19683,Glenmoor Gardens,9.2,38,Good,9.81,41,Good,7.21,30,Good
+1,2026-01-10 11:24:38.168957,CA 94555,18987,Fremont: Cabrillo,8.0,33,Good,7.98,33,Good,6.63,28,Good
+1,2026-01-10 11:24:38.424372,1251 Peralta Blvd,286506,405 L Street,8.4,35,Good,8.55,36,Good,8.41,35,Good
+1,2026-01-10 11:24:38.681833,Fremont,19683,Glenmoor Gardens,9.2,38,Good,9.81,41,Good,7.21,30,Good
+1,2026-01-10 11:24:38.919457,CA 94536,71443,MoonRiver,22.2,72,Moderate,32.12,93,Moderate,43.25,120,Unhealthy for Sensitive Groups
+1,2026-01-10 11:24:39.163707,40500 Paseo Padre Pkwy,84117,Lake Elizabeth,9.0,38,Good,9.26,39,Good,7.43,31,Good
+1,2026-01-10 11:24:39.418520,Fremont,19683,Glenmoor Gardens,9.2,38,Good,9.81,41,Good,7.21,30,Good
+1,2026-01-10 11:24:39.672190,CA 94538,84117,Lake Elizabeth,9.0,38,Good,9.26,39,Good,7.43,31,Good
+1,2026-01-10 11:24:39.921465,41800 Blacow Rd,84117,Lake Elizabeth,9.0,38,Good,9.26,39,Good,7.43,31,Good
+1,2026-01-10 11:24:40.171767,Fremont,19683,Glenmoor Gardens,9.2,38,Good,9.81,41,Good,7.21,30,Good
+1,2026-01-10 11:24:40.415812,CA 94538,84117,Lake Elizabeth,9.0,38,Good,9.26,39,Good,7.43,31,Good

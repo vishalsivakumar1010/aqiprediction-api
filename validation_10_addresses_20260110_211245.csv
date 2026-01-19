@@ -1,0 +1,11 @@
+address,sensor_id,sensor_name,distance_km,current_pm25,current_aqi,current_category,pred_1h_pm25,pred_1h_aqi,pred_1h_category,pred_3h_pm25,pred_3h_aqi,pred_3h_category,success
+"2523 Bishop Ave, Fremont, CA 94536",71443,MoonRiver,0.3037409328864104,18.6,65,Moderate,13.9,55,Moderate,11.6,48,Good,True
+"39400 Paseo Padre Pkwy, Fremont, CA 94538",148483,Fremont - Civic Center,0.22058689224550132,3.9,16,Good,4.04,17,Good,3.91,16,Good,True
+"4620 Mattos Dr, Fremont, CA 94536",19683,Glenmoor Gardens,0.4593769690960496,13.8,55,Moderate,11.42,48,Good,9.68,40,Good,True
+"5400 Mowry Ave, Fremont, CA 94538",193337,Glen Moore-York Dr.,0.46065690150418986,9.1,38,Good,8.2,34,Good,7.74,32,Good,True
+"36007 Pizarro Dr, Fremont, CA 94536",18987,Fremont: Cabrillo,0.7244417129925875,24.8,78,Moderate,18.08,64,Moderate,15.24,58,Moderate,True
+"3377 Alder Ave, Fremont, CA 94536",18987,Fremont: Cabrillo,1.5092383193425367,24.8,78,Moderate,18.08,64,Moderate,15.24,58,Moderate,True
+"34665 Allegheny Ct, Fremont, CA 94555",18987,Fremont: Cabrillo,1.2845061586480568,24.8,78,Moderate,18.08,64,Moderate,15.24,58,Moderate,True
+"1251 Peralta Blvd, Fremont, CA 94536",286506,405 L Street,0.8770804302016474,6.2,26,Good,6.05,25,Good,6.25,26,Good,True
+"40500 Paseo Padre Pkwy, Fremont, CA 94538",84117,Lake Elizabeth,0.3578734343497038,9.4,39,Good,8.33,35,Good,7.79,32,Good,True
+"41800 Blacow Rd, Fremont, CA 94538",84117,Lake Elizabeth,2.3523019676494865,9.4,39,Good,8.33,35,Good,7.79,32,Good,True

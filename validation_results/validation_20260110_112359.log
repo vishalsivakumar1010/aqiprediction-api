@@ -1,0 +1,3710 @@
+Loading models...
+✓ Models loaded: 2 horizons
+
+Geocoding addresses and finding nearest sensors...
+  Trying online geocoding: '2523 Bishop Ave'
+  ✓ Found: 2523, Bishop Avenue, Shinn, Fremont, Alameda County, California, 94536, United States
+  ✓ 2523 Bishop Ave: Sensor 71443 (MoonRiver) - 0.30 km
+  ✓ Matched known location 'fremont city hall': (37.54828, -121.98861)
+  ✓ Fremont: Sensor 19683 (Glenmoor Gardens) - 1.25 km
+  Trying online geocoding: 'CA 94536'
+  ✓ Found: 94536, Fremont, Alameda County, California, United States
+  ✓ CA 94536: Sensor 71443 (MoonRiver) - 0.62 km
+  Trying online geocoding: '39400 Paseo Padre Pkwy'
+  ✓ Found: Paseo Padre Parkway, Fremont, Alameda County, California, 94539, United States
+  ✓ 39400 Paseo Padre Pkwy: Sensor 84117 (Lake Elizabeth) - 4.90 km
+  ✓ Matched known location 'fremont city hall': (37.54828, -121.98861)
+  ✓ Fremont: Sensor 19683 (Glenmoor Gardens) - 1.25 km
+  Trying online geocoding: 'CA 94538'
+  ✓ Found: 94538, Fremont, Alameda County, California, United States
+  ✓ CA 94538: Sensor 84117 (Lake Elizabeth) - 2.43 km
+  Trying online geocoding: '4620 Mattos Dr'
+  ✓ Found: 4620, Mattos Drive, Centerville District, Fremont, Alameda County, California, 94536, United States
+  ✓ 4620 Mattos Dr: Sensor 19683 (Glenmoor Gardens) - 0.46 km
+  ✓ Matched known location 'fremont city hall': (37.54828, -121.98861)
+  ✓ Fremont: Sensor 19683 (Glenmoor Gardens) - 1.25 km
+  Trying online geocoding: 'CA 94536'
+  ✓ Found: 94536, Fremont, Alameda County, California, United States
+  ✓ CA 94536: Sensor 71443 (MoonRiver) - 0.62 km
+  Trying online geocoding: '5400 Mowry Ave'
+  ✓ Found: Best Western Garden Court Inn, 5400, Mowry Avenue, Fremont, Alameda County, California, 94538, United States
+  ✓ 5400 Mowry Ave: Sensor 193337 (Glen Moore-York Dr.) - 0.46 km
+  ✓ Matched known location 'fremont city hall': (37.54828, -121.98861)
+  ✓ Fremont: Sensor 19683 (Glenmoor Gardens) - 1.25 km
+  Trying online geocoding: 'CA 94538'
+  ✓ Found: 94538, Fremont, Alameda County, California, United States
+  ✓ CA 94538: Sensor 84117 (Lake Elizabeth) - 2.43 km
+  Trying online geocoding: '36007 Pizarro Dr'
+  ✓ Found: 36007, Pizarro Drive, Fremont, Alameda County, California, 94560, United States
+  ✓ 36007 Pizarro Dr: Sensor 18987 (Fremont: Cabrillo) - 0.72 km
+  ✓ Matched known location 'fremont city hall': (37.54828, -121.98861)
+  ✓ Fremont: Sensor 19683 (Glenmoor Gardens) - 1.25 km
+  Trying online geocoding: 'CA 94536'
+  ✓ Found: 94536, Fremont, Alameda County, California, United States
+  ✓ CA 94536: Sensor 71443 (MoonRiver) - 0.62 km
+  Trying online geocoding: '3377 Alder Ave'
+  ✓ Found: Los Cerritos Community Center, 3377, Alder Avenue, Centerville District, Fremont, Alameda County, California, 94536, United States
+  ✓ 3377 Alder Ave: Sensor 18987 (Fremont: Cabrillo) - 1.51 km
+  ✓ Matched known location 'fremont city hall': (37.54828, -121.98861)
+  ✓ Fremont: Sensor 19683 (Glenmoor Gardens) - 1.25 km
+  Trying online geocoding: 'CA 94536'
+  ✓ Found: 94536, Fremont, Alameda County, California, United States
+  ✓ CA 94536: Sensor 71443 (MoonRiver) - 0.62 km
+  Trying online geocoding: '34665 Allegheny Ct'
+  ✓ Found: 34665, Allegheny Court, Fremont, Alameda County, California, 94555, United States
+  ✓ 34665 Allegheny Ct: Sensor 18987 (Fremont: Cabrillo) - 1.28 km
+  ✓ Matched known location 'fremont city hall': (37.54828, -121.98861)
+  ✓ Fremont: Sensor 19683 (Glenmoor Gardens) - 1.25 km
+  Trying online geocoding: 'CA 94555'
+  ✓ Found: 94555, Fremont, Alameda County, California, United States
+  ✓ CA 94555: Sensor 18987 (Fremont: Cabrillo) - 4.76 km
+  Trying online geocoding: '1251 Peralta Blvd'
+  ✓ Found: Shinn Big House, 1251;1263;1269;1273, Peralta Boulevard, Shinn, Fremont, Alameda County, California, 94536, United States
+  ✓ 1251 Peralta Blvd: Sensor 286506 (405 L Street) - 0.88 km
+  ✓ Matched known location 'fremont city hall': (37.54828, -121.98861)
+  ✓ Fremont: Sensor 19683 (Glenmoor Gardens) - 1.25 km
+  Trying online geocoding: 'CA 94536'
+  ✓ Found: 94536, Fremont, Alameda County, California, United States
+  ✓ CA 94536: Sensor 71443 (MoonRiver) - 0.62 km
+  Trying online geocoding: '40500 Paseo Padre Pkwy'
+  ✓ Found: Paseo Padre Parkway, Fremont, Alameda County, California, 94539, United States
+  ✓ 40500 Paseo Padre Pkwy: Sensor 84117 (Lake Elizabeth) - 4.90 km
+  ✓ Matched known location 'fremont city hall': (37.54828, -121.98861)
+  ✓ Fremont: Sensor 19683 (Glenmoor Gardens) - 1.25 km
+  Trying online geocoding: 'CA 94538'
+  ✓ Found: 94538, Fremont, Alameda County, California, United States
+  ✓ CA 94538: Sensor 84117 (Lake Elizabeth) - 2.43 km
+  Trying online geocoding: '41800 Blacow Rd'
+  ✓ Found: Blacow Road, Irvington District, Fremont, Alameda County, California, 94538, United States
+  ✓ 41800 Blacow Rd: Sensor 84117 (Lake Elizabeth) - 2.35 km
+  ✓ Matched known location 'fremont city hall': (37.54828, -121.98861)
+  ✓ Fremont: Sensor 19683 (Glenmoor Gardens) - 1.25 km
+  Trying online geocoding: 'CA 94538'
+  ✓ Found: 94538, Fremont, Alameda County, California, United States
+  ✓ CA 94538: Sensor 84117 (Lake Elizabeth) - 2.43 km
+
+======================================================================
+VALIDATION STUDY STARTING
+======================================================================
+Start time: 2026-01-10 11:24:32
+End time: 2026-01-10 23:24:32
+Duration: 12 hours
+Interval: 60 minutes
+Addresses: 30
+======================================================================
+
+>>> Running Round 1 immediately...
+
+======================================================================
+ROUND 1/12 - 2026-01-10 11:24:32
+======================================================================
+
+2523 Bishop Ave
+  Sensor: MoonRiver (ID: 71443)
+  Current: PM2.5=22.20, AQI=72 (Moderate)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:32.848284+00:00 to 2026-01-10 17:24:32.848284+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.561237, -121.99151)
+Date range: 2026-01-08 09:24:32.848284 to 2026-01-10 09:24:32.848284
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.561237, -121.99151)
+Full date range: 2026-01-08 09:24:32.848284 to 2026-01-10 09:24:32.848284
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 15.13 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 15.58 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 15.80 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 21.05 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 22.75 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 23.40 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 27.42 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 29.57 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.63 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 37.80 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 43.79 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 45.25 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station BFY6K (Concord Buchanan Field):
+    Distance: 48.16 km
+    Using cached coverage for station BFY6K: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 15.13 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 15.13 km
+Full date range: 2026-01-08 09:24:32.848284 to 2026-01-10 09:24:32.848284
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=32.12, AQI=93 (Moderate)
+  3h Forecast: PM2.5=43.25, AQI=120 (Unhealthy for Sensitive Groups)
+
+Fremont
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=9.20, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:33.124296+00:00 to 2026-01-10 17:24:33.124296+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.542088, -122.00043)
+Date range: 2026-01-08 09:24:33.124296 to 2026-01-10 09:24:33.124296
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.542088, -122.00043)
+Full date range: 2026-01-08 09:24:33.124296 to 2026-01-10 09:24:33.124296
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 12 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 12.86 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.54 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 16.82 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.92 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 22.22 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.12 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 28.20 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 28.24 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.33 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 38.66 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 44.27 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 45.83 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 12.86 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 12.86 km
+Full date range: 2026-01-08 09:24:33.124296 to 2026-01-10 09:24:33.124296
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.81, AQI=41 (Good)
+  3h Forecast: PM2.5=7.21, AQI=30 (Good)
+
+CA 94536
+  Sensor: MoonRiver (ID: 71443)
+  Current: PM2.5=22.20, AQI=72 (Moderate)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:33.369397+00:00 to 2026-01-10 17:24:33.369397+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.561237, -121.99151)
+Date range: 2026-01-08 09:24:33.369397 to 2026-01-10 09:24:33.369397
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.561237, -121.99151)
+Full date range: 2026-01-08 09:24:33.369397 to 2026-01-10 09:24:33.369397
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 15.13 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 15.58 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 15.80 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 21.05 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 22.75 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 23.40 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 27.42 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 29.57 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.63 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 37.80 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 43.79 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 45.25 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station BFY6K (Concord Buchanan Field):
+    Distance: 48.16 km
+    Using cached coverage for station BFY6K: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 15.13 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 15.13 km
+Full date range: 2026-01-08 09:24:33.369397 to 2026-01-10 09:24:33.369397
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=32.12, AQI=93 (Moderate)
+  3h Forecast: PM2.5=43.25, AQI=120 (Unhealthy for Sensitive Groups)
+
+39400 Paseo Padre Pkwy
+  Sensor: Lake Elizabeth (ID: 84117)
+  Current: PM2.5=9.00, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:33.621334+00:00 to 2026-01-10 17:24:33.621334+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.54408, -121.96445)
+Date range: 2026-01-08 09:24:33.621334 to 2026-01-10 09:24:33.621334
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.54408, -121.96445)
+Full date range: 2026-01-08 09:24:33.621334 to 2026-01-10 09:24:33.621334
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 14.45 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 16.18 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 18.85 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.41 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 20.90 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 25.39 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 26.73 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 30.48 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 36.36 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 40.85 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 43.45 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 47.45 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station Q5MJ7 (Tracy Municipal Airport):
+    Distance: 48.79 km
+    Using cached coverage for station Q5MJ7: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 14.45 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 14.45 km
+Full date range: 2026-01-08 09:24:33.621334 to 2026-01-10 09:24:33.621334
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.26, AQI=39 (Good)
+  3h Forecast: PM2.5=7.43, AQI=31 (Good)
+
+Fremont
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=9.20, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:33.943115+00:00 to 2026-01-10 17:24:33.943115+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.542088, -122.00043)
+Date range: 2026-01-08 09:24:33.943115 to 2026-01-10 09:24:33.943115
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.542088, -122.00043)
+Full date range: 2026-01-08 09:24:33.943115 to 2026-01-10 09:24:33.943115
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 12 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 12.86 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.54 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 16.82 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.92 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 22.22 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.12 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 28.20 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 28.24 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.33 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 38.66 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 44.27 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 45.83 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 12.86 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 12.86 km
+Full date range: 2026-01-08 09:24:33.943115 to 2026-01-10 09:24:33.943115
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.81, AQI=41 (Good)
+  3h Forecast: PM2.5=7.21, AQI=30 (Good)
+
+CA 94538
+  Sensor: Lake Elizabeth (ID: 84117)
+  Current: PM2.5=9.30, AQI=39 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:34.239871+00:00 to 2026-01-10 17:24:34.239871+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.54408, -121.96445)
+Date range: 2026-01-08 09:24:34.239871 to 2026-01-10 09:24:34.239871
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.54408, -121.96445)
+Full date range: 2026-01-08 09:24:34.239871 to 2026-01-10 09:24:34.239871
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 14.45 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 16.18 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 18.85 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.41 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 20.90 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 25.39 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 26.73 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 30.48 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 36.36 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 40.85 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 43.45 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 47.45 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station Q5MJ7 (Tracy Municipal Airport):
+    Distance: 48.79 km
+    Using cached coverage for station Q5MJ7: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 14.45 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 14.45 km
+Full date range: 2026-01-08 09:24:34.239871 to 2026-01-10 09:24:34.239871
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.90, AQI=41 (Good)
+  3h Forecast: PM2.5=6.19, AQI=26 (Good)
+
+4620 Mattos Dr
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=9.20, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:34.539064+00:00 to 2026-01-10 17:24:34.539064+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.542088, -122.00043)
+Date range: 2026-01-08 09:24:34.539064 to 2026-01-10 09:24:34.539064
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.542088, -122.00043)
+Full date range: 2026-01-08 09:24:34.539064 to 2026-01-10 09:24:34.539064
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 12 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 12.86 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.54 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 16.82 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.92 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 22.22 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.12 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 28.20 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 28.24 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.33 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 38.66 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 44.27 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 45.83 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 12.86 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 12.86 km
+Full date range: 2026-01-08 09:24:34.539064 to 2026-01-10 09:24:34.539064
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.81, AQI=41 (Good)
+  3h Forecast: PM2.5=7.21, AQI=30 (Good)
+
+Fremont
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=9.20, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:34.756817+00:00 to 2026-01-10 17:24:34.756817+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.542088, -122.00043)
+Date range: 2026-01-08 09:24:34.756817 to 2026-01-10 09:24:34.756817
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.542088, -122.00043)
+Full date range: 2026-01-08 09:24:34.756817 to 2026-01-10 09:24:34.756817
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 12 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 12.86 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.54 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 16.82 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.92 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 22.22 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.12 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 28.20 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 28.24 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.33 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 38.66 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 44.27 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 45.83 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 12.86 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 12.86 km
+Full date range: 2026-01-08 09:24:34.756817 to 2026-01-10 09:24:34.756817
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.81, AQI=41 (Good)
+  3h Forecast: PM2.5=7.21, AQI=30 (Good)
+
+CA 94536
+  Sensor: MoonRiver (ID: 71443)
+  Current: PM2.5=22.20, AQI=72 (Moderate)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:35.005191+00:00 to 2026-01-10 17:24:35.005191+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.561237, -121.99151)
+Date range: 2026-01-08 09:24:35.005191 to 2026-01-10 09:24:35.005191
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.561237, -121.99151)
+Full date range: 2026-01-08 09:24:35.005191 to 2026-01-10 09:24:35.005191
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 15.13 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 15.58 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 15.80 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 21.05 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 22.75 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 23.40 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 27.42 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 29.57 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.63 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 37.80 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 43.79 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 45.25 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station BFY6K (Concord Buchanan Field):
+    Distance: 48.16 km
+    Using cached coverage for station BFY6K: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 15.13 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 15.13 km
+Full date range: 2026-01-08 09:24:35.005191 to 2026-01-10 09:24:35.005191
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=32.12, AQI=93 (Moderate)
+  3h Forecast: PM2.5=43.25, AQI=120 (Unhealthy for Sensitive Groups)
+
+5400 Mowry Ave
+  Sensor: Glen Moore-York Dr. (ID: 193337)
+  Current: PM2.5=5.00, AQI=21 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:35.255043+00:00 to 2026-01-10 17:24:35.255043+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.533764, -122.0048)
+Date range: 2026-01-08 09:24:35.255043 to 2026-01-10 09:24:35.255043
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.533764, -122.0048)
+Full date range: 2026-01-08 09:24:35.255043 to 2026-01-10 09:24:35.255043
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 12 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 11.86 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 12.65 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 17.32 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.16 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 21.72 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 24.06 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 27.67 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 28.61 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.20 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 39.04 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 43.84 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 46.75 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 11.86 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 11.86 km
+Full date range: 2026-01-08 09:24:35.255043 to 2026-01-10 09:24:35.255043
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=6.75, AQI=28 (Good)
+  3h Forecast: PM2.5=3.00, AQI=13 (Good)
+
+Fremont
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=9.20, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:35.521853+00:00 to 2026-01-10 17:24:35.521853+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.542088, -122.00043)
+Date range: 2026-01-08 09:24:35.521853 to 2026-01-10 09:24:35.521853
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.542088, -122.00043)
+Full date range: 2026-01-08 09:24:35.521853 to 2026-01-10 09:24:35.521853
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 12 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 12.86 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.54 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 16.82 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.92 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 22.22 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.12 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 28.20 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 28.24 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.33 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 38.66 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 44.27 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 45.83 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 12.86 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 12.86 km
+Full date range: 2026-01-08 09:24:35.521853 to 2026-01-10 09:24:35.521853
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.81, AQI=41 (Good)
+  3h Forecast: PM2.5=7.21, AQI=30 (Good)
+
+CA 94538
+  Sensor: Lake Elizabeth (ID: 84117)
+  Current: PM2.5=9.00, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:35.787913+00:00 to 2026-01-10 17:24:35.787913+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.54408, -121.96445)
+Date range: 2026-01-08 09:24:35.787913 to 2026-01-10 09:24:35.787913
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.54408, -121.96445)
+Full date range: 2026-01-08 09:24:35.787913 to 2026-01-10 09:24:35.787913
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 14.45 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 16.18 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 18.85 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.41 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 20.90 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 25.39 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 26.73 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 30.48 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 36.36 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 40.85 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 43.45 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 47.45 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station Q5MJ7 (Tracy Municipal Airport):
+    Distance: 48.79 km
+    Using cached coverage for station Q5MJ7: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 14.45 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 14.45 km
+Full date range: 2026-01-08 09:24:35.787913 to 2026-01-10 09:24:35.787913
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.26, AQI=39 (Good)
+  3h Forecast: PM2.5=7.43, AQI=31 (Good)
+
+36007 Pizarro Dr
+  Sensor: Fremont: Cabrillo (ID: 18987)
+  Current: PM2.5=8.00, AQI=33 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:36.068706+00:00 to 2026-01-10 17:24:36.068706+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.5625, -122.0281)
+Date range: 2026-01-08 09:24:36.068706 to 2026-01-10 09:24:36.068706
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.5625, -122.0281)
+Full date range: 2026-01-08 09:24:36.068706 to 2026-01-10 09:24:36.068706
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 13.53 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.64 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74509 (Moffett Field):
+    Distance: 14.50 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 20.32 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.38 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 23.87 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 24.91 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 30.44 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 31.46 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 35.33 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 42.07 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 46.12 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station BFY6K (Concord Buchanan Field):
+    Distance: 47.77 km
+    Using cached coverage for station BFY6K: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 72585
+  Station Name: Hayward / Russell City
+  Distance: 13.53 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 72585
+Station Name: Hayward / Russell City
+Distance: 13.53 km
+Full date range: 2026-01-08 09:24:36.068706 to 2026-01-10 09:24:36.068706
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Hayward / Russell City (72585)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=7.98, AQI=33 (Good)
+  3h Forecast: PM2.5=6.63, AQI=28 (Good)
+
+Fremont
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=9.20, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:36.332075+00:00 to 2026-01-10 17:24:36.332075+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.542088, -122.00043)
+Date range: 2026-01-08 09:24:36.332075 to 2026-01-10 09:24:36.332075
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.542088, -122.00043)
+Full date range: 2026-01-08 09:24:36.332075 to 2026-01-10 09:24:36.332075
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 12 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 12.86 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.54 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 16.82 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.92 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 22.22 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.12 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 28.20 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 28.24 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.33 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 38.66 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 44.27 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 45.83 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 12.86 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 12.86 km
+Full date range: 2026-01-08 09:24:36.332075 to 2026-01-10 09:24:36.332075
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.81, AQI=41 (Good)
+  3h Forecast: PM2.5=7.21, AQI=30 (Good)
+
+CA 94536
+  Sensor: MoonRiver (ID: 71443)
+  Current: PM2.5=22.20, AQI=72 (Moderate)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:36.562827+00:00 to 2026-01-10 17:24:36.562827+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.561237, -121.99151)
+Date range: 2026-01-08 09:24:36.562827 to 2026-01-10 09:24:36.562827
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.561237, -121.99151)
+Full date range: 2026-01-08 09:24:36.562827 to 2026-01-10 09:24:36.562827
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 15.13 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 15.58 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 15.80 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 21.05 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 22.75 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 23.40 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 27.42 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 29.57 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.63 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 37.80 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 43.79 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 45.25 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station BFY6K (Concord Buchanan Field):
+    Distance: 48.16 km
+    Using cached coverage for station BFY6K: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 15.13 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 15.13 km
+Full date range: 2026-01-08 09:24:36.562827 to 2026-01-10 09:24:36.562827
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=32.12, AQI=93 (Moderate)
+  3h Forecast: PM2.5=43.25, AQI=120 (Unhealthy for Sensitive Groups)
+
+3377 Alder Ave
+  Sensor: Fremont: Cabrillo (ID: 18987)
+  Current: PM2.5=8.00, AQI=33 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:36.901621+00:00 to 2026-01-10 17:24:36.901621+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.5625, -122.0281)
+Date range: 2026-01-08 09:24:36.901621 to 2026-01-10 09:24:36.901621
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.5625, -122.0281)
+Full date range: 2026-01-08 09:24:36.901621 to 2026-01-10 09:24:36.901621
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 13.53 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.64 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74509 (Moffett Field):
+    Distance: 14.50 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 20.32 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.38 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 23.87 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 24.91 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 30.44 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 31.46 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 35.33 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 42.07 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 46.12 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station BFY6K (Concord Buchanan Field):
+    Distance: 47.77 km
+    Using cached coverage for station BFY6K: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 72585
+  Station Name: Hayward / Russell City
+  Distance: 13.53 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 72585
+Station Name: Hayward / Russell City
+Distance: 13.53 km
+Full date range: 2026-01-08 09:24:36.901621 to 2026-01-10 09:24:36.901621
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Hayward / Russell City (72585)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=7.98, AQI=33 (Good)
+  3h Forecast: PM2.5=6.63, AQI=28 (Good)
+
+Fremont
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=9.20, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:37.148692+00:00 to 2026-01-10 17:24:37.148692+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.542088, -122.00043)
+Date range: 2026-01-08 09:24:37.148692 to 2026-01-10 09:24:37.148692
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.542088, -122.00043)
+Full date range: 2026-01-08 09:24:37.148692 to 2026-01-10 09:24:37.148692
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 12 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 12.86 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.54 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 16.82 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.92 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 22.22 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.12 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 28.20 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 28.24 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.33 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 38.66 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 44.27 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 45.83 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 12.86 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 12.86 km
+Full date range: 2026-01-08 09:24:37.148692 to 2026-01-10 09:24:37.148692
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.81, AQI=41 (Good)
+  3h Forecast: PM2.5=7.21, AQI=30 (Good)
+
+CA 94536
+  Sensor: MoonRiver (ID: 71443)
+  Current: PM2.5=22.20, AQI=72 (Moderate)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:37.374820+00:00 to 2026-01-10 17:24:37.374820+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.561237, -121.99151)
+Date range: 2026-01-08 09:24:37.374820 to 2026-01-10 09:24:37.374820
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.561237, -121.99151)
+Full date range: 2026-01-08 09:24:37.374820 to 2026-01-10 09:24:37.374820
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 15.13 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 15.58 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 15.80 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 21.05 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 22.75 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 23.40 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 27.42 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 29.57 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.63 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 37.80 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 43.79 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 45.25 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station BFY6K (Concord Buchanan Field):
+    Distance: 48.16 km
+    Using cached coverage for station BFY6K: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 15.13 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 15.13 km
+Full date range: 2026-01-08 09:24:37.374820 to 2026-01-10 09:24:37.374820
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=32.12, AQI=93 (Moderate)
+  3h Forecast: PM2.5=43.25, AQI=120 (Unhealthy for Sensitive Groups)
+
+34665 Allegheny Ct
+  Sensor: Fremont: Cabrillo (ID: 18987)
+  Current: PM2.5=8.00, AQI=33 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:37.634406+00:00 to 2026-01-10 17:24:37.634406+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.5625, -122.0281)
+Date range: 2026-01-08 09:24:37.634406 to 2026-01-10 09:24:37.634406
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.5625, -122.0281)
+Full date range: 2026-01-08 09:24:37.634406 to 2026-01-10 09:24:37.634406
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 13.53 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.64 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74509 (Moffett Field):
+    Distance: 14.50 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 20.32 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.38 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 23.87 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 24.91 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 30.44 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 31.46 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 35.33 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 42.07 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 46.12 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station BFY6K (Concord Buchanan Field):
+    Distance: 47.77 km
+    Using cached coverage for station BFY6K: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 72585
+  Station Name: Hayward / Russell City
+  Distance: 13.53 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 72585
+Station Name: Hayward / Russell City
+Distance: 13.53 km
+Full date range: 2026-01-08 09:24:37.634406 to 2026-01-10 09:24:37.634406
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Hayward / Russell City (72585)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=7.98, AQI=33 (Good)
+  3h Forecast: PM2.5=6.63, AQI=28 (Good)
+
+Fremont
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=9.20, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:37.874266+00:00 to 2026-01-10 17:24:37.874266+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.542088, -122.00043)
+Date range: 2026-01-08 09:24:37.874266 to 2026-01-10 09:24:37.874266
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.542088, -122.00043)
+Full date range: 2026-01-08 09:24:37.874266 to 2026-01-10 09:24:37.874266
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 12 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 12.86 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.54 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 16.82 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.92 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 22.22 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.12 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 28.20 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 28.24 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.33 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 38.66 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 44.27 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 45.83 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 12.86 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 12.86 km
+Full date range: 2026-01-08 09:24:37.874266 to 2026-01-10 09:24:37.874266
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.81, AQI=41 (Good)
+  3h Forecast: PM2.5=7.21, AQI=30 (Good)
+
+CA 94555
+  Sensor: Fremont: Cabrillo (ID: 18987)
+  Current: PM2.5=8.00, AQI=33 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:38.108628+00:00 to 2026-01-10 17:24:38.108628+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.5625, -122.0281)
+Date range: 2026-01-08 09:24:38.108628 to 2026-01-10 09:24:38.108628
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.5625, -122.0281)
+Full date range: 2026-01-08 09:24:38.108628 to 2026-01-10 09:24:38.108628
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 13.53 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.64 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74509 (Moffett Field):
+    Distance: 14.50 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 20.32 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.38 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 23.87 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 24.91 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 30.44 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 31.46 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 35.33 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 42.07 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 46.12 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station BFY6K (Concord Buchanan Field):
+    Distance: 47.77 km
+    Using cached coverage for station BFY6K: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 72585
+  Station Name: Hayward / Russell City
+  Distance: 13.53 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 72585
+Station Name: Hayward / Russell City
+Distance: 13.53 km
+Full date range: 2026-01-08 09:24:38.108628 to 2026-01-10 09:24:38.108628
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Hayward / Russell City (72585)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=7.98, AQI=33 (Good)
+  3h Forecast: PM2.5=6.63, AQI=28 (Good)
+
+1251 Peralta Blvd
+  Sensor: 405 L Street (ID: 286506)
+  Current: PM2.5=8.40, AQI=35 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:38.359569+00:00 to 2026-01-10 17:24:38.359569+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.57263, -121.97636)
+Date range: 2026-01-08 09:24:38.359569 to 2026-01-10 09:24:38.359569
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.57263, -121.97636)
+Full date range: 2026-01-08 09:24:38.359569 to 2026-01-10 09:24:38.359569
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 14 nearby stations
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 16.00 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74509 (Moffett Field):
+    Distance: 16.80 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 17.42 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 19.21 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 23.71 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 25.01 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 27.72 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 30.03 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 34.74 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 38.02 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 41.95 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 46.74 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station BFY6K (Concord Buchanan Field):
+    Distance: 47.07 km
+    Using cached coverage for station BFY6K: 100.0%
+    Coverage: 100.0%
+
+  Testing station Q5MJ7 (Tracy Municipal Airport):
+    Distance: 48.84 km
+    Using cached coverage for station Q5MJ7: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 72585
+  Station Name: Hayward / Russell City
+  Distance: 16.00 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 72585
+Station Name: Hayward / Russell City
+Distance: 16.00 km
+Full date range: 2026-01-08 09:24:38.359569 to 2026-01-10 09:24:38.359569
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Hayward / Russell City (72585)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=8.55, AQI=36 (Good)
+  3h Forecast: PM2.5=8.41, AQI=35 (Good)
+
+Fremont
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=9.20, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:38.620710+00:00 to 2026-01-10 17:24:38.620710+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.542088, -122.00043)
+Date range: 2026-01-08 09:24:38.620710 to 2026-01-10 09:24:38.620710
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.542088, -122.00043)
+Full date range: 2026-01-08 09:24:38.620710 to 2026-01-10 09:24:38.620710
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 12 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 12.86 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.54 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 16.82 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.92 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 22.22 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.12 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 28.20 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 28.24 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.33 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 38.66 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 44.27 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 45.83 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 12.86 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 12.86 km
+Full date range: 2026-01-08 09:24:38.620710 to 2026-01-10 09:24:38.620710
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.81, AQI=41 (Good)
+  3h Forecast: PM2.5=7.21, AQI=30 (Good)
+
+CA 94536
+  Sensor: MoonRiver (ID: 71443)
+  Current: PM2.5=22.20, AQI=72 (Moderate)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:38.856259+00:00 to 2026-01-10 17:24:38.856259+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.561237, -121.99151)
+Date range: 2026-01-08 09:24:38.856259 to 2026-01-10 09:24:38.856259
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.561237, -121.99151)
+Full date range: 2026-01-08 09:24:38.856259 to 2026-01-10 09:24:38.856259
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 15.13 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 15.58 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 15.80 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 21.05 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 22.75 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 23.40 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 27.42 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 29.57 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.63 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 37.80 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 43.79 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 45.25 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station BFY6K (Concord Buchanan Field):
+    Distance: 48.16 km
+    Using cached coverage for station BFY6K: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 15.13 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 15.13 km
+Full date range: 2026-01-08 09:24:38.856259 to 2026-01-10 09:24:38.856259
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=32.12, AQI=93 (Moderate)
+  3h Forecast: PM2.5=43.25, AQI=120 (Unhealthy for Sensitive Groups)
+
+40500 Paseo Padre Pkwy
+  Sensor: Lake Elizabeth (ID: 84117)
+  Current: PM2.5=9.00, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:39.099881+00:00 to 2026-01-10 17:24:39.099881+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.54408, -121.96445)
+Date range: 2026-01-08 09:24:39.099881 to 2026-01-10 09:24:39.099881
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.54408, -121.96445)
+Full date range: 2026-01-08 09:24:39.099881 to 2026-01-10 09:24:39.099881
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 14.45 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 16.18 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 18.85 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.41 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 20.90 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 25.39 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 26.73 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 30.48 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 36.36 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 40.85 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 43.45 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 47.45 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station Q5MJ7 (Tracy Municipal Airport):
+    Distance: 48.79 km
+    Using cached coverage for station Q5MJ7: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 14.45 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 14.45 km
+Full date range: 2026-01-08 09:24:39.099881 to 2026-01-10 09:24:39.099881
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.26, AQI=39 (Good)
+  3h Forecast: PM2.5=7.43, AQI=31 (Good)
+
+Fremont
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=9.20, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:39.354582+00:00 to 2026-01-10 17:24:39.354582+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.542088, -122.00043)
+Date range: 2026-01-08 09:24:39.354582 to 2026-01-10 09:24:39.354582
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.542088, -122.00043)
+Full date range: 2026-01-08 09:24:39.354582 to 2026-01-10 09:24:39.354582
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 12 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 12.86 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.54 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 16.82 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.92 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 22.22 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.12 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 28.20 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 28.24 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.33 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 38.66 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 44.27 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 45.83 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 12.86 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 12.86 km
+Full date range: 2026-01-08 09:24:39.354582 to 2026-01-10 09:24:39.354582
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.81, AQI=41 (Good)
+  3h Forecast: PM2.5=7.21, AQI=30 (Good)
+
+CA 94538
+  Sensor: Lake Elizabeth (ID: 84117)
+  Current: PM2.5=9.00, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:39.607996+00:00 to 2026-01-10 17:24:39.607996+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.54408, -121.96445)
+Date range: 2026-01-08 09:24:39.607996 to 2026-01-10 09:24:39.607996
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.54408, -121.96445)
+Full date range: 2026-01-08 09:24:39.607996 to 2026-01-10 09:24:39.607996
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 14.45 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 16.18 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 18.85 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.41 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 20.90 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 25.39 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 26.73 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 30.48 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 36.36 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 40.85 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 43.45 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 47.45 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station Q5MJ7 (Tracy Municipal Airport):
+    Distance: 48.79 km
+    Using cached coverage for station Q5MJ7: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 14.45 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 14.45 km
+Full date range: 2026-01-08 09:24:39.607996 to 2026-01-10 09:24:39.607996
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.26, AQI=39 (Good)
+  3h Forecast: PM2.5=7.43, AQI=31 (Good)
+
+41800 Blacow Rd
+  Sensor: Lake Elizabeth (ID: 84117)
+  Current: PM2.5=9.00, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:39.860753+00:00 to 2026-01-10 17:24:39.860753+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.54408, -121.96445)
+Date range: 2026-01-08 09:24:39.860753 to 2026-01-10 09:24:39.860753
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.54408, -121.96445)
+Full date range: 2026-01-08 09:24:39.860753 to 2026-01-10 09:24:39.860753
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 14.45 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 16.18 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 18.85 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.41 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 20.90 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 25.39 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 26.73 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 30.48 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 36.36 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 40.85 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 43.45 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 47.45 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station Q5MJ7 (Tracy Municipal Airport):
+    Distance: 48.79 km
+    Using cached coverage for station Q5MJ7: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 14.45 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 14.45 km
+Full date range: 2026-01-08 09:24:39.860753 to 2026-01-10 09:24:39.860753
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.26, AQI=39 (Good)
+  3h Forecast: PM2.5=7.43, AQI=31 (Good)
+
+Fremont
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=9.20, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:40.109335+00:00 to 2026-01-10 17:24:40.109335+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.542088, -122.00043)
+Date range: 2026-01-08 09:24:40.109335 to 2026-01-10 09:24:40.109335
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.542088, -122.00043)
+Full date range: 2026-01-08 09:24:40.109335 to 2026-01-10 09:24:40.109335
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 12 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 12.86 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 13.54 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 16.82 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.92 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 22.22 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 23.12 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 28.20 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 28.24 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 33.33 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 38.66 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 44.27 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KC830 (Byron):
+    Distance: 45.83 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 12.86 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 12.86 km
+Full date range: 2026-01-08 09:24:40.109335 to 2026-01-10 09:24:40.109335
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.81, AQI=41 (Good)
+  3h Forecast: PM2.5=7.21, AQI=30 (Good)
+
+CA 94538
+  Sensor: Lake Elizabeth (ID: 84117)
+  Current: PM2.5=9.00, AQI=38 (Good)
+    ⚠ Warning preparing historical data: prepare_test_data_from_csv() got an unexpected keyword argument 'api_key'
+
+Fetching wind direction data for prediction...
+  Date range: 2026-01-08 17:24:40.352823+00:00 to 2026-01-10 17:24:40.352823+00:00
+
+================================================================================
+FETCHING HISTORICAL WIND DIRECTION FROM METEOSTAT
+================================================================================
+Target location: (37.54408, -121.96445)
+Date range: 2026-01-08 09:24:40.352823 to 2026-01-10 09:24:40.352823
+Timezone: America/Los_Angeles (timezone-naive)
+
+Selecting best weather station for wind direction...
+Target location: (37.54408, -121.96445)
+Full date range: 2026-01-08 09:24:40.352823 to 2026-01-10 09:24:40.352823
+Distance cap: 50 km
+Coverage thresholds: ≥80% preferred, ≥50% minimum
+
+Testing stations using sample window: 2025-06-01 to 2025-06-07
+Found 13 nearby stations
+
+  Testing station 74509 (Moffett Field):
+    Distance: 14.45 km
+    Using cached coverage for station 74509: 100.0%
+    Coverage: 100.0%
+
+  Testing station KPAO0 (Palo Alto / Runnymeade (Historical)):
+    Distance: 16.18 km
+    Using cached coverage for station KPAO0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72585 (Hayward / Russell City):
+    Distance: 18.85 km
+    Using cached coverage for station 72585: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSJC0 (San Jose / Santa Clara Trailer Village):
+    Distance: 20.41 km
+    Using cached coverage for station KSJC0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KLVK0 (Livermore / East Pleasanton):
+    Distance: 20.90 km
+    Using cached coverage for station KLVK0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KSQL0 (San Carlos / Silver Penny Mobile Home Park):
+    Distance: 25.39 km
+    Using cached coverage for station KSQL0: 100.0%
+    Coverage: 100.0%
+
+  Testing station KRHV0 (San Jose / Alum Rock):
+    Distance: 26.73 km
+    Using cached coverage for station KRHV0: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72493 (Metro Oakland International  Airport):
+    Distance: 30.48 km
+    Using cached coverage for station 72493: 100.0%
+    Coverage: 100.0%
+
+  Testing station 72494 (San Francisco Airport):
+    Distance: 36.36 km
+    Using cached coverage for station 72494: 100.0%
+    Coverage: 100.0%
+
+  Testing station 74506 (Alameda Naval Air Station):
+    Distance: 40.85 km
+    Using cached coverage for station 74506: 0.0%
+    Coverage: 0.0%
+
+  Testing station KC830 (Byron):
+    Distance: 43.45 km
+    Using cached coverage for station KC830: 100.0%
+    Coverage: 100.0%
+
+  Testing station KHAF0 (Half Moon Bay / El Granada Mobile Home Park):
+    Distance: 47.45 km
+    Using cached coverage for station KHAF0: 100.0%
+    Coverage: 100.0%
+
+  Testing station Q5MJ7 (Tracy Municipal Airport):
+    Distance: 48.79 km
+    Using cached coverage for station Q5MJ7: 100.0%
+    Coverage: 100.0%
+
+✓ Found station with preferred coverage (≥80%):
+  Station ID: 74509
+  Station Name: Moffett Field
+  Distance: 14.45 km
+  Test Coverage: 100.0%
+
+================================================================================
+FETCHING FULL WIND DATA FROM SELECTED STATION
+================================================================================
+Station ID: 74509
+Station Name: Moffett Field
+Distance: 14.45 km
+Full date range: 2026-01-08 09:24:40.352823 to 2026-01-10 09:24:40.352823
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.00%)
+  Wind direction range: 0.0° to 360.0°
+✓ Wind data fetched: 48 hourly records
+  Station: Moffett Field (74509)
+  Coverage: 100.0%
+✓ Wind data merged: 0.0% coverage
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 1/1
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (1, 112)
+  1h Forecast: PM2.5=9.26, AQI=39 (Good)
+  3h Forecast: PM2.5=7.43, AQI=31 (Good)
+
+✓ Saved 30 predictions to /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_results/predictions_20260110_112432.csv
+✓ Updated summary: /Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_results/summary_20260110_112432.json
+
+>>> Waiting 59.9 minutes until Round 2...

@@ -1,0 +1,1157 @@
+Loaded 10 addresses from validation_addresses_10.txt
+Using 10 addresses for validation study
+Loading models...
+✓ Models loaded: 2 horizons
+
+Geocoding addresses and finding nearest sensors...
+  Trying online geocoding: '2523 Bishop Ave, Fremont, CA 94536'
+  ✓ Found: 2523, Bishop Avenue, Shinn, Fremont, Alameda County, California, 94536, United States
+  ✓ 2523 Bishop Ave, Fremont, CA 94536: Sensor 71443 (MoonRiver) - 0.30 km
+  Trying online geocoding: '39400 Paseo Padre Pkwy, Fremont, CA 94538'
+  ✓ Found: Civic Center Drive & Stevenson Boulevard, 39400, Paseo Padre Parkway, Fremont, Alameda County, California, 94538, United States
+  ✓ 39400 Paseo Padre Pkwy, Fremont, CA 94538: Sensor 148483 (Fremont - Civic Center) - 0.22 km
+  Trying online geocoding: '4620 Mattos Dr, Fremont, CA 94536'
+  ✓ Found: 4620, Mattos Drive, Centerville District, Fremont, Alameda County, California, 94536, United States
+  ✓ 4620 Mattos Dr, Fremont, CA 94536: Sensor 19683 (Glenmoor Gardens) - 0.46 km
+  Trying online geocoding: '5400 Mowry Ave, Fremont, CA 94538'
+  ✓ Found: Best Western Garden Court Inn, 5400, Mowry Avenue, Fremont, Alameda County, California, 94538, United States
+  ✓ 5400 Mowry Ave, Fremont, CA 94538: Sensor 193337 (Glen Moore-York Dr.) - 0.46 km
+  Trying online geocoding: '36007 Pizarro Dr, Fremont, CA 94536'
+  ✓ Found: 36007, Pizarro Drive, Fremont, Alameda County, California, 94560, United States
+  ✓ 36007 Pizarro Dr, Fremont, CA 94536: Sensor 18987 (Fremont: Cabrillo) - 0.72 km
+  Trying online geocoding: '3377 Alder Ave, Fremont, CA 94536'
+  ✓ Found: Los Cerritos Community Center, 3377, Alder Avenue, Centerville District, Fremont, Alameda County, California, 94536, United States
+  ✓ 3377 Alder Ave, Fremont, CA 94536: Sensor 18987 (Fremont: Cabrillo) - 1.51 km
+  Trying online geocoding: '34665 Allegheny Ct, Fremont, CA 94555'
+  ✓ Found: 34665, Allegheny Court, Fremont, Alameda County, California, 94555, United States
+  ✓ 34665 Allegheny Ct, Fremont, CA 94555: Sensor 18987 (Fremont: Cabrillo) - 1.28 km
+  Trying online geocoding: '1251 Peralta Blvd, Fremont, CA 94536'
+  ✓ Found: Shinn Big House, 1251;1263;1269;1273, Peralta Boulevard, Shinn, Fremont, Alameda County, California, 94536, United States
+  ✓ 1251 Peralta Blvd, Fremont, CA 94536: Sensor 286506 (405 L Street) - 0.88 km
+  Trying online geocoding: '40500 Paseo Padre Pkwy, Fremont, CA 94538'
+  ✓ Found: 40500;40520, Paseo Padre Parkway, Fremont, Alameda County, California, 94538, United States
+  ✓ 40500 Paseo Padre Pkwy, Fremont, CA 94538: Sensor 84117 (Lake Elizabeth) - 0.36 km
+  Trying online geocoding: '41800 Blacow Rd, Fremont, CA 94538'
+  ✓ Found: Blacow Road, Irvington District, Fremont, Alameda County, California, 94538, United States
+  ✓ 41800 Blacow Rd, Fremont, CA 94538: Sensor 84117 (Lake Elizabeth) - 2.35 km
+
+======================================================================
+VALIDATION STUDY STARTING
+======================================================================
+Start time: 2026-01-15 20:08:02
+End time: 2026-01-16 20:08:02
+Duration: 24 hours
+Interval: 60 minutes
+Addresses: 10
+======================================================================
+
+>>> Running Round 1 immediately...
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 559, in _validate_comparison_value
+    self._check_compatible_with(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 542, in _check_compatible_with
+    self._assert_tzawareness_compat(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 784, in _assert_tzawareness_compat
+    raise TypeError(
+        "Cannot compare tz-naive and tz-aware datetime-like objects."
+    )
+TypeError: Cannot compare tz-naive and tz-aware datetime-like objects.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1006, in _cmp_method
+    other = self._validate_comparison_value(other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 562, in _validate_comparison_value
+    raise InvalidComparison(other) from err
+pandas.errors.InvalidComparison: 2026-01-07 00:00:00+00:00
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 377, in fetch_current_wind_data_for_prediction
+    (wind_df['timestamp_hour'] >= start_date.floor('H')) &
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/series.py", line 6138, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 330, in comparison_op
+    res_values = op(lvalues, rvalues)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1008, in _cmp_method
+    return invalid_comparison(self, other, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/invalid.py", line 40, in invalid_comparison
+    raise TypeError(f"Invalid comparison between dtype={left.dtype} and {typ}")
+TypeError: Invalid comparison between dtype=datetime64[ns] and Timestamp
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 559, in _validate_comparison_value
+    self._check_compatible_with(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 542, in _check_compatible_with
+    self._assert_tzawareness_compat(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 784, in _assert_tzawareness_compat
+    raise TypeError(
+        "Cannot compare tz-naive and tz-aware datetime-like objects."
+    )
+TypeError: Cannot compare tz-naive and tz-aware datetime-like objects.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1006, in _cmp_method
+    other = self._validate_comparison_value(other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 562, in _validate_comparison_value
+    raise InvalidComparison(other) from err
+pandas.errors.InvalidComparison: 2026-01-07 00:00:00+00:00
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 377, in fetch_current_wind_data_for_prediction
+    (wind_df['timestamp_hour'] >= start_date.floor('H')) &
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/series.py", line 6138, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 330, in comparison_op
+    res_values = op(lvalues, rvalues)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1008, in _cmp_method
+    return invalid_comparison(self, other, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/invalid.py", line 40, in invalid_comparison
+    raise TypeError(f"Invalid comparison between dtype={left.dtype} and {typ}")
+TypeError: Invalid comparison between dtype=datetime64[ns] and Timestamp
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 559, in _validate_comparison_value
+    self._check_compatible_with(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 542, in _check_compatible_with
+    self._assert_tzawareness_compat(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 784, in _assert_tzawareness_compat
+    raise TypeError(
+        "Cannot compare tz-naive and tz-aware datetime-like objects."
+    )
+TypeError: Cannot compare tz-naive and tz-aware datetime-like objects.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1006, in _cmp_method
+    other = self._validate_comparison_value(other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 562, in _validate_comparison_value
+    raise InvalidComparison(other) from err
+pandas.errors.InvalidComparison: 2026-01-07 00:00:00+00:00
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 377, in fetch_current_wind_data_for_prediction
+    (wind_df['timestamp_hour'] >= start_date.floor('H')) &
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/series.py", line 6138, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 330, in comparison_op
+    res_values = op(lvalues, rvalues)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1008, in _cmp_method
+    return invalid_comparison(self, other, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/invalid.py", line 40, in invalid_comparison
+    raise TypeError(f"Invalid comparison between dtype={left.dtype} and {typ}")
+TypeError: Invalid comparison between dtype=datetime64[ns] and Timestamp
+
+======================================================================
+ROUND 1/24 - 2026-01-15 20:08:02
+======================================================================
+
+2523 Bishop Ave, Fremont, CA 94536
+  Sensor: MoonRiver (ID: 71443)
+  Current: PM2.5=20.30, AQI=68 (Moderate)
+Loading HISTORICAL data from: 71443 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:38:02.909062 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.561237, -121.99151)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.561237, -121.99151)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 3° to 360°
+  Wind speed range: 1.10 to 16.70 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.561237, -121.99151)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:08:02.869586+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.561237, -121.99151)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 11° to 360°
+  Wind speed range: 0.00 to 9.80 m/s
+⚠ Error fetching wind data from Open-Meteo: Invalid comparison between dtype=datetime64[ns] and Timestamp
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 112)
+  1h Forecast: PM2.5=29.57, AQI=88 (Moderate)
+  3h Forecast: PM2.5=78.94, AQI=163 (Unhealthy)
+
+39400 Paseo Padre Pkwy, Fremont, CA 94538
+  Sensor: Fremont - Civic Center (ID: 148483)
+  Current: PM2.5=6.00, AQI=25 (Good)
+Loading HISTORICAL data from: 148483 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:38:04.722219 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.55336, -121.97416)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.55336, -121.97416)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 2° to 358°
+  Wind speed range: 0.60 to 15.30 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.55336, -121.97416)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:08:04.682804+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.55336, -121.97416)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 11° to 360°
+  Wind speed range: 0.00 to 9.80 m/s
+⚠ Error fetching wind data from Open-Meteo: Invalid comparison between dtype=datetime64[ns] and Timestamp
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 112)
+  1h Forecast: PM2.5=5.53, AQI=23 (Good)
+  3h Forecast: PM2.5=5.84, AQI=24 (Good)
+
+4620 Mattos Dr, Fremont, CA 94536
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=38.20, AQI=108 (Unhealthy for Sensitive Groups)
+Loading HISTORICAL data from: 19683 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:38:07.498678 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.542088, -122.00043)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.542088, -122.00043)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 2° to 358°
+  Wind speed range: 0.60 to 15.30 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.542088, -122.00043)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:08:07.456963+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.542088, -122.00043)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 6° to 360°
+  Wind speed range: 0.00 to 11.60 m/s
+⚠ Error fetching wind data from Open-Meteo: Invalid comparison between dtype=datetime64[ns] and Timestamp
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 112)
+  1h Forecast: PM2.5=24.64, AQI=77 (Moderate)
+  3h Forecast: PM2.5=27.15, AQI=83 (Moderate)
+
+5400 Mowry Ave, Fremont, CA 94538
+  Sensor: Glen Moore-York Dr. (ID: 193337)
+  Current: PM2.5=33.50, AQI=96 (Moderate)
+Loading HISTORICAL data from: 193337 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:38:09.406684 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 559, in _validate_comparison_value
+    self._check_compatible_with(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 542, in _check_compatible_with
+    self._assert_tzawareness_compat(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 784, in _assert_tzawareness_compat
+    raise TypeError(
+        "Cannot compare tz-naive and tz-aware datetime-like objects."
+    )
+TypeError: Cannot compare tz-naive and tz-aware datetime-like objects.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1006, in _cmp_method
+    other = self._validate_comparison_value(other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 562, in _validate_comparison_value
+    raise InvalidComparison(other) from err
+pandas.errors.InvalidComparison: 2026-01-07 00:00:00+00:00
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 377, in fetch_current_wind_data_for_prediction
+    (wind_df['timestamp_hour'] >= start_date.floor('H')) &
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/series.py", line 6138, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 330, in comparison_op
+    res_values = op(lvalues, rvalues)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1008, in _cmp_method
+    return invalid_comparison(self, other, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/invalid.py", line 40, in invalid_comparison
+    raise TypeError(f"Invalid comparison between dtype={left.dtype} and {typ}")
+TypeError: Invalid comparison between dtype=datetime64[ns] and Timestamp
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 559, in _validate_comparison_value
+    self._check_compatible_with(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 542, in _check_compatible_with
+    self._assert_tzawareness_compat(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 784, in _assert_tzawareness_compat
+    raise TypeError(
+        "Cannot compare tz-naive and tz-aware datetime-like objects."
+    )
+TypeError: Cannot compare tz-naive and tz-aware datetime-like objects.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1006, in _cmp_method
+    other = self._validate_comparison_value(other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 562, in _validate_comparison_value
+    raise InvalidComparison(other) from err
+pandas.errors.InvalidComparison: 2026-01-07 00:00:00+00:00
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 377, in fetch_current_wind_data_for_prediction
+    (wind_df['timestamp_hour'] >= start_date.floor('H')) &
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/series.py", line 6138, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 330, in comparison_op
+    res_values = op(lvalues, rvalues)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1008, in _cmp_method
+    return invalid_comparison(self, other, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/invalid.py", line 40, in invalid_comparison
+    raise TypeError(f"Invalid comparison between dtype={left.dtype} and {typ}")
+TypeError: Invalid comparison between dtype=datetime64[ns] and Timestamp
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 559, in _validate_comparison_value
+    self._check_compatible_with(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 542, in _check_compatible_with
+    self._assert_tzawareness_compat(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 784, in _assert_tzawareness_compat
+    raise TypeError(
+        "Cannot compare tz-naive and tz-aware datetime-like objects."
+    )
+TypeError: Cannot compare tz-naive and tz-aware datetime-like objects.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1006, in _cmp_method
+    other = self._validate_comparison_value(other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 562, in _validate_comparison_value
+    raise InvalidComparison(other) from err
+pandas.errors.InvalidComparison: 2026-01-07 00:00:00+00:00
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 377, in fetch_current_wind_data_for_prediction
+    (wind_df['timestamp_hour'] >= start_date.floor('H')) &
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/series.py", line 6138, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 330, in comparison_op
+    res_values = op(lvalues, rvalues)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1008, in _cmp_method
+    return invalid_comparison(self, other, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/invalid.py", line 40, in invalid_comparison
+    raise TypeError(f"Invalid comparison between dtype={left.dtype} and {typ}")
+TypeError: Invalid comparison between dtype=datetime64[ns] and Timestamp
+
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.533764, -122.0048)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.533764, -122.0048)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 2° to 358°
+  Wind speed range: 0.60 to 15.30 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.533764, -122.0048)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:08:09.368505+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.533764, -122.0048)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 6° to 360°
+  Wind speed range: 0.00 to 11.60 m/s
+⚠ Error fetching wind data from Open-Meteo: Invalid comparison between dtype=datetime64[ns] and Timestamp
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 112)
+  1h Forecast: PM2.5=19.80, AQI=67 (Moderate)
+  3h Forecast: PM2.5=21.17, AQI=70 (Moderate)
+
+36007 Pizarro Dr, Fremont, CA 94536
+  Sensor: Fremont: Cabrillo (ID: 18987)
+  Current: PM2.5=36.50, AQI=103 (Unhealthy for Sensitive Groups)
+Loading HISTORICAL data from: 18987 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:38:11.221135 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 3° to 360°
+  Wind speed range: 1.10 to 16.70 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:08:11.180716+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 5° to 360°
+  Wind speed range: 0.00 to 9.60 m/s
+⚠ Error fetching wind data from Open-Meteo: Invalid comparison between dtype=datetime64[ns] and Timestamp
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 112)
+  1h Forecast: PM2.5=23.62, AQI=75 (Moderate)
+  3h Forecast: PM2.5=26.13, AQI=80 (Moderate)
+
+3377 Alder Ave, Fremont, CA 94536
+  Sensor: Fremont: Cabrillo (ID: 18987)
+  Current: PM2.5=36.50, AQI=103 (Unhealthy for Sensitive Groups)
+Loading HISTORICAL data from: 18987 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:38:13.264963 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 3° to 360°
+  Wind speed range: 1.10 to 16.70 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:08:13.219443+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 5° to 360°
+  Wind speed range: 0.00 to 9.60 m/s
+⚠ Error fetching wind data from Open-Meteo: Invalid comparison between dtype=datetime64[ns] and Timestamp
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 112)
+  1h Forecast: PM2.5=23.62, AQI=75 (Moderate)
+  3h Forecast: PM2.5=26.13, AQI=80 (Moderate)
+
+34665 Allegheny Ct, Fremont, CA 94555
+  Sensor: Fremont: Cabrillo (ID: 18987)
+  Current: PM2.5=36.50, AQI=103 (Unhealthy for Sensitive Groups)
+Loading HISTORICAL data from: 18987 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:38:15.037587 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 559, in _validate_comparison_value
+    self._check_compatible_with(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 542, in _check_compatible_with
+    self._assert_tzawareness_compat(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 784, in _assert_tzawareness_compat
+    raise TypeError(
+        "Cannot compare tz-naive and tz-aware datetime-like objects."
+    )
+TypeError: Cannot compare tz-naive and tz-aware datetime-like objects.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1006, in _cmp_method
+    other = self._validate_comparison_value(other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 562, in _validate_comparison_value
+    raise InvalidComparison(other) from err
+pandas.errors.InvalidComparison: 2026-01-07 00:00:00+00:00
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 377, in fetch_current_wind_data_for_prediction
+    (wind_df['timestamp_hour'] >= start_date.floor('H')) &
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/series.py", line 6138, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 330, in comparison_op
+    res_values = op(lvalues, rvalues)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1008, in _cmp_method
+    return invalid_comparison(self, other, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/invalid.py", line 40, in invalid_comparison
+    raise TypeError(f"Invalid comparison between dtype={left.dtype} and {typ}")
+TypeError: Invalid comparison between dtype=datetime64[ns] and Timestamp
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 559, in _validate_comparison_value
+    self._check_compatible_with(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 542, in _check_compatible_with
+    self._assert_tzawareness_compat(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 784, in _assert_tzawareness_compat
+    raise TypeError(
+        "Cannot compare tz-naive and tz-aware datetime-like objects."
+    )
+TypeError: Cannot compare tz-naive and tz-aware datetime-like objects.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1006, in _cmp_method
+    other = self._validate_comparison_value(other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 562, in _validate_comparison_value
+    raise InvalidComparison(other) from err
+pandas.errors.InvalidComparison: 2026-01-07 00:00:00+00:00
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 377, in fetch_current_wind_data_for_prediction
+    (wind_df['timestamp_hour'] >= start_date.floor('H')) &
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/series.py", line 6138, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 330, in comparison_op
+    res_values = op(lvalues, rvalues)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1008, in _cmp_method
+    return invalid_comparison(self, other, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/invalid.py", line 40, in invalid_comparison
+    raise TypeError(f"Invalid comparison between dtype={left.dtype} and {typ}")
+TypeError: Invalid comparison between dtype=datetime64[ns] and Timestamp
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 559, in _validate_comparison_value
+    self._check_compatible_with(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 542, in _check_compatible_with
+    self._assert_tzawareness_compat(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 784, in _assert_tzawareness_compat
+    raise TypeError(
+        "Cannot compare tz-naive and tz-aware datetime-like objects."
+    )
+TypeError: Cannot compare tz-naive and tz-aware datetime-like objects.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1006, in _cmp_method
+    other = self._validate_comparison_value(other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 562, in _validate_comparison_value
+    raise InvalidComparison(other) from err
+pandas.errors.InvalidComparison: 2026-01-07 00:00:00+00:00
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 377, in fetch_current_wind_data_for_prediction
+    (wind_df['timestamp_hour'] >= start_date.floor('H')) &
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/series.py", line 6138, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 330, in comparison_op
+    res_values = op(lvalues, rvalues)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1008, in _cmp_method
+    return invalid_comparison(self, other, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/invalid.py", line 40, in invalid_comparison
+    raise TypeError(f"Invalid comparison between dtype={left.dtype} and {typ}")
+TypeError: Invalid comparison between dtype=datetime64[ns] and Timestamp
+
+Location: (37.5625, -122.0281)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 3° to 360°
+  Wind speed range: 1.10 to 16.70 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:08:14.996406+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 5° to 360°
+  Wind speed range: 0.00 to 9.60 m/s
+⚠ Error fetching wind data from Open-Meteo: Invalid comparison between dtype=datetime64[ns] and Timestamp
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 112)
+  1h Forecast: PM2.5=23.62, AQI=75 (Moderate)
+  3h Forecast: PM2.5=26.13, AQI=80 (Moderate)
+
+1251 Peralta Blvd, Fremont, CA 94536
+  Sensor: 405 L Street (ID: 286506)
+  Current: PM2.5=6.40, AQI=27 (Good)
+Loading HISTORICAL data from: 286506 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:38:16.821144 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.57263, -121.97636)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.57263, -121.97636)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 3° to 360°
+  Wind speed range: 1.10 to 16.70 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.57263, -121.97636)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:08:16.795356+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.57263, -121.97636)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 14° to 360°
+  Wind speed range: 0.00 to 9.60 m/s
+⚠ Error fetching wind data from Open-Meteo: Invalid comparison between dtype=datetime64[ns] and Timestamp
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 112)
+  1h Forecast: PM2.5=6.46, AQI=27 (Good)
+  3h Forecast: PM2.5=6.41, AQI=27 (Good)
+
+40500 Paseo Padre Pkwy, Fremont, CA 94538
+  Sensor: Lake Elizabeth (ID: 84117)
+  Current: PM2.5=7.60, AQI=32 (Good)
+Loading HISTORICAL data from: 84117 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:38:18.813865 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.54408, -121.96445)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.54408, -121.96445)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 2° to 358°
+  Wind speed range: 0.60 to 15.30 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.54408, -121.96445)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:08:18.770666+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.54408, -121.96445)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 21° to 360°
+  Wind speed range: 0.00 to 20.20 m/s
+⚠ Error fetching wind data from Open-Meteo: Invalid comparison between dtype=datetime64[ns] and Timestamp
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 112)
+  1h Forecast: PM2.5=7.70, AQI=32 (Good)
+  3h Forecast: PM2.5=7.03, AQI=29 (Good)
+
+41800 Blacow Rd, Fremont, CA 94538
+  Sensor: Lake Elizabeth (ID: 84117)
+  Current: PM2.5=7.60, AQI=32 (Good)
+Loading HISTORICAL data from: 84117 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:38:20.607922 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.54408, -121.96445)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.54408, -121.96445)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 2° to 358°
+  Wind speed range: 0.60 to 15.30 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.54408, -121.96445)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:08:20.566651+00:00Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 559, in _validate_comparison_value
+    self._check_compatible_with(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 542, in _check_compatible_with
+    self._assert_tzawareness_compat(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimes.py", line 784, in _assert_tzawareness_compat
+    raise TypeError(
+        "Cannot compare tz-naive and tz-aware datetime-like objects."
+    )
+TypeError: Cannot compare tz-naive and tz-aware datetime-like objects.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1006, in _cmp_method
+    other = self._validate_comparison_value(other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 562, in _validate_comparison_value
+    raise InvalidComparison(other) from err
+pandas.errors.InvalidComparison: 2026-01-07 00:00:00+00:00
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 377, in fetch_current_wind_data_for_prediction
+    (wind_df['timestamp_hour'] >= start_date.floor('H')) &
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/series.py", line 6138, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 330, in comparison_op
+    res_values = op(lvalues, rvalues)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arraylike.py", line 60, in __ge__
+    return self._cmp_method(other, operator.ge)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 1008, in _cmp_method
+    return invalid_comparison(self, other, op)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/ops/invalid.py", line 40, in invalid_comparison
+    raise TypeError(f"Invalid comparison between dtype={left.dtype} and {typ}")
+TypeError: Invalid comparison between dtype=datetime64[ns] and Timestamp
+
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.54408, -121.96445)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 21° to 360°
+  Wind speed range: 0.00 to 20.20 m/s
+⚠ Error fetching wind data from Open-Meteo: Invalid comparison between dtype=datetime64[ns] and Timestamp
+  Predictions will proceed without wind features (may be less accurate)
+Starting feature engineering...
+Creating spatial features...
+Created spatial features. Sensors have location data: 47/48
+Creating time features...
+Creating lag features...
+Creating rolling features...
+Creating spatial interaction features...
+Feature engineering complete. Final shape: (48, 112)
+  1h Forecast: PM2.5=7.70, AQI=32 (Good)
+  3h Forecast: PM2.5=7.03, AQI=29 (Good)
+
+✓ Saved 10 predictions to validation_results/predictions_20260115_200804.csv
+✓ Updated summary: validation_results/summary_20260115_200804.json
+
+>>> Waiting 59.7 minutes until Round 2...

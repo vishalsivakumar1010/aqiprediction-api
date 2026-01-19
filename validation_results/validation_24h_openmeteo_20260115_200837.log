@@ -1,0 +1,929 @@
+Loaded 10 addresses from validation_addresses_10.txt
+Using 10 addresses for validation study
+Loading models...
+✓ Models loaded: 2 horizons
+
+Geocoding addresses and finding nearest sensors...
+  Trying online geocoding: '2523 Bishop Ave, Fremont, CA 94536'
+  ✓ Found: 2523, Bishop Avenue, Shinn, Fremont, Alameda County, California, 94536, United States
+  ✓ 2523 Bishop Ave, Fremont, CA 94536: Sensor 71443 (MoonRiver) - 0.30 km
+  Trying online geocoding: '39400 Paseo Padre Pkwy, Fremont, CA 94538'
+  ✓ Found: Civic Center Drive & Stevenson Boulevard, 39400, Paseo Padre Parkway, Fremont, Alameda County, California, 94538, United States
+  ✓ 39400 Paseo Padre Pkwy, Fremont, CA 94538: Sensor 148483 (Fremont - Civic Center) - 0.22 km
+  Trying online geocoding: '4620 Mattos Dr, Fremont, CA 94536'
+  ✓ Found: 4620, Mattos Drive, Centerville District, Fremont, Alameda County, California, 94536, United States
+  ✓ 4620 Mattos Dr, Fremont, CA 94536: Sensor 19683 (Glenmoor Gardens) - 0.46 km
+  Trying online geocoding: '5400 Mowry Ave, Fremont, CA 94538'
+  ✓ Found: Best Western Garden Court Inn, 5400, Mowry Avenue, Fremont, Alameda County, California, 94538, United States
+  ✓ 5400 Mowry Ave, Fremont, CA 94538: Sensor 193337 (Glen Moore-York Dr.) - 0.46 km
+  Trying online geocoding: '36007 Pizarro Dr, Fremont, CA 94536'
+  ✓ Found: 36007, Pizarro Drive, Fremont, Alameda County, California, 94560, United States
+  ✓ 36007 Pizarro Dr, Fremont, CA 94536: Sensor 18987 (Fremont: Cabrillo) - 0.72 km
+  Trying online geocoding: '3377 Alder Ave, Fremont, CA 94536'
+  ✓ Found: Los Cerritos Community Center, 3377, Alder Avenue, Centerville District, Fremont, Alameda County, California, 94536, United States
+  ✓ 3377 Alder Ave, Fremont, CA 94536: Sensor 18987 (Fremont: Cabrillo) - 1.51 km
+  Trying online geocoding: '34665 Allegheny Ct, Fremont, CA 94555'
+  ✓ Found: 34665, Allegheny Court, Fremont, Alameda County, California, 94555, United States
+  ✓ 34665 Allegheny Ct, Fremont, CA 94555: Sensor 18987 (Fremont: Cabrillo) - 1.28 km
+  Trying online geocoding: '1251 Peralta Blvd, Fremont, CA 94536'
+  ✓ Found: Shinn Big House, 1251;1263;1269;1273, Peralta Boulevard, Shinn, Fremont, Alameda County, California, 94536, United States
+  ✓ 1251 Peralta Blvd, Fremont, CA 94536: Sensor 286506 (405 L Street) - 0.88 km
+  Trying online geocoding: '40500 Paseo Padre Pkwy, Fremont, CA 94538'
+  ✓ Found: 40500;40520, Paseo Padre Parkway, Fremont, Alameda County, California, 94538, United States
+  ✓ 40500 Paseo Padre Pkwy, Fremont, CA 94538: Sensor 84117 (Lake Elizabeth) - 0.36 km
+  Trying online geocoding: '41800 Blacow Rd, Fremont, CA 94538'
+  ✓ Found: Blacow Road, Irvington District, Fremont, Alameda County, California, 94538, United States
+  ✓ 41800 Blacow Rd, Fremont, CA 94538: Sensor 84117 (Lake Elizabeth) - 2.35 km
+
+======================================================================
+VALIDATION STUDY STARTING
+======================================================================
+Start time: 2026-01-15 20:08:52
+End time: 2026-01-16 20:08:52
+Duration: 24 hours
+Interval: 60 minutes
+Addresses: 10
+======================================================================
+
+>>> Running Round 1 immediately...
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 211, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 494, in merge_wind_data_for_prediction
+    df['wdir'] = df.groupby('sensor_id')['wdir'].ffill(limit=6)
+                 ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/groupby/generic.py", line 1951, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/base.py", line 245, in __getitem__
+    raise KeyError(f"Column not found: {key}")
+KeyError: 'Column not found: wdir'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 233, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 483, in merge_wind_data_for_prediction
+    if hasattr(wind_df['timestamp_hour'].iloc[0], 'tz') and wind_df['timestamp_hour'].iloc[0].tz is not None:
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 211, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 494, in merge_wind_data_for_prediction
+    df['wdir'] = df.groupby('sensor_id')['wdir'].ffill(limit=6)
+                 ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/groupby/generic.py", line 1951, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/base.py", line 245, in __getitem__
+    raise KeyError(f"Column not found: {key}")
+KeyError: 'Column not found: wdir'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 233, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 483, in merge_wind_data_for_prediction
+    if hasattr(wind_df['timestamp_hour'].iloc[0], 'tz') and wind_df['timestamp_hour'].iloc[0].tz is not None:
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+
+======================================================================
+ROUND 1/24 - 2026-01-15 20:08:52
+======================================================================
+
+2523 Bishop Ave, Fremont, CA 94536
+  Sensor: MoonRiver (ID: 71443)
+  Current: PM2.5=20.30, AQI=68 (Moderate)
+Loading HISTORICAL data from: 71443 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:38:52.592534 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.561237, -121.99151)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.561237, -121.99151)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 3° to 360°
+  Wind speed range: 1.10 to 16.70 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.561237, -121.99151)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:08:52.552972+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.561237, -121.99151)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 11° to 360°
+  Wind speed range: 0.00 to 9.80 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 30 hourly records
+    ⚠ Warning preparing historical data: 'Column not found: wdir'
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.561237, -121.99151)
+  Date range: 2026-01-16 04:08:52.552972+00:00 to 2026-01-16 04:08:52.552972+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.561237, -121.99151)
+Wind height: 10 meters
+Forecast days: 1
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 24
+  Wind direction range: 27° to 351°
+  Wind speed range: 1.50 to 9.80 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 0 hourly records
+  ✗ Error: single positional indexer is out-of-bounds
+
+39400 Paseo Padre Pkwy, Fremont, CA 94538
+  Sensor: Fremont - Civic Center (ID: 148483)
+  Current: PM2.5=6.00, AQI=25 (Good)
+Loading HISTORICAL data from: 148483 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:38:55.389825 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.55336, -121.97416)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.55336, -121.97416)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 2° to 358°
+  Wind speed range: 0.60 to 15.30 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.55336, -121.97416)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:08:55.348516+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.55336, -121.97416)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 11° to 360°
+  Wind speed range: 0.00 to 9.80 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 30 hourly records
+    ⚠ Warning preparing historical data: 'Column not found: wdir'
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.55336, -121.97416)
+  Date range: 2026-01-16 04:08:55.348516+00:00 to 2026-01-16 04:08:55.348516+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.55336, -121.97416)
+Wind height: 10 meters
+Forecast days: 1
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 24
+  Wind direction range: 27° to 351°
+  Wind speed range: 1.50 to 9.80 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 0 hourly records
+  ✗ Error: single positional indexer is out-of-bounds
+
+4620 Mattos Dr, Fremont, CA 94536
+  Sensor: Glenmoor Gardens (ID: 19683)
+  Current: PM2.5=36.30, AQI=103 (Unhealthy for Sensitive Groups)
+Loading HISTORICAL data from: 19683 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:38:58.237994 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.542088, -122.00043)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.6 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.542088, -122.00043)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 2° to 358°
+  Wind speed range: 0.60 to 15.30 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.542088, -122.00043)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:08:58.197563+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.542088, -122.00043)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 6° to 360°
+  Wind speed range: 0.00 to 11.60 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 30 hourly recordsTraceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 211, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 494, in merge_wind_data_for_prediction
+    df['wdir'] = df.groupby('sensor_id')['wdir'].ffill(limit=6)
+                 ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/groupby/generic.py", line 1951, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/base.py", line 245, in __getitem__
+    raise KeyError(f"Column not found: {key}")
+KeyError: 'Column not found: wdir'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 233, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 483, in merge_wind_data_for_prediction
+    if hasattr(wind_df['timestamp_hour'].iloc[0], 'tz') and wind_df['timestamp_hour'].iloc[0].tz is not None:
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 211, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 494, in merge_wind_data_for_prediction
+    df['wdir'] = df.groupby('sensor_id')['wdir'].ffill(limit=6)
+                 ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/groupby/generic.py", line 1951, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/base.py", line 245, in __getitem__
+    raise KeyError(f"Column not found: {key}")
+KeyError: 'Column not found: wdir'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 233, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 483, in merge_wind_data_for_prediction
+    if hasattr(wind_df['timestamp_hour'].iloc[0], 'tz') and wind_df['timestamp_hour'].iloc[0].tz is not None:
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 211, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 494, in merge_wind_data_for_prediction
+    df['wdir'] = df.groupby('sensor_id')['wdir'].ffill(limit=6)
+                 ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/groupby/generic.py", line 1951, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/base.py", line 245, in __getitem__
+    raise KeyError(f"Column not found: {key}")
+KeyError: 'Column not found: wdir'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 233, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 483, in merge_wind_data_for_prediction
+    if hasattr(wind_df['timestamp_hour'].iloc[0], 'tz') and wind_df['timestamp_hour'].iloc[0].tz is not None:
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+
+    ⚠ Warning preparing historical data: 'Column not found: wdir'
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.542088, -122.00043)
+  Date range: 2026-01-16 04:08:58.197563+00:00 to 2026-01-16 04:08:58.197563+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.542088, -122.00043)
+Wind height: 10 meters
+Forecast days: 1
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 24
+  Wind direction range: 32° to 360°
+  Wind speed range: 1.10 to 11.60 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 0 hourly records
+  ✗ Error: single positional indexer is out-of-bounds
+
+5400 Mowry Ave, Fremont, CA 94538
+  Sensor: Glen Moore-York Dr. (ID: 193337)
+  Current: PM2.5=33.50, AQI=96 (Moderate)
+Loading HISTORICAL data from: 193337 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:39:00.912522 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.533764, -122.0048)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.7 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.533764, -122.0048)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 2° to 358°
+  Wind speed range: 0.60 to 15.30 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.533764, -122.0048)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:09:00.872382+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.533764, -122.0048)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 6° to 360°
+  Wind speed range: 0.00 to 11.60 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 30 hourly records
+    ⚠ Warning preparing historical data: 'Column not found: wdir'
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.533764, -122.0048)
+  Date range: 2026-01-16 04:09:00.872382+00:00 to 2026-01-16 04:09:00.872382+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.533764, -122.0048)
+Wind height: 10 meters
+Forecast days: 1
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 24
+  Wind direction range: 32° to 360°
+  Wind speed range: 1.10 to 11.60 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 0 hourly records
+  ✗ Error: single positional indexer is out-of-bounds
+
+36007 Pizarro Dr, Fremont, CA 94536
+  Sensor: Fremont: Cabrillo (ID: 18987)
+  Current: PM2.5=37.10, AQI=105 (Unhealthy for Sensitive Groups)
+Loading HISTORICAL data from: 18987 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:39:03.661663 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.7 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 3° to 360°
+  Wind speed range: 1.10 to 16.70 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:09:03.622875+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 5° to 360°
+  Wind speed range: 0.00 to 9.60 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 30 hourly records
+    ⚠ Warning preparing historical data: 'Column not found: wdir'
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-16 04:09:03.622875+00:00 to 2026-01-16 04:09:03.622875+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Wind height: 10 meters
+Forecast days: 1
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 24
+  Wind direction range: 5° to 307°
+  Wind speed range: 1.00 to 9.60 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 0 hourly records
+  ✗ Error: single positional indexer is out-of-bounds
+
+3377 Alder Ave, Fremont, CA 94536
+  Sensor: Fremont: Cabrillo (ID: 18987)
+  Current: PM2.5=37.10, AQI=105 (Unhealthy for Sensitive Groups)
+Loading HISTORICAL data from: 18987 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:39:06.232800 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.7 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 3° to 360°
+  Wind speed range: 1.10 to 16.70 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 211, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 494, in merge_wind_data_for_prediction
+    df['wdir'] = df.groupby('sensor_id')['wdir'].ffill(limit=6)
+                 ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/groupby/generic.py", line 1951, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/base.py", line 245, in __getitem__
+    raise KeyError(f"Column not found: {key}")
+KeyError: 'Column not found: wdir'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 233, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 483, in merge_wind_data_for_prediction
+    if hasattr(wind_df['timestamp_hour'].iloc[0], 'tz') and wind_df['timestamp_hour'].iloc[0].tz is not None:
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 211, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 494, in merge_wind_data_for_prediction
+    df['wdir'] = df.groupby('sensor_id')['wdir'].ffill(limit=6)
+                 ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/groupby/generic.py", line 1951, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/base.py", line 245, in __getitem__
+    raise KeyError(f"Column not found: {key}")
+KeyError: 'Column not found: wdir'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 233, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 483, in merge_wind_data_for_prediction
+    if hasattr(wind_df['timestamp_hour'].iloc[0], 'tz') and wind_df['timestamp_hour'].iloc[0].tz is not None:
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 211, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 494, in merge_wind_data_for_prediction
+    # Sort by time_stamp first to ensure proper forward fill
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/groupby/generic.py", line 1951, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/base.py", line 245, in __getitem__
+    raise KeyError(f"Column not found: {key}")
+KeyError: 'Column not found: wdir'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 233, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 483, in merge_wind_data_for_prediction
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:09:06.193853+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 5° to 360°
+  Wind speed range: 0.00 to 9.60 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 30 hourly records
+    ⚠ Warning preparing historical data: 'Column not found: wdir'
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-16 04:09:06.193853+00:00 to 2026-01-16 04:09:06.193853+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Wind height: 10 meters
+Forecast days: 1
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 24
+  Wind direction range: 5° to 307°
+  Wind speed range: 1.00 to 9.60 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 0 hourly records
+  ✗ Error: single positional indexer is out-of-bounds
+
+34665 Allegheny Ct, Fremont, CA 94555
+  Sensor: Fremont: Cabrillo (ID: 18987)
+  Current: PM2.5=37.10, AQI=105 (Unhealthy for Sensitive Groups)
+Loading HISTORICAL data from: 18987 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:39:08.934696 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.7 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 3° to 360°
+  Wind speed range: 1.10 to 16.70 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:09:08.896176+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 5° to 360°
+  Wind speed range: 0.00 to 9.60 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 30 hourly records
+    ⚠ Warning preparing historical data: 'Column not found: wdir'
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.5625, -122.0281)
+  Date range: 2026-01-16 04:09:08.896176+00:00 to 2026-01-16 04:09:08.896176+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.5625, -122.0281)
+Wind height: 10 meters
+Forecast days: 1
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 24
+  Wind direction range: 5° to 307°
+  Wind speed range: 1.00 to 9.60 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 0 hourly records
+  ✗ Error: single positional indexer is out-of-bounds
+
+1251 Peralta Blvd, Fremont, CA 94536
+  Sensor: 405 L Street (ID: 286506)
+  Current: PM2.5=6.70, AQI=28 (Good)
+Loading HISTORICAL data from: 286506 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:39:11.480172 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.57263, -121.97636)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.7 hours old)
+
+================================================================================
+FETCHING HISTORICAL WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.57263, -121.97636)
+Date range: 2026-01-07 to 2026-01-08
+Wind height: 10 meters
+Timezone: America/Los_Angeles
+
+Fetching data from Open-Meteo...
+
+✓ Data fetched successfully
+  Total hourly records: 48
+  Records with wind direction: 48 (100.0%)
+  Wind direction range: 3° to 360°
+  Wind speed range: 1.10 to 16.70 m/s
+✓ Wind data fetched from Open-Meteo Historical: 48 hourly records
+✓ Wind data merged: 100.0% coverage
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.57263, -121.97636)
+  Date range: 2026-01-07 00:30:00+00:00 to 2026-01-16 04:09:11.456585+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.57263, -121.97636)
+Wind height: 10 meters
+Forecast days: 7
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 168
+  Wind direction range: 14° to 360°
+  Wind speed range: 0.00 to 9.60 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 30 hourly records
+    ⚠ Warning preparing historical data: 'Column not found: wdir'
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.57263, -121.97636)
+  Date range: 2026-01-16 04:09:11.456585+00:00 to 2026-01-16 04:09:11.456585+00:00
+  Using Open-Meteo Forecast API (data is 0.0 hours old)
+
+================================================================================
+FETCHING FORECAST WIND DATA FROM OPEN-METEO
+================================================================================
+Location: (37.57263, -121.97636)
+Wind height: 10 meters
+Forecast days: 1
+Timezone: America/Los_Angeles
+
+Fetching forecast data from Open-Meteo...
+
+✓ Forecast data fetched successfully
+  Total hourly records: 24
+  Wind direction range: 34° to 337°
+  Wind speed range: 1.30 to 6.50 m/s
+✓ Wind data fetched from Open-Meteo Forecast: 0 hourly records
+  ✗ Error: single positional indexer is out-of-bounds
+
+40500 Paseo Padre Pkwy, Fremont, CA 94538
+  Sensor: Lake Elizabeth (ID: 84117)
+  Current: PM2.5=7.60, AQI=32 (Good)
+Loading HISTORICAL data from: 84117 2025-01-01 2026-01-08 30-Minute Average.csv
+⚠ WARNING: CSV data is 7 days 20:39:14.597977 old (last row: 2026-01-08 07:30:00+00:00)
+  This is HISTORICAL data, not current live values!
+  To get current live data, use --api-key option
+
+Fetching wind direction data from Open-Meteo for prediction...
+  Location: (37.54408, -121.96445)
+  Date range: 2026-01-07 08:30:00+00:00 to 2026-01-08 07:30:00+00:00
+  Using Open-Meteo Historical API (data is 188.7 hours old)Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 211, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 494, in merge_wind_data_for_prediction
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/groupby/generic.py", line 1951, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/base.py", line 245, in __getitem__
+    raise KeyError(f"Column not found: {key}")
+KeyError: 'Column not found: wdir'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/validation_study.py", line 233, in run_forecast_round
+    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+  File "/Users/vishalsivakumar/Library/Application Support/Knowledge/PurpleAir Download 1-9-2026/FINAL MODEL DATA PAIC/test_predictions.py", line 483, in merge_wind_data_for_prediction
+    wind_df = wind_df.copy()
+               ~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds

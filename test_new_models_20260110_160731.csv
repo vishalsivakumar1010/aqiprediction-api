@@ -1,0 +1,24 @@
+address,error
+# Validation Study Addresses,cannot unpack non-iterable NoneType object
+# All addresses tested and verified working (business names removed for geocoding),cannot unpack non-iterable NoneType object
+"2523 Bishop Ave, Fremont, CA 94536",'sensor_id'
+"39400 Paseo Padre Pkwy, Fremont, CA 94538",'sensor_id'
+"4620 Mattos Dr, Fremont, CA 94536",'sensor_id'
+"5400 Mowry Ave, Fremont, CA 94538",'sensor_id'
+"36007 Pizarro Dr, Fremont, CA 94536",'sensor_id'
+"3377 Alder Ave, Fremont, CA 94536",'sensor_id'
+"34665 Allegheny Ct, Fremont, CA 94555",'sensor_id'
+"1251 Peralta Blvd, Fremont, CA 94536",'sensor_id'
+"40500 Paseo Padre Pkwy, Fremont, CA 94538",'sensor_id'
+"41800 Blacow Rd, Fremont, CA 94538",'sensor_id'
+# Business/Place names (for reference only):,cannot unpack non-iterable NoneType object
+# 1. Little Flowers Day Care & Preschool,cannot unpack non-iterable NoneType object
+# 2. Kaiser Permanente Fremont Medical Center,cannot unpack non-iterable NoneType object
+# 3. Glenmoor Elementary School,'sensor_id'
+# 4. Best Western Plus Garden Court Inn,cannot unpack non-iterable NoneType object
+# 5. Wonderland Preschool and Daycare,cannot unpack non-iterable NoneType object
+# 6. Los Cerritos Community Center,cannot unpack non-iterable NoneType object
+# 7. Crandall Creek Park,'sensor_id'
+# 8. Shinn Historical Park and Arboretum,cannot unpack non-iterable NoneType object
+# 9. Palms Pavilion Picnic Area,cannot unpack non-iterable NoneType object
+# 10. Irvington High School,cannot unpack non-iterable NoneType object
