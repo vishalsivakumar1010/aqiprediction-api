@@ -1,0 +1,12 @@
+
+# Large data files (too big for GitHub)
+P2-RouteFinder/data/processed/dataset_with_features.csv
+P2-RouteFinder/data/processed/purpleair_with_weather.csv
+P2-RouteFinder/data/processed/purpleair_qc_cleaned.csv
+P2-RouteFinder/data/raw/purpleair_combined_raw.csv
+
+# Validation results (can be regenerated)
+P2-RouteFinder/validation_results/*.csv
+P2-RouteFinder/validation_*.csv
+P2-RouteFinder/validation_*.log
+P2-RouteFinder/validation_results/*.png

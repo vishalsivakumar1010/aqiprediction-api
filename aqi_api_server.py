@@ -18,9 +18,14 @@ from datetime import datetime
 import pandas as pd
 import numpy as np
 
-# Add original pipeline to path
+# Add current directory and original pipeline to path (for backward compatibility)
+current_dir = Path(__file__).parent
+if str(current_dir) not in sys.path:
+    sys.path.insert(0, str(current_dir))
+
+# Try original pipeline directory as fallback (for local development)
 original_pipeline_dir = os.path.expanduser("~/Downloads/PAIC Data 2 Months")
-if original_pipeline_dir not in sys.path:
+if os.path.exists(original_pipeline_dir) and original_pipeline_dir not in sys.path:
     sys.path.insert(0, original_pipeline_dir)
 
 from test_predictions import (

@@ -1,0 +1,22 @@
+======================================================================
+QUALITY CONTROL REPORT
+======================================================================
+
+Initial: 1,217,553 samples, 42 sensors
+Final:   1,177,244 samples, 40 sensors
+Removed: 40,309 samples (3.31%)
+Dropped: 2 sensors
+
+QC Steps:
+  Step 1: pm25_out_of_range
+    Removed: 701 samples (0.06%)
+  Step 2: spike_stage1_auto_removed
+    Removed: 5 samples (0.00%)
+  Step 3: spike_stage2_flagged
+    Flagged: 149 samples (0.01%)
+  Step 4: stuck_sensor_segment
+    Removed: 35,497 samples (2.92%)
+  Step 5: coverage_threshold
+    Removed: 4,106 samples (0.35%)
+  Step 6: sensor_drop_threshold
+    Removed: 0 samples (0.00%)
