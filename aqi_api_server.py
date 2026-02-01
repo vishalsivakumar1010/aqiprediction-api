@@ -297,8 +297,10 @@ if __name__ == "__main__":
     import uvicorn
     
     parser = argparse.ArgumentParser(description='AQI Prediction API Server')
-    parser.add_argument('--host', default='127.0.0.1', help='Host to bind to (default: 127.0.0.1)')
-    parser.add_argument('--port', type=int, default=8000, help='Port to bind to (default: 8000)')
+    # Get port from environment variable (Render sets PORT automatically) or default to 8000
+    default_port = int(os.getenv('PORT', 8000))
+    parser.add_argument('--host', default='0.0.0.0', help='Host to bind to (default: 0.0.0.0)')
+    parser.add_argument('--port', type=int, default=default_port, help='Port to bind to (default: from PORT env var or 8000)')
     parser.add_argument('--data-dir', default=None, help='Data directory (default: script location)')
     parser.add_argument('--model-dir', default=None, help='Model directory (default: data_dir/models)')
     parser.add_argument('--api-key', default=None, help='PurpleAir API key (or set PURPLEAIR_API_KEY env var)')
