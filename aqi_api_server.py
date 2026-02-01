@@ -225,15 +225,28 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
             # If no historical CSV, use just current data
             test_df = current_df.copy()
         
-        # Fetch wind data (if available)
+        # Ensure wind columns exist BEFORE any operations (critical for feature engineering)
+        # These columns must exist even if wind data is not available
+        if 'wdir' not in test_df.columns:
+            test_df['wdir'] = np.nan
+        if 'wind_dir_x' not in test_df.columns:
+            test_df['wind_dir_x'] = np.nan
+        if 'wind_dir_y' not in test_df.columns:
+            test_df['wind_dir_y'] = np.nan
+        
+        # Fetch wind data (if available) and merge it
         from test_predictions import fetch_current_wind_data_for_prediction, merge_wind_data_for_prediction, WIND_FETCHING_AVAILABLE
         
         if WIND_FETCHING_AVAILABLE and 'latitude' in test_df.columns and test_df['latitude'].notna().any():
-            sensor_lat = test_df['latitude'].iloc[0]
-            sensor_lon = test_df['longitude'].iloc[0]
-            wind_data = fetch_current_wind_data_for_prediction(test_df, sensor_lat, sensor_lon)
-            if wind_data is not None:
-                test_df = merge_wind_data_for_prediction(test_df, wind_data)
+            try:
+                sensor_lat = test_df['latitude'].iloc[0]
+                sensor_lon = test_df['longitude'].iloc[0]
+                wind_data = fetch_current_wind_data_for_prediction(test_df, sensor_lat, sensor_lon)
+                if wind_data is not None:
+                    test_df = merge_wind_data_for_prediction(test_df, wind_data)
+            except Exception as e:
+                # Wind fetch failed, but columns already exist (filled with NaN above)
+                print(f"Warning: Wind data fetch failed: {e}")
         
         # Prepare features
         feature_row = prepare_features_for_prediction(test_df, sensor_id)
