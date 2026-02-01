@@ -571,13 +571,31 @@ def prepare_test_data_from_csv(data_dir, sensor_id, num_rows=48):
             if 'name' in sensor_locs.columns:
                 df['name'] = sensor_locs.iloc[0]['name']
     
+    # Ensure wind columns exist BEFORE fetching (in case fetch fails)
+    if 'wdir' not in df.columns:
+        df['wdir'] = np.nan
+        df['wind_dir_x'] = np.nan
+        df['wind_dir_y'] = np.nan
+    
     # Fetch and merge wind data
     if WIND_FETCHING_AVAILABLE and 'latitude' in df.columns and df['latitude'].notna().any():
-        sensor_lat = df['latitude'].iloc[0]
-        sensor_lon = df['longitude'].iloc[0]
-        wind_data = fetch_current_wind_data_for_prediction(df, sensor_lat, sensor_lon)
-        if wind_data is not None:
-            df = merge_wind_data_for_prediction(df, wind_data)
+        try:
+            sensor_lat = df['latitude'].iloc[0]
+            sensor_lon = df['longitude'].iloc[0]
+            wind_data = fetch_current_wind_data_for_prediction(df, sensor_lat, sensor_lon)
+            if wind_data is not None:
+                df = merge_wind_data_for_prediction(df, wind_data)
+        except Exception as e:
+            # Wind fetch failed, but columns already exist (filled with NaN above)
+            print(f"Warning: Wind data fetch failed in prepare_test_data_from_csv: {e}")
+    
+    # Final check: ensure wind columns exist
+    if 'wdir' not in df.columns:
+        df['wdir'] = np.nan
+    if 'wind_dir_x' not in df.columns:
+        df['wind_dir_x'] = np.nan
+    if 'wind_dir_y' not in df.columns:
+        df['wind_dir_y'] = np.nan
     
     return df
 
