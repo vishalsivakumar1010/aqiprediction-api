@@ -298,7 +298,9 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description='AQI Prediction API Server')
     # Get port from environment variable (Render sets PORT automatically) or default to 8000
-    default_port = int(os.getenv('PORT', 8000))
+    # Handle case where PORT might be empty string
+    port_env = os.getenv('PORT', '')
+    default_port = int(port_env) if port_env and port_env.strip() else 8000
     parser.add_argument('--host', default='0.0.0.0', help='Host to bind to (default: 0.0.0.0)')
     parser.add_argument('--port', type=int, default=default_port, help='Port to bind to (default: from PORT env var or 8000)')
     parser.add_argument('--data-dir', default=None, help='Data directory (default: script location)')
