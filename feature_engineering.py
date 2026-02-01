@@ -421,6 +421,5 @@ if __name__ == "__main__":
     test_df = engineer_features(test_sensor)
     
     print(f"\nFeature columns: {len(test_df.columns)}")
-    print(f"\nSample features:\n{test_df[['sensor_id', 'time_stamp', 'pm2_5_atm', 
-          'pm2_5_atm_lag_1', 'pm2_5_atm_rolling_mean_2', 'hour', 'day_of_week']].head()}")
+    print(f"\nSample features:\n{test_df[['sensor_id', 'time_stamp', 'pm2_5_atm', 'pm2_5_atm_lag_1', 'pm2_5_atm_rolling_mean_2', 'hour', 'day_of_week']].head()}")
 
