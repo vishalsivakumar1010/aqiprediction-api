@@ -313,7 +313,8 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
                 "distance_km": round(distance_km, 2),
                 "latitude": nearest['latitude'],
                 "longitude": nearest['longitude']
-            }
+            },
+            message=warning_message
         )
         
     except HTTPException:
