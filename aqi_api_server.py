@@ -221,18 +221,30 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
         current_aqi = pm25_to_aqi(current_pm25)
         current_category = aqi_to_category(current_aqi)
         
-        # Prepare historical data for features
+        # Prepare historical data using LIVE API (last 24 hours) instead of stale CSV
+        # This ensures fresh historical context for accurate predictions
+        from test_predictions import prepare_test_data_from_live_api, prepare_test_data_from_csv
+        
         try:
-            hist_df = prepare_test_data_from_csv(data_dir, sensor_id, num_rows=47)
-            current_df['time_stamp'] = pd.to_datetime(current_df['time_stamp'], utc=True)
-            if hist_df is not None and len(hist_df) > 0:
-                hist_df['time_stamp'] = pd.to_datetime(hist_df['time_stamp'], utc=True)
-                test_df = pd.concat([hist_df, current_df], ignore_index=True).sort_values('time_stamp').reset_index(drop=True)
-            else:
-                test_df = current_df.copy()
+            # Try to use live API history first (preferred)
+            test_df = prepare_test_data_from_live_api(use_api_key, sensor_id, hours=24, data_dir=data_dir)
+            print(f"✓ Using live API history (fresh data)")
         except Exception as e:
-            # If no historical CSV, use just current data
-            test_df = current_df.copy()
+            # Fall back to CSV if API fails
+            print(f"⚠ Could not fetch live API history: {e}")
+            print(f"  Falling back to CSV data (may be stale)")
+            try:
+                hist_df = prepare_test_data_from_csv(data_dir, sensor_id, num_rows=47)
+                current_df['time_stamp'] = pd.to_datetime(current_df['time_stamp'], utc=True)
+                if hist_df is not None and len(hist_df) > 0:
+                    hist_df['time_stamp'] = pd.to_datetime(hist_df['time_stamp'], utc=True)
+                    test_df = pd.concat([hist_df, current_df], ignore_index=True).sort_values('time_stamp').reset_index(drop=True)
+                else:
+                    test_df = current_df.copy()
+            except Exception as e2:
+                # If CSV also fails, use just current data
+                print(f"⚠ CSV fallback also failed: {e2}")
+                test_df = current_df.copy()
         
         # Ensure wind columns exist BEFORE any operations (critical for feature engineering)
         # These columns must exist even if wind data is not available
@@ -243,19 +255,25 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
         if 'wind_dir_y' not in test_df.columns:
             test_df['wind_dir_y'] = np.nan
         
-        # Fetch wind data (if available) and merge it
+        # Wind data should already be merged by prepare_test_data_from_live_api, but ensure it's there
         from test_predictions import fetch_current_wind_data_for_prediction, merge_wind_data_for_prediction, WIND_FETCHING_AVAILABLE
         
         if WIND_FETCHING_AVAILABLE and 'latitude' in test_df.columns and test_df['latitude'].notna().any():
-            try:
-                sensor_lat = test_df['latitude'].iloc[0]
-                sensor_lon = test_df['longitude'].iloc[0]
-                wind_data = fetch_current_wind_data_for_prediction(test_df, sensor_lat, sensor_lon)
-                if wind_data is not None:
-                    test_df = merge_wind_data_for_prediction(test_df, wind_data)
-            except Exception as e:
-                # Wind fetch failed, but columns already exist (filled with NaN above)
-                print(f"Warning: Wind data fetch failed: {e}")
+            # Check if wind data is already present
+            if test_df['wdir'].notna().any():
+                print(f"✓ Wind data already merged")
+            else:
+                # Try to fetch wind data if not already present
+                try:
+                    sensor_lat = test_df['latitude'].iloc[0]
+                    sensor_lon = test_df['longitude'].iloc[0]
+                    wind_data = fetch_current_wind_data_for_prediction(test_df, sensor_lat, sensor_lon)
+                    if wind_data is not None:
+                        test_df = merge_wind_data_for_prediction(test_df, wind_data)
+                        print(f"✓ Wind data fetched and merged")
+                except Exception as e:
+                    # Wind fetch failed, but columns already exist (filled with NaN above)
+                    print(f"⚠ Wind data fetch failed: {e}")
         
         # Prepare features
         feature_row = prepare_features_for_prediction(test_df, sensor_id)
@@ -270,9 +288,11 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
                 feature_row_reordered[col] = [np.nan]
         feature_row = feature_row_reordered
         
-        # Make predictions with ensemble (60% ML + 40% persistence)
-        # Using current_pm25 for persistence baseline prevents unrealistic predictions
-        predictions = make_predictions(models, feature_row, feature_columns, current_pm25=current_pm25)
+        # Make predictions with regime-based ensemble weights
+        # If AQI >= 100, uses 80% persistence (1h) or 70% persistence (3h)
+        # Otherwise uses 60% ML + 40% persistence
+        predictions = make_predictions(models, feature_row, feature_columns, 
+                                      current_pm25=current_pm25, current_aqi=current_aqi)
         
         # Build warning message if sensor is far away
         warning_message = None

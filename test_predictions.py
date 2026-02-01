@@ -281,6 +281,95 @@ def find_nearest_sensor(target_lat, target_lon, locations_df):
     }
 
 
+def fetch_historical_sensor_data_api(api_key, sensor_id, hours=24, average=30):
+    """
+    Fetch historical sensor data from PurpleAir API for the last N hours.
+    
+    Args:
+        api_key: PurpleAir API read key
+        sensor_id: Sensor ID
+        hours: Number of hours of history to fetch (default: 24)
+        average: Average period in minutes (default: 30 for 30-minute averages)
+        
+    Returns:
+        DataFrame with historical sensor data, standardized to PST and resampled to 30-min intervals
+    """
+    import requests
+    
+    # Calculate time range
+    end_time = pd.Timestamp.now(tz='UTC')
+    start_time = end_time - pd.Timedelta(hours=hours)
+    
+    url = f"https://api.purpleair.com/v1/sensors/{sensor_id}/history"
+    headers = {'X-API-Key': api_key}
+    params = {
+        'start_timestamp': int(start_time.timestamp()),
+        'end_timestamp': int(end_time.timestamp()),
+        'average': average,
+        'fields': 'humidity,temperature,pm2.5_atm'
+    }
+    
+    try:
+        response = requests.get(url, headers=headers, params=params, timeout=30)
+        response.raise_for_status()
+        data = response.json()
+        
+        if 'data' not in data or len(data['data']) == 0:
+            print(f"⚠ No historical data returned from API for sensor {sensor_id}")
+            return None
+        
+        # Convert to DataFrame
+        df = pd.DataFrame(data['data'], columns=data['fields'])
+        
+        # Convert timestamp from Unix seconds to datetime
+        df['time_stamp'] = pd.to_datetime(df['time_stamp'], unit='s', utc=True)
+        
+        # Standardize column names
+        if 'pm2.5_atm' in df.columns:
+            df = df.rename(columns={'pm2.5_atm': 'pm2_5_atm'})
+        
+        # Add sensor_id
+        df['sensor_id'] = int(sensor_id)
+        
+        # Convert to PST (America/Los_Angeles) and make timezone-naive
+        tz_pst = 'America/Los_Angeles'
+        df['time_stamp'] = df['time_stamp'].dt.tz_convert(tz_pst).dt.tz_localize(None)
+        
+        # Resample to 30-minute intervals (:00/:30) if needed
+        # PurpleAir API should already return 30-min averages, but we'll ensure alignment
+        df = df.set_index('time_stamp')
+        
+        # Resample to 30-min intervals, taking the last value in each interval
+        df_resampled = df.resample('30min', label='right', closed='right').last()
+        
+        # Forward fill any missing intervals (up to 2 hours)
+        df_resampled = df_resampled.ffill(limit=4)
+        
+        # Reset index
+        df_resampled = df_resampled.reset_index()
+        df_resampled.rename(columns={'index': 'time_stamp'}, inplace=True)
+        
+        # Ensure timestamps are on :00 or :30 minutes
+        df_resampled['time_stamp'] = df_resampled['time_stamp'].dt.floor('30min')
+        
+        # Sort by timestamp
+        df_resampled = df_resampled.sort_values('time_stamp').reset_index(drop=True)
+        
+        print(f"✓ Fetched {len(df_resampled)} historical rows from API (last {hours} hours)")
+        print(f"  Date range: {df_resampled['time_stamp'].min()} to {df_resampled['time_stamp'].max()}")
+        
+        return df_resampled
+        
+    except requests.exceptions.RequestException as e:
+        print(f"⚠ Error fetching historical data from API: {e}")
+        return None
+    except Exception as e:
+        print(f"⚠ Error processing historical data: {e}")
+        import traceback
+        traceback.print_exc()
+        return None
+
+
 def fetch_current_sensor_data_api(api_key, sensor_id):
     """
     Fetch current live sensor data from PurpleAir API.
@@ -290,7 +379,7 @@ def fetch_current_sensor_data_api(api_key, sensor_id):
         sensor_id: Sensor ID
         
     Returns:
-        DataFrame with current sensor data (single row)
+        DataFrame with current sensor data (single row), standardized to PST
     """
     import requests
     
@@ -308,10 +397,17 @@ def fetch_current_sensor_data_api(api_key, sensor_id):
         
         sensor_info = data['sensor']
         
+        # Get current time in PST
+        tz_pst = 'America/Los_Angeles'
+        current_time_pst = pd.Timestamp.now(tz='UTC').tz_convert(tz_pst).tz_localize(None)
+        
+        # Round to nearest 30-minute interval (:00 or :30)
+        current_time_pst = current_time_pst.floor('30min')
+        
         # Create DataFrame with current data
         current_data = {
             'sensor_id': int(sensor_id),
-            'time_stamp': pd.Timestamp.now(tz='UTC'),
+            'time_stamp': current_time_pst,
             'humidity': sensor_info.get('humidity'),
             'temperature': sensor_info.get('temperature'),
             'pm2_5_atm': sensor_info.get('pm2.5_atm'),
@@ -513,6 +609,96 @@ def merge_wind_data_for_prediction(df, wind_data):
     return df
 
 
+def prepare_test_data_from_live_api(api_key, sensor_id, hours=24, data_dir=None):
+    """
+    Prepare test data using live API history (last 24 hours) instead of stale CSV.
+    This ensures fresh historical context for accurate predictions.
+    
+    Args:
+        api_key: PurpleAir API read key
+        sensor_id: Sensor ID
+        hours: Number of hours of history to fetch (default: 24)
+        data_dir: Optional directory for sensor location info
+        
+    Returns:
+        DataFrame with sensor data ready for prediction (standardized to PST, 30-min intervals)
+    """
+    # Fetch historical data from API (last 24 hours)
+    hist_df = fetch_historical_sensor_data_api(api_key, sensor_id, hours=hours)
+    
+    if hist_df is None or len(hist_df) == 0:
+        print(f"⚠ Could not fetch historical data from API, falling back to current data only")
+        # Fall back to current data only
+        current_df = fetch_current_sensor_data_api(api_key, sensor_id)
+        if current_df is None or len(current_df) == 0:
+            raise ValueError(f"Could not fetch any data from API for sensor {sensor_id}")
+        return current_df
+    
+    # Fetch current live data
+    current_df = fetch_current_sensor_data_api(api_key, sensor_id)
+    if current_df is None or len(current_df) == 0:
+        print(f"⚠ Could not fetch current data, using historical data only")
+        return hist_df
+    
+    # Combine historical and current data
+    # Remove duplicate if current timestamp matches last historical timestamp
+    hist_last_time = hist_df['time_stamp'].iloc[-1]
+    current_time = current_df['time_stamp'].iloc[0]
+    
+    if hist_last_time == current_time:
+        # Current data is duplicate of last historical row, use historical only
+        print(f"  Current data timestamp matches last historical row, using historical data")
+        combined_df = hist_df.copy()
+    else:
+        # Combine and sort
+        combined_df = pd.concat([hist_df, current_df], ignore_index=True)
+        combined_df = combined_df.sort_values('time_stamp').reset_index(drop=True)
+    
+    # Add location data if available
+    if data_dir:
+        locations_df = load_sensor_locations(data_dir)
+        if locations_df is not None:
+            sensor_locs = locations_df[locations_df['sensor_id'] == int(sensor_id)]
+            if not sensor_locs.empty:
+                if 'latitude' not in combined_df.columns:
+                    combined_df['latitude'] = sensor_locs.iloc[0]['latitude']
+                if 'longitude' not in combined_df.columns:
+                    combined_df['longitude'] = sensor_locs.iloc[0]['longitude']
+                if 'name' not in combined_df.columns:
+                    combined_df['name'] = sensor_locs.iloc[0].get('name', f"Sensor {sensor_id}")
+    
+    # Ensure wind columns exist BEFORE fetching (in case fetch fails)
+    if 'wdir' not in combined_df.columns:
+        combined_df['wdir'] = np.nan
+        combined_df['wind_dir_x'] = np.nan
+        combined_df['wind_dir_y'] = np.nan
+    
+    # Fetch and merge wind data
+    if WIND_FETCHING_AVAILABLE and 'latitude' in combined_df.columns and combined_df['latitude'].notna().any():
+        try:
+            sensor_lat = combined_df['latitude'].iloc[0]
+            sensor_lon = combined_df['longitude'].iloc[0]
+            wind_data = fetch_current_wind_data_for_prediction(combined_df, sensor_lat, sensor_lon)
+            if wind_data is not None:
+                combined_df = merge_wind_data_for_prediction(combined_df, wind_data)
+        except Exception as e:
+            # Wind fetch failed, but columns already exist (filled with NaN above)
+            print(f"Warning: Wind data fetch failed: {e}")
+    
+    # Final check: ensure wind columns exist
+    if 'wdir' not in combined_df.columns:
+        combined_df['wdir'] = np.nan
+    if 'wind_dir_x' not in combined_df.columns:
+        combined_df['wind_dir_x'] = np.nan
+    if 'wind_dir_y' not in combined_df.columns:
+        combined_df['wind_dir_y'] = np.nan
+    
+    print(f"✓ Prepared {len(combined_df)} rows from live API (fresh history)")
+    print(f"  Date range: {combined_df['time_stamp'].min()} to {combined_df['time_stamp'].max()}")
+    
+    return combined_df
+
+
 def prepare_test_data_from_csv(data_dir, sensor_id, num_rows=48):
     """
     Prepare test data from existing CSV files.
@@ -660,25 +846,58 @@ def prepare_features_for_prediction(df, sensor_id):
     return df_features.iloc[[-1]]
 
 
-def make_predictions(models, feature_row, feature_columns, current_pm25=None, ensemble_weight=0.6):
+def make_predictions(models, feature_row, feature_columns, current_pm25=None, current_aqi=None, 
+                     ensemble_weight=None, max_worsening_rate=0.2, bias_correction=0.0,
+                     bias_correction_3h=None):
     """
     Make predictions using the loaded models with optional ensemble with persistence.
+    Uses regime-based ensemble weights: higher persistence weight during high pollution events.
+    Phase 2.1: Updated normal regime weights (1h: 40/60, 3h: 30/70) and added rate-of-change cap.
+    Phase 2.1 Refinements: 3h-only bias correction and stricter 3h rate-of-change cap.
     
     Args:
         models: Dictionary with models for '1h' and '3h'
         feature_row: DataFrame row with engineered features
         feature_columns: List of feature column names expected by model
         current_pm25: Current PM2.5 value for persistence baseline (optional)
-                     If provided, ensemble will be: 60% ML + 40% persistence (default weights)
-        ensemble_weight: Weight for ML prediction (default 0.6, persistence = 1 - ensemble_weight)
+        current_aqi: Current AQI value (optional, used for regime-based weighting)
+        ensemble_weight: Base weight for ML prediction (deprecated, now uses Phase 2.1 defaults)
+                        Normal regime: 1h=0.4, 3h=0.3
+                        High pollution: 1h=0.2, 3h=0.3
+        max_worsening_rate: Maximum allowed worsening rate per hour (default 0.2 = 20%)
+        bias_correction: Bias correction factor for 1h (default 0.0 = disabled, not recommended)
+        bias_correction_3h: Bias correction for 3h only (default None = auto from validation, ~3.3 μg/m³)
         
     Returns:
         Dictionary with predictions for both horizons
     """
+    from aqi_utils import pm25_to_aqi, aqi_to_category
+    
     predictions = {}
+    
+    # Calculate current AQI if not provided
+    if current_aqi is None and current_pm25 is not None:
+        current_aqi = pm25_to_aqi(current_pm25)
+    
+    # Determine regime-based ensemble weights (Phase 2.1)
+    # If AQI >= 100 (or PM2.5 >= 35), use higher persistence weight
+    use_regime_weights = False
+    if current_aqi is not None and current_aqi >= 100:
+        use_regime_weights = True
+        # High pollution regime: 1h: 20% ML + 80% persistence, 3h: 30% ML + 70% persistence
+        ensemble_weights = {'1h': 0.2, '3h': 0.3}
+    elif current_pm25 is not None and current_pm25 >= 35:
+        use_regime_weights = True
+        ensemble_weights = {'1h': 0.2, '3h': 0.3}
+    else:
+        # Normal regime (Phase 2.1): 1h: 40% ML + 60% persistence, 3h: 30% ML + 70% persistence
+        ensemble_weights = {'1h': 0.4, '3h': 0.3}
     
     for horizon in ['1h', '3h']:
         model_info = models[horizon]
+        
+        # Get regime-specific ensemble weight
+        horizon_ensemble_weight = ensemble_weights[horizon]
         
         # Extract features in correct order
         # Use NaN for missing values - XGBoost handles NaN the same way it did in training
@@ -720,14 +939,77 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, en
         # Ensemble with persistence if current_pm25 is provided
         if current_pm25 is not None and not pd.isna(current_pm25):
             persistence_pm25 = float(current_pm25)
-            # Combine ML prediction with persistence baseline
-            # Default: 60% ML + 40% persistence
-            predicted_pm25 = ensemble_weight * ml_predicted_pm25 + (1 - ensemble_weight) * persistence_pm25
+            # Combine ML prediction with persistence baseline using regime-based weights
+            predicted_pm25 = horizon_ensemble_weight * ml_predicted_pm25 + (1 - horizon_ensemble_weight) * persistence_pm25
+            
+            if use_regime_weights:
+                print(f"  Using regime-based weights: {int(horizon_ensemble_weight*100)}% ML + {int((1-horizon_ensemble_weight)*100)}% persistence (high pollution)")
+            
+            # Apply rate-of-change cap (Phase 2.1)
+            # Limit how much the prediction can worsen per hour
+            if current_pm25 > 0:
+                hours_ahead = 1.0 if horizon == '1h' else 3.0
+                max_allowed = current_pm25 * (1 + max_worsening_rate * hours_ahead)
+                if predicted_pm25 > max_allowed:
+                    predicted_pm25 = max_allowed
+                    # Note: We don't cap improvements, only worsening
+            
+            # Apply stricter 3h rate-of-change cap (Phase 2.1 Refinements)
+            if horizon == '3h' and current_aqi is not None:
+                if current_aqi < 100:
+                    # Normal regime: cap worsening to +30 AQI over 3 hours
+                    max_aqi_allowed = current_aqi + 30
+                    predicted_aqi_temp = pm25_to_aqi(predicted_pm25)
+                    if predicted_aqi_temp > max_aqi_allowed:
+                        predicted_pm25 = aqi_to_pm25(max_aqi_allowed)
+                else:
+                    # High AQI regime: optional tighter cap (+20 AQI over 3h)
+                    max_aqi_allowed = current_aqi + 20
+                    predicted_aqi_temp = pm25_to_aqi(predicted_pm25)
+                    if predicted_aqi_temp > max_aqi_allowed:
+                        predicted_pm25 = aqi_to_pm25(max_aqi_allowed)
+            
+            # Apply bias correction (Phase 2.1 Refinements: 3h only)
+            if horizon == '3h':
+                # Use provided bias_correction_3h or default from validation
+                if bias_correction_3h is None:
+                    # Default: 22% of estimated 3h bias from validation (9.31 μg/m³)
+                    # Adjusted from 0.35 to 0.22 to avoid overcorrection
+                    estimated_3h_bias = 9.31
+                    correction_factor = 0.22
+                    bias_correction_3h = correction_factor * estimated_3h_bias
+                predicted_pm25 = max(0.1, predicted_pm25 - bias_correction_3h)
+            elif bias_correction > 0:
+                # 1h bias correction (not recommended, but kept for compatibility)
+                predicted_pm25 = max(0.1, predicted_pm25 - bias_correction)
+            
             # Ensure reasonable values after ensemble (minimum 0.1 to avoid unrealistic 0.0)
             predicted_pm25 = max(0.1, min(1000.0, predicted_pm25))
         else:
             # No ensemble, use ML prediction only
             predicted_pm25 = ml_predicted_pm25
+            
+            # Apply stricter 3h rate-of-change cap (Phase 2.1 Refinements)
+            if horizon == '3h' and current_aqi is not None:
+                predicted_aqi_temp = pm25_to_aqi(predicted_pm25)
+                if current_aqi < 100:
+                    max_aqi_allowed = current_aqi + 30
+                    if predicted_aqi_temp > max_aqi_allowed:
+                        predicted_pm25 = aqi_to_pm25(max_aqi_allowed)
+                else:
+                    max_aqi_allowed = current_aqi + 20
+                    if predicted_aqi_temp > max_aqi_allowed:
+                        predicted_pm25 = aqi_to_pm25(max_aqi_allowed)
+            
+            # Apply bias correction (Phase 2.1 Refinements: 3h only)
+            if horizon == '3h':
+                if bias_correction_3h is None:
+                    estimated_3h_bias = 9.31
+                    correction_factor = 0.22  # Adjusted from 0.35 to 0.22
+                    bias_correction_3h = correction_factor * estimated_3h_bias
+                predicted_pm25 = max(0.1, predicted_pm25 - bias_correction_3h)
+            elif bias_correction > 0:
+                predicted_pm25 = max(0.1, predicted_pm25 - bias_correction)
         
         # Convert to AQI
         predicted_aqi = pm25_to_aqi(predicted_pm25)
