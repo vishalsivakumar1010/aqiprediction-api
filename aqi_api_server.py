@@ -209,6 +209,15 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
         
         current_row = current_df.iloc[0]
         current_pm25 = current_row['pm2_5_atm']
+        
+        # Validate current PM2.5 value
+        if pd.isna(current_pm25) or current_pm25 is None:
+            raise HTTPException(status_code=500, detail="Current sensor PM2.5 reading is missing or invalid")
+        
+        # Check for unrealistic values (sensor errors)
+        if current_pm25 < 0 or current_pm25 > 500:
+            raise HTTPException(status_code=500, detail=f"Current sensor PM2.5 reading appears invalid: {current_pm25} μg/m³")
+        
         current_aqi = pm25_to_aqi(current_pm25)
         current_category = aqi_to_category(current_aqi)
         
