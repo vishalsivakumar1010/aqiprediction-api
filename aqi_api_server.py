@@ -261,8 +261,9 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
                 feature_row_reordered[col] = [np.nan]
         feature_row = feature_row_reordered
         
-        # Make predictions
-        predictions = make_predictions(models, feature_row, feature_columns)
+        # Make predictions with ensemble (60% ML + 40% persistence)
+        # Using current_pm25 for persistence baseline prevents unrealistic predictions
+        predictions = make_predictions(models, feature_row, feature_columns, current_pm25=current_pm25)
         
         # Build response
         return PredictionResponse(
