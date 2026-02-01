@@ -714,8 +714,8 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, en
         pm25_model = model_info['pm25_model']
         ml_predicted_pm25 = pm25_model.predict(X)[0]
         
-        # Ensure reasonable values
-        ml_predicted_pm25 = max(0.0, min(1000.0, float(ml_predicted_pm25)))
+        # Ensure reasonable values (minimum 0.1 to avoid unrealistic 0.0 predictions)
+        ml_predicted_pm25 = max(0.1, min(1000.0, float(ml_predicted_pm25)))
         
         # Ensemble with persistence if current_pm25 is provided
         if current_pm25 is not None and not pd.isna(current_pm25):
@@ -723,8 +723,8 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, en
             # Combine ML prediction with persistence baseline
             # Default: 60% ML + 40% persistence
             predicted_pm25 = ensemble_weight * ml_predicted_pm25 + (1 - ensemble_weight) * persistence_pm25
-            # Ensure reasonable values after ensemble
-            predicted_pm25 = max(0.0, min(1000.0, predicted_pm25))
+            # Ensure reasonable values after ensemble (minimum 0.1 to avoid unrealistic 0.0)
+            predicted_pm25 = max(0.1, min(1000.0, predicted_pm25))
         else:
             # No ensemble, use ML prediction only
             predicted_pm25 = ml_predicted_pm25
