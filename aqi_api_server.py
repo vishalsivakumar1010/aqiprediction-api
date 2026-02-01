@@ -274,6 +274,13 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
         # Using current_pm25 for persistence baseline prevents unrealistic predictions
         predictions = make_predictions(models, feature_row, feature_columns, current_pm25=current_pm25)
         
+        # Build warning message if sensor is far away
+        warning_message = None
+        if distance_km > 3.0:
+            warning_message = f"Note: Nearest sensor is {distance_km:.1f} km away. Readings may not be perfectly representative of this exact location."
+        elif distance_km > 2.0:
+            warning_message = f"Note: Nearest sensor is {distance_km:.1f} km away."
+        
         # Build response
         return PredictionResponse(
             success=True,
