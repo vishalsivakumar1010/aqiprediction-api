@@ -931,6 +931,8 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
     Uses regime-based ensemble weights: higher persistence weight during high pollution events.
     Phase 2.1: Updated normal regime weights (1h: 40/60, 3h: 30/70) and added rate-of-change cap.
     Phase 2.1 Refinements: 3h-only bias correction and stricter 3h rate-of-change cap.
+    Phase 2.1.5: Direction-aware bias correction - applies only when predicting improvement
+                 (health-conservative: limits false reassurance, allows worsening when supported).
     
     Args:
         models: Dictionary with models for '1h' and '3h'
@@ -1047,8 +1049,7 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
                         predicted_pm25 = aqi_to_pm25(max_aqi_allowed)
             
             # Apply bias correction (Phase 2.1 Refinements: 3h only)
-            # FIX: Make bias correction conditional and prevent overshoot
-            # Only subtract the "excess above current", not a fixed amount
+            # Phase 2.1.5: Direction-aware bias correction (health-conservative)
             if horizon == '3h':
                 # Use provided bias_correction_3h or default from validation
                 if bias_correction_3h is None:
@@ -1063,13 +1064,17 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
                 bias_applied = False
                 applied_correction = 0.0
                 
-                # Only apply bias correction if prediction is above current (over-prediction to correct)
-                # FIX: Only subtract the excess above current, not a fixed amount (prevents overshoot)
-                if current_pm25 is not None and predicted_pm25 > current_pm25:
-                    delta = predicted_pm25 - current_pm25
+                # Phase 2.1.5: Direction-aware bias correction (health-conservative)
+                # Apply bias correction ONLY when predicting improvement (pred < current)
+                # This limits false reassurance while allowing worsening when supported
+                if current_pm25 is not None and predicted_pm25 < current_pm25:
+                    # Predicting improvement - limit optimism by moving toward current
+                    delta = current_pm25 - predicted_pm25
                     applied_correction = min(bias_correction_3h, delta)
-                    predicted_pm25 = predicted_pm25 - applied_correction
+                    predicted_pm25 = predicted_pm25 + applied_correction  # Move toward current
                     bias_applied = True
+                # If pred >= current (worsening/flat), do NOT apply bias correction
+                # This allows worsening when evidence supports it (health-conservative)
                 
                 # Temporary diagnostic logging for 3h forecast
                 print(f"  [3h DIAGNOSTIC] current_pm25={current_pm25:.2f}, raw_ML={ml_predicted_pm25:.2f}, "
@@ -1112,13 +1117,17 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
                 bias_applied = False
                 applied_correction = 0.0
                 
-                # Only apply bias correction if prediction is above current (over-prediction to correct)
-                # FIX: Only subtract the excess above current, not a fixed amount (prevents overshoot)
-                if current_pm25 is not None and predicted_pm25 > current_pm25:
-                    delta = predicted_pm25 - current_pm25
+                # Phase 2.1.5: Direction-aware bias correction (health-conservative)
+                # Apply bias correction ONLY when predicting improvement (pred < current)
+                # This limits false reassurance while allowing worsening when supported
+                if current_pm25 is not None and predicted_pm25 < current_pm25:
+                    # Predicting improvement - limit optimism by moving toward current
+                    delta = current_pm25 - predicted_pm25
                     applied_correction = min(bias_correction_3h, delta)
-                    predicted_pm25 = predicted_pm25 - applied_correction
+                    predicted_pm25 = predicted_pm25 + applied_correction  # Move toward current
                     bias_applied = True
+                # If pred >= current (worsening/flat), do NOT apply bias correction
+                # This allows worsening when evidence supports it (health-conservative)
                 
                 # Temporary diagnostic logging for 3h forecast
                 print(f"  [3h DIAGNOSTIC] current_pm25={current_pm25:.2f}, raw_ML={ml_predicted_pm25:.2f}, "
