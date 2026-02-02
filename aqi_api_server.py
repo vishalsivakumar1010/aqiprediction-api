@@ -72,6 +72,7 @@ class PredictionResponse(BaseModel):
     forecast_3h: dict
     sensor_info: dict
     message: Optional[str] = None
+    debug: Optional[dict] = None  # Temporary debug field for UI diagnosis
 
 class ErrorResponse(BaseModel):
     success: bool
@@ -301,6 +302,36 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
         elif distance_km > 2.0:
             warning_message = f"Note: Nearest sensor is {distance_km:.1f} km away."
         
+        # Extract PM2.5 values for debug
+        pred_1h_pm25 = predictions['1h']['pm25_ugm3']
+        pred_3h_pm25 = predictions['3h']['pm25_ugm3']
+        pred_1h_aqi = predictions['1h']['aqi']
+        pred_3h_aqi = predictions['3h']['aqi']
+        
+        # Build debug information (temporary - for UI diagnosis)
+        debug_info = {
+            "selected_sensor_id": int(sensor_id),
+            "distance_km": round(distance_km, 3),
+            "current_pm25": round(float(current_pm25), 3),
+            "current_aqi": int(current_aqi),
+            "pred_1h_pm25": round(float(pred_1h_pm25), 3),
+            "pred_1h_aqi": int(pred_1h_aqi),
+            "pred_3h_pm25": round(float(pred_3h_pm25), 3),
+            "pred_3h_aqi": int(pred_3h_aqi),
+            "comparison": {
+                "current_vs_1h": {
+                    "pm25_diff": round(float(pred_1h_pm25 - current_pm25), 3),
+                    "aqi_diff": int(pred_1h_aqi - current_aqi),
+                    "direction": "improving" if pred_1h_pm25 < current_pm25 else "worsening" if pred_1h_pm25 > current_pm25 else "flat"
+                },
+                "current_vs_3h": {
+                    "pm25_diff": round(float(pred_3h_pm25 - current_pm25), 3),
+                    "aqi_diff": int(pred_3h_aqi - current_aqi),
+                    "direction": "improving" if pred_3h_pm25 < current_pm25 else "worsening" if pred_3h_pm25 > current_pm25 else "flat"
+                }
+            }
+        }
+        
         # Build response
         return PredictionResponse(
             success=True,
@@ -334,7 +365,8 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
                 "latitude": nearest['latitude'],
                 "longitude": nearest['longitude']
             },
-            message=warning_message
+            message=warning_message,
+            debug=debug_info
         )
         
     except HTTPException:
