@@ -289,11 +289,49 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
                 feature_row_reordered[col] = [np.nan]
         feature_row = feature_row_reordered
         
+        # Validate feature row before prediction (guards for NaN/empty history/missing features)
+        if feature_row.empty:
+            raise HTTPException(status_code=500, detail="Feature row is empty - cannot make predictions")
+        
+        # Check for critical missing features
+        critical_features = ['pm2_5_atm', 'time_stamp']  # Basic required features
+        missing_critical = [f for f in critical_features if f not in feature_row.columns]
+        if missing_critical:
+            print(f"⚠ Warning: Missing critical features: {missing_critical}")
+        
+        # Check for excessive NaN values (might indicate empty history)
+        nan_count = feature_row.isna().sum().sum()
+        total_values = len(feature_row.columns) * len(feature_row)
+        nan_percentage = (nan_count / total_values * 100) if total_values > 0 else 100
+        if nan_percentage > 90:
+            print(f"⚠ Warning: {nan_percentage:.1f}% of feature values are NaN - history may be empty")
+        
+        # Validate current_pm25 and current_aqi before prediction
+        if pd.isna(current_pm25) or current_pm25 is None:
+            raise HTTPException(status_code=500, detail="current_pm25 is NaN or None - cannot make predictions")
+        if pd.isna(current_aqi) or current_aqi is None:
+            raise HTTPException(status_code=500, detail="current_aqi is NaN or None - cannot make predictions")
+        
         # Make predictions with regime-based ensemble weights
         # If AQI >= 100, uses 80% persistence (1h) or 70% persistence (3h)
         # Otherwise uses 60% ML + 40% persistence
-        predictions = make_predictions(models, feature_row, feature_columns, 
-                                      current_pm25=current_pm25, current_aqi=current_aqi)
+        try:
+            predictions = make_predictions(models, feature_row, feature_columns, 
+                                          current_pm25=current_pm25, current_aqi=current_aqi)
+        except Exception as pred_error:
+            # Capture full stack trace for debugging
+            import traceback
+            error_trace = traceback.format_exc()
+            print(f"❌ ERROR in make_predictions:")
+            print(f"   Address: {address}")
+            print(f"   Sensor ID: {sensor_id}")
+            print(f"   Current PM2.5: {current_pm25}")
+            print(f"   Current AQI: {current_aqi}")
+            print(f"   Feature row shape: {feature_row.shape}")
+            print(f"   Feature row columns: {list(feature_row.columns)[:10]}...")  # First 10 columns
+            print(f"   Full traceback:")
+            print(error_trace)
+            raise HTTPException(status_code=500, detail=f"Prediction failed: {str(pred_error)}. Check logs for full traceback.")
         
         # Build warning message if sensor is far away
         warning_message = None
@@ -309,7 +347,9 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
         pred_3h_aqi = predictions['3h']['aqi']
         
         # Log sensor selection for diagnosis (check Render logs for unique sensor count)
-        print(f"  [SENSOR SELECTION] address='{address}', sensor_id={sensor_id}, distance_km={distance_km:.3f}")
+        print(f"  [SENSOR SELECTION] address='{address}', address_lat={target_lat:.6f}, address_lon={target_lon:.6f}, "
+              f"sensor_id={sensor_id}, sensor_lat={nearest['latitude']:.6f}, sensor_lon={nearest['longitude']:.6f}, "
+              f"distance_km={distance_km:.3f}")
         
         # Build debug information (temporary - for UI diagnosis)
         debug_info = {
@@ -379,7 +419,14 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Prediction error: {str(e)}")
+        # Capture full stack trace for debugging
+        import traceback
+        error_trace = traceback.format_exc()
+        print(f"❌ ERROR in make_prediction:")
+        print(f"   Address: {address if address else 'N/A'}")
+        print(f"   Full traceback:")
+        print(error_trace)
+        raise HTTPException(status_code=500, detail=f"Prediction error: {str(e)}. Check logs for full traceback.")
 
 
 if __name__ == "__main__":
