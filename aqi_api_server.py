@@ -308,9 +308,16 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
         pred_1h_aqi = predictions['1h']['aqi']
         pred_3h_aqi = predictions['3h']['aqi']
         
+        # Log sensor selection for diagnosis (check Render logs for unique sensor count)
+        print(f"  [SENSOR SELECTION] address='{address}', sensor_id={sensor_id}, distance_km={distance_km:.3f}")
+        
         # Build debug information (temporary - for UI diagnosis)
         debug_info = {
             "selected_sensor_id": int(sensor_id),
+            "sensor_lat": round(float(nearest['latitude']), 6),
+            "sensor_lon": round(float(nearest['longitude']), 6),
+            "address_lat": round(float(target_lat), 6),
+            "address_lon": round(float(target_lon), 6),
             "distance_km": round(distance_km, 3),
             "current_pm25": round(float(current_pm25), 3),
             "current_aqi": int(current_aqi),
