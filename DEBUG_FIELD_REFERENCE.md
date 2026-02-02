@@ -16,6 +16,10 @@ The `debug` field is now included in every API response (optional, won't break e
   "forecast_3h": { ... },
   "debug": {
     "selected_sensor_id": 19683,
+    "sensor_lat": 37.563332,
+    "sensor_lon": -121.993722,
+    "address_lat": 37.560000,
+    "address_lon": -121.990000,
     "distance_km": 0.523,
     "current_pm25": 28.700,
     "current_aqi": 88,
@@ -44,6 +48,10 @@ The `debug` field is now included in every API response (optional, won't break e
 | Field | Type | Description |
 |-------|------|-------------|
 | `selected_sensor_id` | integer | ID of the PurpleAir sensor used for prediction |
+| `sensor_lat` | float | Latitude of selected sensor (6 decimal precision) |
+| `sensor_lon` | float | Longitude of selected sensor (6 decimal precision) |
+| `address_lat` | float | Latitude of requested address (6 decimal precision) |
+| `address_lon` | float | Longitude of requested address (6 decimal precision) |
 | `distance_km` | float | Distance from address to sensor (3 decimal precision) |
 | `current_pm25` | float | Current PM2.5 value (3 decimal precision) |
 | `current_aqi` | integer | Current AQI (calculated from current_pm25) |
@@ -76,7 +84,10 @@ For each address, verify:
 
 #### Sensor Information
 - [ ] UI shows same `selected_sensor_id` as `debug.selected_sensor_id`
+- [ ] Verify `debug.sensor_lat` and `debug.sensor_lon` match sensor location
+- [ ] Verify `debug.address_lat` and `debug.address_lon` match geocoded address
 - [ ] UI shows same `distance_km` as `debug.distance_km` (within rounding)
+- [ ] Check Render logs for `[SENSOR SELECTION]` entries to count unique sensors
 
 #### Current Values
 - [ ] UI shows same `current_pm25` as `debug.current_pm25` (within rounding)
