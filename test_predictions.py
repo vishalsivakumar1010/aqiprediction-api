@@ -118,29 +118,106 @@ def load_models(model_dir='models'):
 
 
 def load_sensor_locations(data_dir):
-    """Load sensor location data from pickle or CSV."""
+    """
+    Load sensor location data from pickle or CSV.
+    Priority order:
+    1. Phase 2 sensor file (filtered to 40 sensors used in training) - matches trained models
+    2. Current directory sensor file
+    3. Original pipeline directory sensor file
+    4. CSV fallback
+    
+    Note: Phase 2 QC removed 2 sensors (17895, 165691), so we filter to only the 40 sensors
+    that were actually used in model training.
+    """
+    # Phase 2 sensor file (highest priority - matches trained models)
+    phase2_pkl = os.path.join(data_dir, 'P2-RouteFinder', 'data', 'sensor_locations', 'sensor_locations.pkl')
+    phase2_csv = os.path.join(data_dir, 'P2-RouteFinder', 'data', 'sensor_locations', 'sensor_locations.csv')
+    processed_file = os.path.join(data_dir, 'P2-RouteFinder', 'data', 'processed', 'purpleair_qc_cleaned.csv')
+    
+    # Current directory and original pipeline paths (fallback)
     location_path = os.path.join(data_dir, 'sensor_locations.pkl')
     alt_location_path = os.path.join(original_pipeline_dir, 'sensor_locations.pkl')
     csv_path = os.path.join(original_pipeline_dir, 'sensor_locations.csv')
     
-    # Try pickle files first
-    for path in [location_path, alt_location_path]:
-        if os.path.exists(path):
-            try:
-                with open(path, 'rb') as f:
-                    locations_df = pickle.load(f)
-                return locations_df
-            except Exception as e:
-                print(f"Warning: Could not load locations from {path}: {e}")
-                continue
+    # Sensors that were dropped during QC (not used in training)
+    # QC report shows: 17895 and 165691 were dropped
+    dropped_sensors = {17895, 165691}
     
-    # Try CSV file
+    # Try Phase 2 pickle file first - filter to only sensors used in training
+    if os.path.exists(phase2_pkl):
+        try:
+            with open(phase2_pkl, 'rb') as f:
+                locations_df = pickle.load(f)
+            
+            # Filter to only sensors that were actually used in training
+            # Option 1: Use processed dataset to get exact sensor list
+            if os.path.exists(processed_file):
+                try:
+                    processed_df = pd.read_csv(processed_file, usecols=['sensor_id'], nrows=1)
+                    # Read just to get column, then get unique sensors
+                    training_sensors = set(pd.read_csv(processed_file, usecols=['sensor_id'])['sensor_id'].unique())
+                    locations_df = locations_df[locations_df['sensor_id'].isin(training_sensors)].copy()
+                except Exception:
+                    # Fallback: filter out known dropped sensors
+                    locations_df = locations_df[~locations_df['sensor_id'].isin(dropped_sensors)].copy()
+            else:
+                # Fallback: filter out known dropped sensors
+                locations_df = locations_df[~locations_df['sensor_id'].isin(dropped_sensors)].copy()
+            
+            print(f"Loaded Phase 2 sensor locations: {len(locations_df)} sensors (filtered from QC)")
+            return locations_df
+        except Exception as e:
+            print(f"Warning: Could not load Phase 2 locations from {phase2_pkl}: {e}")
+    
+    # Try Phase 2 CSV file
+    if os.path.exists(phase2_csv):
+        try:
+            locations_df = pd.read_csv(phase2_csv)
+            if 'sensor_id' in locations_df.columns:
+                locations_df['sensor_id'] = locations_df['sensor_id'].astype(int)
+            
+            # Filter to only sensors used in training
+            if os.path.exists(processed_file):
+                try:
+                    training_sensors = set(pd.read_csv(processed_file, usecols=['sensor_id'])['sensor_id'].unique())
+                    locations_df = locations_df[locations_df['sensor_id'].isin(training_sensors)].copy()
+                except Exception:
+                    locations_df = locations_df[~locations_df['sensor_id'].isin(dropped_sensors)].copy()
+            else:
+                locations_df = locations_df[~locations_df['sensor_id'].isin(dropped_sensors)].copy()
+            
+            print(f"Loaded Phase 2 sensor locations (CSV): {len(locations_df)} sensors (filtered from QC)")
+            return locations_df
+        except Exception as e:
+            print(f"Warning: Could not load Phase 2 locations from CSV {phase2_csv}: {e}")
+    
+    # Try current directory pickle file
+    if os.path.exists(location_path):
+        try:
+            with open(location_path, 'rb') as f:
+                locations_df = pickle.load(f)
+            print(f"Loaded sensor locations from current directory: {len(locations_df)} sensors")
+            return locations_df
+        except Exception as e:
+            print(f"Warning: Could not load locations from {location_path}: {e}")
+    
+    # Try original pipeline directory pickle file
+    if os.path.exists(alt_location_path):
+        try:
+            with open(alt_location_path, 'rb') as f:
+                locations_df = pickle.load(f)
+            print(f"Loaded sensor locations from original pipeline: {len(locations_df)} sensors")
+            return locations_df
+        except Exception as e:
+            print(f"Warning: Could not load locations from {alt_location_path}: {e}")
+    
+    # Try CSV file as last resort
     if os.path.exists(csv_path):
         try:
             locations_df = pd.read_csv(csv_path)
-            # Ensure sensor_id is integer
             if 'sensor_id' in locations_df.columns:
                 locations_df['sensor_id'] = locations_df['sensor_id'].astype(int)
+            print(f"Loaded sensor locations from CSV: {len(locations_df)} sensors")
             return locations_df
         except Exception as e:
             print(f"Warning: Could not load locations from CSV {csv_path}: {e}")
