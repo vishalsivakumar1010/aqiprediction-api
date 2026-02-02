@@ -1047,7 +1047,8 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
                         predicted_pm25 = aqi_to_pm25(max_aqi_allowed)
             
             # Apply bias correction (Phase 2.1 Refinements: 3h only)
-            # FIX: Make bias correction conditional - only apply when prediction > current (over-prediction)
+            # FIX: Make bias correction conditional and prevent overshoot
+            # Only subtract the "excess above current", not a fixed amount
             if horizon == '3h':
                 # Use provided bias_correction_3h or default from validation
                 if bias_correction_3h is None:
@@ -1060,16 +1061,21 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
                 # Store pre-bias value for logging
                 predicted_pm25_pre_bias = predicted_pm25
                 bias_applied = False
+                applied_correction = 0.0
                 
                 # Only apply bias correction if prediction is above current (over-prediction to correct)
+                # FIX: Only subtract the excess above current, not a fixed amount (prevents overshoot)
                 if current_pm25 is not None and predicted_pm25 > current_pm25:
-                    predicted_pm25 = max(0.1, predicted_pm25 - bias_correction_3h)
+                    delta = predicted_pm25 - current_pm25
+                    applied_correction = min(bias_correction_3h, delta)
+                    predicted_pm25 = predicted_pm25 - applied_correction
                     bias_applied = True
                 
                 # Temporary diagnostic logging for 3h forecast
                 print(f"  [3h DIAGNOSTIC] current_pm25={current_pm25:.2f}, raw_ML={ml_predicted_pm25:.2f}, "
                       f"ensemble_pre_bias={predicted_pm25_pre_bias:.2f}, bias_applied={bias_applied}, "
-                      f"bias_amount={bias_correction_3h:.2f}, final_3h={predicted_pm25:.2f}")
+                      f"bias_amount={bias_correction_3h:.2f}, applied_correction={applied_correction:.2f}, "
+                      f"final_3h={predicted_pm25:.2f}")
             elif bias_correction > 0:
                 # 1h bias correction (not recommended, but kept for compatibility)
                 predicted_pm25 = max(0.1, predicted_pm25 - bias_correction)
@@ -1093,7 +1099,8 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
                         predicted_pm25 = aqi_to_pm25(max_aqi_allowed)
             
             # Apply bias correction (Phase 2.1 Refinements: 3h only)
-            # FIX: Make bias correction conditional - only apply when prediction > current (over-prediction)
+            # FIX: Make bias correction conditional and prevent overshoot
+            # Only subtract the "excess above current", not a fixed amount
             if horizon == '3h':
                 if bias_correction_3h is None:
                     estimated_3h_bias = 9.31
@@ -1103,16 +1110,21 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
                 # Store pre-bias value for logging
                 predicted_pm25_pre_bias = predicted_pm25
                 bias_applied = False
+                applied_correction = 0.0
                 
                 # Only apply bias correction if prediction is above current (over-prediction to correct)
+                # FIX: Only subtract the excess above current, not a fixed amount (prevents overshoot)
                 if current_pm25 is not None and predicted_pm25 > current_pm25:
-                    predicted_pm25 = max(0.1, predicted_pm25 - bias_correction_3h)
+                    delta = predicted_pm25 - current_pm25
+                    applied_correction = min(bias_correction_3h, delta)
+                    predicted_pm25 = predicted_pm25 - applied_correction
                     bias_applied = True
                 
                 # Temporary diagnostic logging for 3h forecast
                 print(f"  [3h DIAGNOSTIC] current_pm25={current_pm25:.2f}, raw_ML={ml_predicted_pm25:.2f}, "
                       f"ensemble_pre_bias={predicted_pm25_pre_bias:.2f}, bias_applied={bias_applied}, "
-                      f"bias_amount={bias_correction_3h:.2f}, final_3h={predicted_pm25:.2f}")
+                      f"bias_amount={bias_correction_3h:.2f}, applied_correction={applied_correction:.2f}, "
+                      f"final_3h={predicted_pm25:.2f}")
             elif bias_correction > 0:
                 predicted_pm25 = max(0.1, predicted_pm25 - bias_correction)
         
