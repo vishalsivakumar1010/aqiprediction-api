@@ -447,56 +447,83 @@ def fetch_historical_sensor_data_api(api_key, sensor_id, hours=24, average=30):
         return None
 
 
-def fetch_current_sensor_data_api(api_key, sensor_id):
+def fetch_current_sensor_data_api(api_key, sensor_id, max_retries=3):
     """
-    Fetch current live sensor data from PurpleAir API.
+    Fetch current live sensor data from PurpleAir API with retry logic.
     
     Args:
         api_key: PurpleAir API read key
         sensor_id: Sensor ID
+        max_retries: Maximum number of retry attempts (default: 3)
         
     Returns:
         DataFrame with current sensor data (single row), standardized to PST
     """
     import requests
+    import time
     
     url = f"https://api.purpleair.com/v1/sensors/{sensor_id}"
     headers = {'X-API-Key': api_key}
     params = {'fields': 'humidity,temperature,pm2.5_atm'}
     
-    try:
-        response = requests.get(url, headers=headers, params=params, timeout=10)
-        response.raise_for_status()
-        data = response.json()
-        
-        if 'sensor' not in data:
-            raise ValueError("No sensor data in API response")
-        
-        sensor_info = data['sensor']
-        
-        # Get current time in PST
-        tz_pst = 'America/Los_Angeles'
-        current_time_pst = pd.Timestamp.now(tz='UTC').tz_convert(tz_pst).tz_localize(None)
-        
-        # Round to nearest 30-minute interval (:00 or :30)
-        current_time_pst = current_time_pst.floor('30min')
-        
-        # Create DataFrame with current data
-        current_data = {
-            'sensor_id': int(sensor_id),
-            'time_stamp': current_time_pst,
-            'humidity': sensor_info.get('humidity'),
-            'temperature': sensor_info.get('temperature'),
-            'pm2_5_atm': sensor_info.get('pm2.5_atm'),
-            'latitude': sensor_info.get('latitude'),
-            'longitude': sensor_info.get('longitude'),
-            'name': sensor_info.get('name', f"Sensor {sensor_id}")
-        }
-        
-        return pd.DataFrame([current_data])
-        
-    except Exception as e:
-        raise Exception(f"Error fetching current data from API: {e}")
+    # Increased timeout for paid Render account (network latency may be higher)
+    timeout = 30  # Increased from 10 to 30 seconds
+    
+    last_error = None
+    for attempt in range(max_retries):
+        try:
+            response = requests.get(url, headers=headers, params=params, timeout=timeout)
+            response.raise_for_status()
+            data = response.json()
+            
+            if 'sensor' not in data:
+                raise ValueError("No sensor data in API response")
+            
+            sensor_info = data['sensor']
+            
+            # Get current time in PST
+            tz_pst = 'America/Los_Angeles'
+            current_time_pst = pd.Timestamp.now(tz='UTC').tz_convert(tz_pst).tz_localize(None)
+            
+            # Round to nearest 30-minute interval (:00 or :30)
+            current_time_pst = current_time_pst.floor('30min')
+            
+            # Create DataFrame with current data
+            current_data = {
+                'sensor_id': int(sensor_id),
+                'time_stamp': current_time_pst,
+                'humidity': sensor_info.get('humidity'),
+                'temperature': sensor_info.get('temperature'),
+                'pm2_5_atm': sensor_info.get('pm2.5_atm'),
+                'latitude': sensor_info.get('latitude'),
+                'longitude': sensor_info.get('longitude'),
+                'name': sensor_info.get('name', f"Sensor {sensor_id}")
+            }
+            
+            return pd.DataFrame([current_data])
+            
+        except requests.exceptions.Timeout as e:
+            last_error = e
+            if attempt < max_retries - 1:
+                wait_time = (attempt + 1) * 2  # Exponential backoff: 2s, 4s, 6s
+                print(f"⚠ PurpleAir API timeout (attempt {attempt + 1}/{max_retries}), retrying in {wait_time}s...")
+                time.sleep(wait_time)
+            else:
+                raise Exception(f"Error fetching current data from API: Timeout after {max_retries} attempts (timeout={timeout}s). PurpleAir API may be slow or unavailable.")
+        except requests.exceptions.RequestException as e:
+            last_error = e
+            if attempt < max_retries - 1:
+                wait_time = (attempt + 1) * 2
+                print(f"⚠ PurpleAir API error (attempt {attempt + 1}/{max_retries}): {e}, retrying in {wait_time}s...")
+                time.sleep(wait_time)
+            else:
+                raise Exception(f"Error fetching current data from API: {e}")
+        except Exception as e:
+            # Non-retryable errors (e.g., invalid response format)
+            raise Exception(f"Error fetching current data from API: {e}")
+    
+    # Should not reach here, but just in case
+    raise Exception(f"Error fetching current data from API: {last_error}")
 
 
 def fetch_current_wind_data_for_prediction(df, latitude=37.5483, longitude=-121.9886):
