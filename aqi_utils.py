@@ -45,6 +45,45 @@ def pm25_to_aqi(pm25):
     return np.round(aqi).astype(int)
 
 
+def aqi_to_pm25(aqi):
+    """
+    Convert AQI value to PM2.5 concentration (μg/m³) using US EPA formula (inverse of pm25_to_aqi).
+    
+    Args:
+        aqi: AQI value(s) - can be scalar or array-like
+        
+    Returns:
+        PM2.5 concentration value(s) of the same shape as input
+    """
+    aqi = np.asarray(aqi)
+    pm25 = np.zeros_like(aqi, dtype=float)
+    
+    # AQI breakpoints for PM2.5 (US EPA standard) - same as pm25_to_aqi
+    # Format: (C_low, C_high, I_low, I_high)
+    breakpoints = [
+        (0.0, 12.0, 0, 50),      # Good
+        (12.1, 35.4, 51, 100),   # Moderate
+        (35.5, 55.4, 101, 150),  # Unhealthy for Sensitive Groups
+        (55.5, 150.4, 151, 200), # Unhealthy
+        (150.5, 250.4, 201, 300), # Very Unhealthy
+        (250.5, 500.4, 301, 500), # Hazardous
+    ]
+    
+    # Inverse formula: PM2.5 = ((AQI - I_low) / (I_high - I_low)) * (C_high - C_low) + C_low
+    for c_low, c_high, i_low, i_high in breakpoints:
+        mask = (aqi >= i_low) & (aqi <= i_high)
+        if np.any(mask):
+            pm25[mask] = ((aqi[mask] - i_low) / (i_high - i_low)) * (c_high - c_low) + c_low
+    
+    # Handle values above 500 AQI (extended hazardous)
+    mask = aqi > 500
+    if np.any(mask):
+        # Inverse of extrapolation: PM2.5 = 500.4 + ((AQI - 500) / 300) * 500.4
+        pm25[mask] = 500.4 + ((aqi[mask] - 500) / 300) * 500.4
+    
+    return pm25
+
+
 def aqi_to_category(aqi):
     """
     Convert AQI value to category string.

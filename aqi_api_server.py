@@ -294,7 +294,8 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
             raise HTTPException(status_code=500, detail="Feature row is empty - cannot make predictions")
         
         # Check for critical missing features
-        critical_features = ['pm2_5_atm', 'time_stamp']  # Basic required features
+        # Note: time_stamp is intentionally removed before prediction (not a model feature)
+        critical_features = ['pm2_5_atm']  # Basic required features (time_stamp removed intentionally)
         missing_critical = [f for f in critical_features if f not in feature_row.columns]
         if missing_critical:
             print(f"⚠ Warning: Missing critical features: {missing_critical}")

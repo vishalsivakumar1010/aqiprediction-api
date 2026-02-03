@@ -41,7 +41,7 @@ if os.path.exists(original_pipeline_dir) and original_pipeline_dir not in sys.pa
     sys.path.insert(0, original_pipeline_dir)
 
 try:
-    from aqi_utils import pm25_to_aqi, aqi_to_category
+    from aqi_utils import pm25_to_aqi, aqi_to_category, aqi_to_pm25
     from feature_engineering import engineer_features
 except ImportError:
     print("Error: Could not import aqi_utils or feature_engineering")
@@ -950,7 +950,7 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
     Returns:
         Dictionary with predictions for both horizons
     """
-    from aqi_utils import pm25_to_aqi, aqi_to_category
+    from aqi_utils import pm25_to_aqi, aqi_to_category, aqi_to_pm25
     
     predictions = {}
     
