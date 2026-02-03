@@ -1067,13 +1067,13 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
                     max_aqi_allowed = current_aqi + 30
                     predicted_aqi_temp = pm25_to_aqi(predicted_pm25)
                     if predicted_aqi_temp > max_aqi_allowed:
-                        predicted_pm25 = aqi_to_pm25(max_aqi_allowed)
+                        predicted_pm25 = float(aqi_to_pm25(max_aqi_allowed))
                 else:
                     # High AQI regime: optional tighter cap (+20 AQI over 3h)
                     max_aqi_allowed = current_aqi + 20
                     predicted_aqi_temp = pm25_to_aqi(predicted_pm25)
                     if predicted_aqi_temp > max_aqi_allowed:
-                        predicted_pm25 = aqi_to_pm25(max_aqi_allowed)
+                        predicted_pm25 = float(aqi_to_pm25(max_aqi_allowed))
             
             # Apply bias correction (Phase 2.1 Refinements: 3h only)
             # Phase 2.1.5: Direction-aware bias correction (health-conservative)
@@ -1182,6 +1182,12 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
         #             predicted_category = predicted_category_from_model
         # except:
         #     pass  # Fall back to AQI-based category
+        
+        # Ensure predicted_pm25 is a scalar float (not numpy array) before rounding
+        if isinstance(predicted_pm25, np.ndarray):
+            predicted_pm25 = float(predicted_pm25.item())
+        else:
+            predicted_pm25 = float(predicted_pm25)
         
         predictions[horizon] = {
             'pm25_ugm3': round(predicted_pm25, 2),

@@ -81,6 +81,9 @@ def aqi_to_pm25(aqi):
         # Inverse of extrapolation: PM2.5 = 500.4 + ((AQI - 500) / 300) * 500.4
         pm25[mask] = 500.4 + ((aqi[mask] - 500) / 300) * 500.4
     
+    # Return scalar if input was scalar, array if input was array
+    if np.ndim(aqi) == 0:  # Scalar input
+        return float(pm25.item())
     return pm25
 
 
