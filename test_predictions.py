@@ -15,6 +15,9 @@ Usage:
     python3 test_predictions.py --sensor-id 17895 18987 19683 --use-csv
 """
 
+# All internal timestamps are America/Los_Angeles local time, timezone-naive.
+# Never treat naive timestamps as UTC.
+
 import pandas as pd
 import numpy as np
 import pickle
@@ -35,25 +38,22 @@ except ImportError:
     print("Warning: geopy not installed. Address geocoding will not be available.")
     print("Install with: pip install geopy")
 
-# Add path to original pipeline for imports
-original_pipeline_dir = os.path.expanduser("~/Downloads/PAIC Data 2 Months")
-if os.path.exists(original_pipeline_dir) and original_pipeline_dir not in sys.path:
-    sys.path.insert(0, original_pipeline_dir)
+# Use root (script directory) for aqi_utils and feature_engineering - matches run_validation_jan_feb_2026
+script_dir = os.path.dirname(os.path.abspath(__file__))
+original_pipeline_dir = os.path.expanduser("~/Downloads/PAIC Data 2 Months")  # Fallback for sensor locations only
+if script_dir not in sys.path:
+    sys.path.insert(0, script_dir)
 
 try:
     from aqi_utils import pm25_to_aqi, aqi_to_category, aqi_to_pm25
     from feature_engineering import engineer_features
 except ImportError:
     print("Error: Could not import aqi_utils or feature_engineering")
-    print(f"Please ensure the original pipeline exists at: {original_pipeline_dir}")
+    print(f"Please ensure aqi_utils.py and feature_engineering.py exist in: {script_dir}")
     sys.exit(1)
 
 # Import wind fetching functions - Use Open-Meteo instead of Meteostat
 try:
-    # Add current directory to path for imports
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    if current_dir not in sys.path:
-        sys.path.insert(0, current_dir)
     
     from fetch_wind_openmeteo import (
         fetch_historical_wind_openmeteo,
@@ -81,8 +81,15 @@ def load_models(model_dir='models'):
     models = {}
     
     for horizon in ['1h', '3h']:
+        # Support both naming conventions: pm25_model_* (legacy) and xgboost_regressor_* (P2-RouteFinder 06_train_model_v2.py)
         pm25_model_path = os.path.join(model_dir, f'pm25_model_{horizon}.pkl')
+        regressor_v2_path = os.path.join(model_dir, f'xgboost_regressor_{horizon}.pkl')
+        if not os.path.exists(pm25_model_path) and os.path.exists(regressor_v2_path):
+            pm25_model_path = regressor_v2_path
         category_model_path = os.path.join(model_dir, f'category_model_{horizon}.pkl')
+        classifier_v2_path = os.path.join(model_dir, f'xgboost_classifier_{horizon}.pkl')
+        if not os.path.exists(category_model_path) and os.path.exists(classifier_v2_path):
+            category_model_path = classifier_v2_path
         category_mapping_path = os.path.join(model_dir, f'category_mapping_{horizon}.pkl')
         feature_cols_path = os.path.join(model_dir, f'feature_columns_{horizon}.pkl')
         
@@ -383,7 +390,7 @@ def fetch_historical_sensor_data_api(api_key, sensor_id, hours=24, average=30):
         'start_timestamp': int(start_time.timestamp()),
         'end_timestamp': int(end_time.timestamp()),
         'average': average,
-        'fields': 'humidity,temperature,pm2.5_atm'
+        'fields': 'pm2.5_atm'  # PM2.5 only; temp/humidity from Open-Meteo (more reliable)
     }
     
     try:
@@ -464,7 +471,7 @@ def fetch_current_sensor_data_api(api_key, sensor_id, max_retries=3):
     
     url = f"https://api.purpleair.com/v1/sensors/{sensor_id}"
     headers = {'X-API-Key': api_key}
-    params = {'fields': 'humidity,temperature,pm2.5_atm'}
+    params = {'fields': 'pm2.5_atm'}  # PM2.5 only; temp/humidity from Open-Meteo
     
     # Increased timeout for paid Render account (network latency may be higher)
     timeout = 30  # Increased from 10 to 30 seconds
@@ -543,11 +550,15 @@ def fetch_current_wind_data_for_prediction(df, latitude=37.5483, longitude=-121.
         print("⚠ Wind fetching not available. Predictions will have missing wind features.")
         return None
     
-    # Get date range from dataframe
-    start_date = df['time_stamp'].min()
-    end_date = df['time_stamp'].max()
-    
-    current_time = pd.Timestamp.now(tz='UTC')
+    # Get date range from dataframe (pipeline standard: PST-naive everywhere)
+    tz_local = 'America/Los_Angeles'
+    start_date = pd.to_datetime(df['time_stamp'].min())
+    end_date = pd.to_datetime(df['time_stamp'].max())
+    if start_date.tz is not None:
+        start_date = start_date.tz_convert(tz_local).tz_localize(None)
+    if end_date.tz is not None:
+        end_date = end_date.tz_convert(tz_local).tz_localize(None)
+    current_time_local = pd.Timestamp.now(tz=tz_local).tz_localize(None)
     
     print(f"\nFetching wind direction data from Open-Meteo for prediction...")
     print(f"  Location: ({latitude}, {longitude})")
@@ -555,13 +566,14 @@ def fetch_current_wind_data_for_prediction(df, latitude=37.5483, longitude=-121.
     
     try:
         # Determine if we need historical or forecast data
-        # If end_date is recent (within last 6 hours), use forecast API
-        # Otherwise, use historical API
+        # Use Historical API when sensor data spans past dates (needed for 24h coverage)
+        # Forecast API only returns from 00:00 today - would miss yesterday's hours
+        today_start = pd.Timestamp.now(tz=tz_local).floor('D').tz_localize(None)
+        needs_historical = start_date < today_start
+        hours_ago = (current_time_local - end_date).total_seconds() / 3600
         
-        hours_ago = (current_time - end_date).total_seconds() / 3600
-        
-        if hours_ago < 6:
-            # Use forecast API for recent/current data
+        if not needs_historical and hours_ago < 6:
+            # Use forecast API only when all data is from today (no past dates)
             print(f"  Using Open-Meteo Forecast API (data is {hours_ago:.1f} hours old)")
             forecast_days = max(1, int((end_date - start_date).total_seconds() / 86400) + 1)
             forecast_days = min(forecast_days, 7)  # Open-Meteo forecast limit
@@ -574,43 +586,37 @@ def fetch_current_wind_data_for_prediction(df, latitude=37.5483, longitude=-121.
                 print("⚠ Could not fetch forecast wind data from Open-Meteo.")
                 return None
             
-            # Filter to the date range we need
-            # Open-Meteo returns timezone-naive timestamps, so convert our dates to naive for comparison
-            start_date_naive = start_date.floor('H')
-            if start_date_naive.tz is not None:
-                start_date_naive = start_date_naive.tz_localize(None)
-            end_date_naive = end_date.ceil('H')
-            if end_date_naive.tz is not None:
-                end_date_naive = end_date_naive.tz_localize(None)
-            
+            # Filter to the date range we need (start_date/end_date already PST-naive)
+            start_h = start_date.floor('H')
+            end_h = end_date.ceil('H')
             wind_df = wind_df[
-                (wind_df['timestamp_hour'] >= start_date_naive) &
-                (wind_df['timestamp_hour'] <= end_date_naive)
+                (wind_df['timestamp_hour'] >= start_h) &
+                (wind_df['timestamp_hour'] <= end_h)
             ].copy()
             
-            print(f"✓ Wind data fetched from Open-Meteo Forecast: {len(wind_df)} hourly records")
+            print(f"✓ Weather data fetched from Open-Meteo Forecast: {len(wind_df)} hourly records")
             
         else:
-            # Use historical API for older data
+            # Use historical API when data spans past dates (full 24h coverage)
+            # Open-Meteo is hourly only; we need one record per hour for the PurpleAir window (24h = 24–25 hours)
             print(f"  Using Open-Meteo Historical API (data is {hours_ago:.1f} hours old)")
-            
-            # Convert to timezone-naive for Open-Meteo API
-            start_date_naive = start_date.tz_localize(None) if start_date.tz else start_date
-            end_date_naive = end_date.tz_localize(None) if end_date.tz else end_date
-            
-            # Import here to ensure it's available
             from fetch_wind_openmeteo import fetch_historical_wind_openmeteo
             wind_df = fetch_historical_wind_openmeteo(
-                latitude, longitude, 
-                start_date_naive, end_date_naive,
+                latitude, longitude,
+                start_date, end_date,
                 height_meters=10
             )
-            
             if wind_df is None or len(wind_df) == 0:
                 print("⚠ Could not fetch historical wind data from Open-Meteo.")
                 return None
-            
-            print(f"✓ Wind data fetched from Open-Meteo Historical: {len(wind_df)} hourly records")
+            # Keep only hours that cover our PurpleAir window (API returns full calendar days)
+            start_h = start_date.floor('H')
+            end_h = end_date.ceil('H')
+            wind_df = wind_df[
+                (wind_df['timestamp_hour'] >= start_h) &
+                (wind_df['timestamp_hour'] <= end_h)
+            ].copy()
+            print(f"✓ Wind data fetched from Open-Meteo Historical: {len(wind_df)} hourly records (covers {len(wind_df)}h for 30-min PurpleAir window)")
         
         # Open-Meteo returns wdir and wspd directly (already in correct format)
         # Ensure columns exist
@@ -642,63 +648,84 @@ def fetch_current_wind_data_for_prediction(df, latitude=37.5483, longitude=-121.
 
 def merge_wind_data_for_prediction(df, wind_data):
     """
-    Merge wind direction data into prediction dataframe.
-    Similar to merge_wind_direction in prepare_full_dataset but for prediction.
+    Merge Open-Meteo weather (wind, temperature, humidity) into prediction dataframe.
+    All weather except PM2.5 comes from Open-Meteo (matches training).
     
     Args:
-        df: Sensor data DataFrame
-        wind_data: Tuple of (wind_df, station_info) or None
+        df: Sensor data DataFrame (PM2.5 from PurpleAir)
+        wind_data: Tuple of (weather_df, station_info) or None
         
     Returns:
-        DataFrame with merged wind data
+        DataFrame with merged weather (temperature_2m, relative_humidity_2m, wind)
     """
     if wind_data is None:
-        # No wind data available, create empty columns
+        # No weather data available, create empty columns
         df['wdir'] = np.nan
         df['wind_dir_x'] = np.nan
         df['wind_dir_y'] = np.nan
+        df['wind_speed_10m'] = np.nan
+        df['temperature_2m'] = np.nan
+        df['relative_humidity_2m'] = np.nan
         return df
     
     wind_df, station_info = wind_data
     tz_local = 'America/Los_Angeles'
     
-    # Convert timestamps to timezone-naive local time
-    df = df.copy()
-    # Handle both timezone-aware and timezone-naive timestamps
-    if isinstance(df['time_stamp'].iloc[0], pd.Timestamp):
-        if df['time_stamp'].iloc[0].tz is not None:
-            # Already timezone-aware, convert to local then naive
-            df['time_stamp'] = pd.to_datetime(df['time_stamp']).dt.tz_convert(tz_local).dt.tz_localize(None)
-        else:
-            # Timezone-naive, assume UTC and convert
-            df['time_stamp'] = pd.to_datetime(df['time_stamp']).dt.tz_localize('UTC').dt.tz_convert(tz_local).dt.tz_localize(None)
-    else:
-        # Not a timestamp yet, parse as UTC then convert
-        df['time_stamp'] = pd.to_datetime(df['time_stamp'], utc=True).dt.tz_convert(tz_local).dt.tz_localize(None)
+    # Drop placeholder weather columns from df so merge doesn't create _x/_y duplicates
+    drop_before_merge = [c for c in ['wdir', 'wind_dir_x', 'wind_dir_y', 'wind_speed_10m', 'temperature_2m', 'relative_humidity_2m'] if c in df.columns]
+    df = df.drop(columns=drop_before_merge, errors='ignore')
     
-    # Create hourly timestamp for merging
+    # Build merge columns: wind + temp + humidity (Open-Meteo returns all in training schema)
+    wind_df = wind_df.copy()
+    merge_cols = ['timestamp_hour', 'wdir']
+    if 'wind_speed_10m' in wind_df.columns:
+        merge_cols.append('wind_speed_10m')
+    elif 'wspd' in wind_df.columns:
+        wind_df['wind_speed_10m'] = wind_df['wspd'] * 0.621371  # km/h -> mph
+        merge_cols.append('wind_speed_10m')
+    if 'temperature_2m' in wind_df.columns:
+        merge_cols.append('temperature_2m')
+    if 'relative_humidity_2m' in wind_df.columns:
+        merge_cols.append('relative_humidity_2m')
+    
+    # Convert timestamps: pipeline standard is PST-naive. Do not assume naive = UTC (would shift 8h).
+    df = df.copy()
+    df['time_stamp'] = pd.to_datetime(df['time_stamp'])
+    if getattr(df['time_stamp'].dtype, 'tz', None) is not None:
+        df['time_stamp'] = df['time_stamp'].dt.tz_convert(tz_local).dt.tz_localize(None)
     df['timestamp_hour'] = df['time_stamp'].dt.floor('H')
     
-    # Ensure wind_df timestamps are also timezone-naive local
     wind_df = wind_df.copy()
-    wind_df['timestamp_hour'] = pd.to_datetime(wind_df['timestamp_hour'])
-    
-    # Handle timezone if wind_df timestamps are timezone-aware
-    if hasattr(wind_df['timestamp_hour'].iloc[0], 'tz') and wind_df['timestamp_hour'].iloc[0].tz is not None:
+    wind_df['timestamp_hour'] = pd.to_datetime(wind_df['timestamp_hour']).dt.floor('H')
+    if getattr(wind_df['timestamp_hour'].dtype, 'tz', None) is not None:
         wind_df['timestamp_hour'] = wind_df['timestamp_hour'].dt.tz_convert(tz_local).dt.tz_localize(None)
     
-    # Merge wind direction data
-    df = df.merge(wind_df[['timestamp_hour', 'wdir']], 
-                  on='timestamp_hour', 
+    # Merge Open-Meteo weather (wind + temp + humidity)
+    df = df.merge(wind_df[merge_cols],
+                  on='timestamp_hour',
                   how='left')
+    matched = df['wdir'].notna().mean() if 'wdir' in df.columns else 0
+    print(f"[DEBUG merge] matched_wdir_pct={matched*100:.1f}%  "
+          f"sensor_hours=({df['timestamp_hour'].min()} .. {df['timestamp_hour'].max()})  "
+          f"wind_hours=({wind_df['timestamp_hour'].min()} .. {wind_df['timestamp_hour'].max()})")
+    
+    # Ensure required columns exist
+    for col in ['wind_speed_10m', 'temperature_2m', 'relative_humidity_2m']:
+        if col not in df.columns:
+            df[col] = np.nan
     
     # Forward-fill with 6-hour limit (same as training)
-    # Sort by time_stamp first to ensure proper forward fill
     df = df.sort_values('time_stamp').reset_index(drop=True)
-    df['wdir'] = df.groupby('sensor_id')['wdir'].ffill(limit=6)
+    weather_cols_fill = ['wdir', 'wind_speed_10m', 'temperature_2m', 'relative_humidity_2m']
+    for c in weather_cols_fill:
+        if c in df.columns:
+            df[c] = df.groupby('sensor_id')[c].ffill(limit=6)
+            df[c] = df.groupby('sensor_id')[c].bfill(limit=1)
     
-    # Also backward-fill for the first row if needed (get value from next available hour)
-    df['wdir'] = df.groupby('sensor_id')['wdir'].bfill(limit=1)
+    # Replace any remaining NaN/None with 0 for feature engineering (avoids diff() errors)
+    for c in ['temperature_2m', 'relative_humidity_2m']:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors='coerce').fillna(0)
     
     # Convert to x, y components
     mask = df['wdir'].notna()
@@ -707,10 +734,125 @@ def merge_wind_data_for_prediction(df, wind_data):
     df.loc[~mask, 'wind_dir_x'] = np.nan
     df.loc[~mask, 'wind_dir_y'] = np.nan
     
-    coverage_pct = (df['wdir'].notna().sum() / len(df)) * 100
-    print(f"✓ Wind data merged: {coverage_pct:.1f}% coverage")
+    wdir_pct = (df['wdir'].notna().sum() / len(df)) * 100
+    temp_pct = (df['temperature_2m'].notna().sum() / len(df)) * 100 if 'temperature_2m' in df.columns else 0
+    rh_pct = (df['relative_humidity_2m'].notna().sum() / len(df)) * 100 if 'relative_humidity_2m' in df.columns else 0
+    print(f"✓ Open-Meteo weather merged: wdir {wdir_pct:.1f}%, temp {temp_pct:.1f}%, humidity {rh_pct:.1f}% coverage")
     
     return df
+
+
+def log_feature_pipeline_signature(df_before_engineering, feature_row, feature_columns, context="prediction"):
+    """
+    Log a one-line "signature" to verify the same fixed pipeline is used across contexts.
+    Helps diagnose API vs test-runner vs training alignment.
+    
+    Args:
+        df_before_engineering: Raw df before engineer_features (for schema check)
+        feature_row: Engineered feature row (single row DataFrame) for model
+        feature_columns: List of feature names expected by model
+        context: Label for logs (e.g. "API", "test", "validation")
+    """
+    # Schema check: relative_humidity_2m / temperature_2m exist before lag/rolling
+    has_rh = 'relative_humidity_2m' in df_before_engineering.columns or 'humidity' in df_before_engineering.columns
+    has_temp = 'temperature_2m' in df_before_engineering.columns or 'temperature' in df_before_engineering.columns
+    schema_ok = "rh,temp:OK" if (has_rh and has_temp) else f"rh:{has_rh},temp:{has_temp}"
+    
+    # Missing features: columns expected by model but missing or NaN in feature_row
+    missing_names = []
+    nan_count = 0
+    for i, col in enumerate(feature_columns):
+        if col not in feature_row.columns:
+            missing_names.append(col)
+        else:
+            val = feature_row[col].iloc[0] if len(feature_row) > 0 else feature_row[col].values[0]
+            if pd.isna(val) or (isinstance(val, float) and np.isnan(val)):
+                nan_count += 1
+                missing_names.append(col)
+    
+    missing_count = len(missing_names)
+    top_10 = missing_names[:10] if missing_names else []
+    
+    msg = (f"[FEATURE_SIGNATURE {context}] missing_count={missing_count}, "
+           f"schema={schema_ok}, top_missing={top_10}")
+    print(msg)
+    return {"missing_count": missing_count, "schema_ok": has_rh and has_temp, "top_missing": top_10}
+
+
+def dump_feature_row_sanity(feature_row, feature_columns=None, sensor_id=None, timestamp=None):
+    """
+    Dump actual feature values for one sensor+timestamp to verify pipeline alignment.
+    Logs temperature_2m, relative_humidity_2m, wind_speed_10m, wind_direction_10m,
+    and a few lag features; confirms they are non-zero and plausible.
+    """
+    keys = ['temperature_2m', 'relative_humidity_2m', 'wind_speed_10m', 'wind_direction_10m',
+            'wdir', 'wind_dir_x', 'wind_dir_y',
+            'temperature_2m_lag_1', 'relative_humidity_2m_lag_1', 'pm2_5_atm', 'pm2_5_atm_lag_1']
+    found = {}
+    for k in keys:
+        if k in feature_row.columns:
+            v = feature_row[k].iloc[0] if len(feature_row) > 0 else feature_row[k].values[0]
+            found[k] = float(v) if not (pd.isna(v) or (isinstance(v, float) and np.isnan(v))) else "NaN"
+    
+    hdr = f"[SANITY_DUMP] sensor={sensor_id} ts={timestamp}" if sensor_id or timestamp else "[SANITY_DUMP]"
+    print(f"{hdr} {found}")
+    return found
+
+
+def log_live_data_integrity_weather(df):
+    """
+    Log weather coverage and ranges from merged dataframe (last 24h window).
+    If any coverage < 95%, log [WARNING] Low weather coverage detected (do not stop).
+    """
+    n = len(df)
+    if n == 0:
+        return
+    pct = lambda col: (df[col].notna().sum() / n * 100) if col in df.columns else 0.0
+    temp_pct = pct('temperature_2m')
+    rh_pct = pct('relative_humidity_2m')
+    wind_pct = pct('wind_speed_10m')
+    wdir_pct = pct('wdir')
+    temp_range = f"{df['temperature_2m'].min():.1f}-{df['temperature_2m'].max():.1f}" if 'temperature_2m' in df.columns and df['temperature_2m'].notna().any() else "n/a"
+    rh_range = f"{df['relative_humidity_2m'].min():.1f}-{df['relative_humidity_2m'].max():.1f}" if 'relative_humidity_2m' in df.columns and df['relative_humidity_2m'].notna().any() else "n/a"
+    wind_range = f"{df['wind_speed_10m'].min():.1f}-{df['wind_speed_10m'].max():.1f}" if 'wind_speed_10m' in df.columns and df['wind_speed_10m'].notna().any() else "n/a"
+    first_ts = df['time_stamp'].min()
+    last_ts = df['time_stamp'].max()
+    print(f"[WEATHER_COVERAGE]")
+    print(f"temp_pct={temp_pct:.1f}% rh_pct={rh_pct:.1f}% wind_speed_pct={wind_pct:.1f}% wdir_pct={wdir_pct:.1f}%")
+    print(f"temp_range={temp_range} F rh_range={rh_range} % wind_range={wind_range} mph")
+    print(f"first_ts={first_ts} last_ts={last_ts}")
+    if temp_pct < 95 or rh_pct < 95 or wind_pct < 95 or wdir_pct < 95:
+        print(f"[WARNING] Low weather coverage detected")
+
+
+def log_live_data_integrity_pm25(df, current_aqi):
+    """Log PM2.5 sanity right before feature engineering: last 6 values, min, max, current_aqi."""
+    if 'pm2_5_atm' not in df.columns or len(df) == 0:
+        return
+    last6 = df['pm2_5_atm'].tail(6).tolist()
+    last6 = [round(float(x), 2) if pd.notna(x) else None for x in last6]
+    mn = df['pm2_5_atm'].min()
+    mx = df['pm2_5_atm'].max()
+    mn = round(float(mn), 2) if pd.notna(mn) else None
+    mx = round(float(mx), 2) if pd.notna(mx) else None
+    print(f"[PM25_SANITY]")
+    print(f"last6={last6}")
+    print(f"min={mn} max={mx} current_aqi={int(current_aqi)}")
+
+
+def log_live_parity(sensor_id, current_pm25, current_aqi, predictions, current_row):
+    """One-line parity summary after predictions: sensor, pm25, aqi, pred1h, pred3h, temp, rh, wind, wdir."""
+    pred1h = predictions['1h']['aqi']
+    pred3h = predictions['3h']['aqi']
+    temp = current_row.get('temperature_2m') or current_row.get('temperature')
+    rh = current_row.get('relative_humidity_2m') or current_row.get('humidity')
+    wind = current_row.get('wind_speed_10m')
+    wdir = current_row.get('wdir')
+    temp = f"{float(temp):.1f}" if pd.notna(temp) else "n/a"
+    rh = f"{float(rh):.1f}" if pd.notna(rh) else "n/a"
+    wind = f"{float(wind):.1f}" if pd.notna(wind) else "n/a"
+    wdir = f"{float(wdir):.0f}" if pd.notna(wdir) else "n/a"
+    print(f"[LIVE_PARITY] sensor={sensor_id} pm25={current_pm25:.2f} aqi={int(current_aqi)} pred1h={pred1h} pred3h={pred3h} temp={temp} rh={rh} wind={wind} wdir={wdir}")
 
 
 def prepare_test_data_from_live_api(api_key, sensor_id, hours=24, data_dir=None):
@@ -758,18 +900,15 @@ def prepare_test_data_from_live_api(api_key, sensor_id, hours=24, data_dir=None)
         combined_df = pd.concat([hist_df, current_df], ignore_index=True)
         combined_df = combined_df.sort_values('time_stamp').reset_index(drop=True)
     
-    # Add location data if available
+    # Add location data from sensor list so we always have lat/lon for Open-Meteo (API may not return them)
     if data_dir:
         locations_df = load_sensor_locations(data_dir)
         if locations_df is not None:
             sensor_locs = locations_df[locations_df['sensor_id'] == int(sensor_id)]
             if not sensor_locs.empty:
-                if 'latitude' not in combined_df.columns:
-                    combined_df['latitude'] = sensor_locs.iloc[0]['latitude']
-                if 'longitude' not in combined_df.columns:
-                    combined_df['longitude'] = sensor_locs.iloc[0]['longitude']
-                if 'name' not in combined_df.columns:
-                    combined_df['name'] = sensor_locs.iloc[0].get('name', f"Sensor {sensor_id}")
+                combined_df['latitude'] = sensor_locs.iloc[0]['latitude']
+                combined_df['longitude'] = sensor_locs.iloc[0]['longitude']
+                combined_df['name'] = sensor_locs.iloc[0].get('name', f"Sensor {sensor_id}")
     
     # Ensure wind columns exist BEFORE fetching (in case fetch fails)
     if 'wdir' not in combined_df.columns:
@@ -915,6 +1054,16 @@ def prepare_features_for_prediction(df, sensor_id):
         df.loc[mask, 'wind_dir_x'] = np.cos(np.radians(df.loc[mask, 'wdir']))
         df.loc[mask, 'wind_dir_y'] = np.sin(np.radians(df.loc[mask, 'wdir']))
     
+    # Drop PurpleAir humidity/temperature if present (we use Open-Meteo only) to avoid None overwriting
+    for drop_col in ['humidity', 'temperature']:
+        if drop_col in df.columns:
+            df = df.drop(columns=[drop_col])
+    
+    # Ensure value_cols (pm2_5_atm, temperature_2m, relative_humidity_2m) have no None - feature_engineering create_lag_features diff() fails otherwise
+    for col in ['pm2_5_atm', 'temperature_2m', 'relative_humidity_2m']:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
+    
     # Engineer features (same as training, but without targets)
     df_features = engineer_features(df, include_targets=False, include_spatial_features=has_locations)
     
@@ -951,8 +1100,8 @@ def prepare_features_for_prediction(df, sensor_id):
 
 
 def make_predictions(models, feature_row, feature_columns, current_pm25=None, current_aqi=None, 
-                     ensemble_weight=None, max_worsening_rate=0.2, bias_correction=0.0,
-                     bias_correction_3h=None):
+                     ensemble_weight=None, ensemble_weight_1h_override=None, ensemble_weight_3h_override=None,
+                     max_worsening_rate=0.2, bias_correction=0.0, bias_correction_3h=None):
     """
     Make predictions using the loaded models with optional ensemble with persistence.
     Uses regime-based ensemble weights: higher persistence weight during high pollution events.
@@ -968,8 +1117,9 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
         current_pm25: Current PM2.5 value for persistence baseline (optional)
         current_aqi: Current AQI value (optional, used for regime-based weighting)
         ensemble_weight: Base weight for ML prediction (deprecated, now uses Phase 2.1 defaults)
-                        Normal regime: 1h=0.4, 3h=0.3
-                        High pollution: 1h=0.2, 3h=0.3
+                        Normal regime: 1h=0.4, 3h=0.9 (experiment: 90% ML / 10% persistence)
+                        High pollution: 1h=0.2, 3h=0.9 (experiment: 90% ML / 10% persistence)
+        ensemble_weight_3h_override: If set, overrides 3h ML weight for both regimes (e.g. 0.9).
         max_worsening_rate: Maximum allowed worsening rate per hour (default 0.2 = 20%)
         bias_correction: Bias correction factor for 1h (default 0.0 = disabled, not recommended)
         bias_correction_3h: Bias correction for 3h only (default None = auto from validation, ~3.3 μg/m³)
@@ -990,14 +1140,19 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
     use_regime_weights = False
     if current_aqi is not None and current_aqi >= 100:
         use_regime_weights = True
-        # High pollution regime: 1h: 20% ML + 80% persistence, 3h: 30% ML + 70% persistence
-        ensemble_weights = {'1h': 0.2, '3h': 0.3}
+        # High pollution regime: 1h: 20% ML + 80% persistence, 3h: 90% ML + 10% persistence (experiment)
+        ensemble_weights = {'1h': 0.2, '3h': 0.9}
     elif current_pm25 is not None and current_pm25 >= 35:
         use_regime_weights = True
-        ensemble_weights = {'1h': 0.2, '3h': 0.3}
+        ensemble_weights = {'1h': 0.2, '3h': 0.9}
     else:
-        # Normal regime (Phase 2.1): 1h: 40% ML + 60% persistence, 3h: 30% ML + 70% persistence
-        ensemble_weights = {'1h': 0.4, '3h': 0.3}
+        # Normal regime (Phase 2.1): 1h: 40% ML + 60% persistence, 3h: 90% ML + 10% persistence (experiment)
+        ensemble_weights = {'1h': 0.4, '3h': 0.9}
+    
+    if ensemble_weight_1h_override is not None:
+        ensemble_weights['1h'] = float(ensemble_weight_1h_override)
+    if ensemble_weight_3h_override is not None:
+        ensemble_weights['3h'] = float(ensemble_weight_3h_override)
     
     for horizon in ['1h', '3h']:
         model_info = models[horizon]
@@ -1031,7 +1186,9 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
         # is more appropriate. Let's fill with 0 to match training behavior, but log it.
         nan_count = np.isnan(X).sum()
         if nan_count > 0:
-            print(f"  Note: {nan_count} feature values are NaN (will be handled by XGBoost)")
+            missing_idx = np.where(np.isnan(X[0]))[0]
+            missing_names = [feature_columns[i] for i in missing_idx[:10]]
+            print(f"  Note: {nan_count} feature values are NaN (filled with 0): top_missing={missing_names}")
             # Fill with 0 to match training behavior (training does fillna(0))
             X = np.nan_to_num(X, nan=0.0, posinf=0.0, neginf=0.0)
         
@@ -1189,11 +1346,16 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
         else:
             predicted_pm25 = float(predicted_pm25)
         
-        predictions[horizon] = {
+        pred_dict = {
             'pm25_ugm3': round(predicted_pm25, 2),
             'aqi': int(predicted_aqi),
             'category': predicted_category
         }
+        if horizon == '1h':
+            pred_dict['ml_pm25_ugm3'] = round(float(ml_predicted_pm25), 2)
+        if horizon == '3h':
+            pred_dict['ml_pm25_ugm3'] = round(float(ml_predicted_pm25), 2)
+        predictions[horizon] = pred_dict
     
     return predictions
 
@@ -1233,70 +1395,45 @@ def test_sensor_prediction(sensor_id, data_dir, models, use_csv=True, api_key=No
             print(f"  Timestamp: {current_row['time_stamp']}")
             print(f"  PM2.5: {current_pm25:.2f} μg/m³")
             print(f"  AQI: {int(current_aqi)} ({current_category})")
-            if 'temperature' in current_row:
+            if 'temperature_2m' in current_row and pd.notna(current_row.get('temperature_2m')):
+                print(f"  Temperature: {current_row['temperature_2m']:.1f}°F (Open-Meteo)")
+            elif 'temperature' in current_row and pd.notna(current_row.get('temperature')):
                 print(f"  Temperature: {current_row['temperature']:.1f}°F")
-            if 'humidity' in current_row:
+            if 'relative_humidity_2m' in current_row and pd.notna(current_row.get('relative_humidity_2m')):
+                print(f"  Humidity: {current_row['relative_humidity_2m']:.1f}% (Open-Meteo)")
+            elif 'humidity' in current_row and pd.notna(current_row.get('humidity')):
                 print(f"  Humidity: {current_row['humidity']:.1f}%")
             if 'latitude' in current_row and pd.notna(current_row['latitude']):
                 print(f"  Location: ({current_row['latitude']:.4f}, {current_row['longitude']:.4f})")
         else:
-            # Fetch current live data from API
+            # Live API mode: fetch 24h history + current from PurpleAir API, plus Open-Meteo wind
             if not api_key:
                 raise ValueError("API key required for live data. Use --api-key option or --use-csv for historical data.")
             
-            print(f"Fetching CURRENT LIVE data from PurpleAir API...")
-            current_df = fetch_current_sensor_data_api(api_key, sensor_id)
-            
-            # For predictions, we still need historical data for features
-            # Load historical from CSV (it will fetch wind data automatically)
             try:
-                # Load historical data - it will fetch wind data internally
-                hist_df = prepare_test_data_from_csv(data_dir, sensor_id, num_rows=47)
-                
-                # Ensure both dataframes have consistent timezone handling before combining
-                # Convert both to UTC-aware, then we'll convert to local-naive when merging wind
-                current_df['time_stamp'] = pd.to_datetime(current_df['time_stamp'], utc=True)
-                hist_df['time_stamp'] = pd.to_datetime(hist_df['time_stamp'], utc=True)
-                
-                # Combine historical + current
-                test_df = pd.concat([hist_df, current_df], ignore_index=True).sort_values('time_stamp').reset_index(drop=True)
-                print(f"✓ Combined {len(hist_df)} historical rows + 1 current live row")
-                
-                # Re-fetch wind data for the combined dataset to include current time
-                # (hist_df has wind up to its last timestamp, but we need it for current time too)
-                if WIND_FETCHING_AVAILABLE and 'latitude' in test_df.columns and test_df['latitude'].notna().any():
-                    sensor_lat = test_df['latitude'].iloc[0]
-                    sensor_lon = test_df['longitude'].iloc[0]
-                    print(f"\nUpdating wind data for combined dataset (including current time)...")
-                    wind_data = fetch_current_wind_data_for_prediction(test_df, sensor_lat, sensor_lon)
-                    if wind_data is not None:
-                        test_df = merge_wind_data_for_prediction(test_df, wind_data)
+                test_df = prepare_test_data_from_live_api(api_key, sensor_id, hours=24, data_dir=data_dir)
+                current_row = test_df.iloc[-1]  # Most recent row
             except Exception as e:
-                # If no historical CSV, use just current data (limited features)
-                print(f"⚠ Warning: Could not load historical CSV data: {e}")
-                print(f"  Using current data only (limited features - predictions may be less accurate)")
+                print(f"⚠ Warning: prepare_test_data_from_live_api failed: {e}")
+                print(f"  Falling back to current data only (limited features)")
+                current_df = fetch_current_sensor_data_api(api_key, sensor_id)
+                if current_df is None or len(current_df) == 0:
+                    raise ValueError(f"Could not fetch any data from PurpleAir API for sensor {sensor_id}")
                 test_df = current_df.copy()
-                
-                # Ensure current data has location info for wind fetching
                 if 'latitude' not in test_df.columns or test_df['latitude'].isna().all():
-                    # Try to get location from sensor locations
                     locations_df = load_sensor_locations(data_dir)
                     if locations_df is not None:
                         sensor_locs = locations_df[locations_df['sensor_id'] == int(sensor_id)]
                         if not sensor_locs.empty:
                             test_df['latitude'] = sensor_locs.iloc[0]['latitude']
                             test_df['longitude'] = sensor_locs.iloc[0]['longitude']
-                
-                # Still try to fetch wind data even with just current data
                 if WIND_FETCHING_AVAILABLE and 'latitude' in test_df.columns and test_df['latitude'].notna().any():
                     sensor_lat = test_df['latitude'].iloc[0]
                     sensor_lon = test_df['longitude'].iloc[0]
-                    print(f"\nFetching wind data for current data only...")
                     wind_data = fetch_current_wind_data_for_prediction(test_df, sensor_lat, sensor_lon)
                     if wind_data is not None:
                         test_df = merge_wind_data_for_prediction(test_df, wind_data)
-            
-            current_row = current_df.iloc[0]
+                current_row = test_df.iloc[0]
             current_pm25 = current_row['pm2_5_atm']
             current_aqi = pm25_to_aqi(current_pm25)
             current_category = aqi_to_category(current_aqi)
@@ -1305,12 +1442,21 @@ def test_sensor_prediction(sensor_id, data_dir, models, use_csv=True, api_key=No
             print(f"  Timestamp: {current_row['time_stamp']}")
             print(f"  PM2.5: {current_pm25:.2f} μg/m³")
             print(f"  AQI: {int(current_aqi)} ({current_category})")
-            if 'temperature' in current_row:
+            if 'temperature_2m' in current_row and pd.notna(current_row.get('temperature_2m')):
+                print(f"  Temperature: {current_row['temperature_2m']:.1f}°F (Open-Meteo)")
+            elif 'temperature' in current_row and pd.notna(current_row.get('temperature')):
                 print(f"  Temperature: {current_row['temperature']:.1f}°F")
-            if 'humidity' in current_row:
+            if 'relative_humidity_2m' in current_row and pd.notna(current_row.get('relative_humidity_2m')):
+                print(f"  Humidity: {current_row['relative_humidity_2m']:.1f}% (Open-Meteo)")
+            elif 'humidity' in current_row and pd.notna(current_row.get('humidity')):
                 print(f"  Humidity: {current_row['humidity']:.1f}%")
             if 'latitude' in current_row and pd.notna(current_row['latitude']):
                 print(f"  Location: ({current_row['latitude']:.4f}, {current_row['longitude']:.4f})")
+        
+        # Live Data Integrity logging (live API path only: after weather merge, before prediction)
+        if not use_csv:
+            log_live_data_integrity_weather(test_df)
+            log_live_data_integrity_pm25(test_df, current_aqi)
         
         # Prepare features
         print(f"\nPreparing features...")
@@ -1320,6 +1466,12 @@ def test_sensor_prediction(sensor_id, data_dir, models, use_csv=True, api_key=No
         # Get feature columns (use 1h model's features as reference)
         feature_columns = models['1h']['feature_columns']
         print(f"✓ Using {len(feature_columns)} features from model")
+        
+        # API signature logging: missing_count, schema check, top 10 missing
+        log_feature_pipeline_signature(test_df, feature_row, feature_columns, context="test")
+        # Sanity dump: actual feature values for key weather/lag cols
+        dump_feature_row_sanity(feature_row, feature_columns, sensor_id=sensor_id,
+                                timestamp=test_df['time_stamp'].iloc[-1] if 'time_stamp' in test_df.columns else None)
         
         # CRITICAL FIX: Reorder feature_row to match the exact order expected by the model
         # While make_predictions matches by name, ensuring correct order is good practice
@@ -1349,6 +1501,9 @@ def test_sensor_prediction(sensor_id, data_dir, models, use_csv=True, api_key=No
         print(f"\nMaking predictions...")
         print(f"  Using ensemble: {int(60)}% ML prediction + {int(40)}% persistence (current PM2.5)")
         predictions = make_predictions(models, feature_row, feature_columns, current_pm25=current_pm25, ensemble_weight=0.6)
+        
+        if not use_csv:
+            log_live_parity(sensor_id, current_pm25, current_aqi, predictions, current_row)
         
         # Display results
         print(f"\n{'='*70}")

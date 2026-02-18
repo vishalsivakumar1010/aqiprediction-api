@@ -301,10 +301,33 @@ def create_spatial_interaction_features(df, sensor_id_col='sensor_id'):
     return df
 
 
+def normalize_weather_schema(df):
+    """
+    Map inference column names to training schema so feature engineering matches.
+    Training (05_feature_engineering) expects: temperature_2m, relative_humidity_2m,
+    wind_speed_10m, wind_direction_10m, wdir, wind_dir_x, wind_dir_y.
+    """
+    df = df.copy()
+    if 'humidity' in df.columns and 'relative_humidity_2m' not in df.columns:
+        df['relative_humidity_2m'] = df['humidity']
+    elif 'relative_humidity_2m' not in df.columns:
+        df['relative_humidity_2m'] = np.nan
+    if 'temperature' in df.columns and 'temperature_2m' not in df.columns:
+        df['temperature_2m'] = df['temperature']
+    elif 'temperature_2m' not in df.columns:
+        df['temperature_2m'] = np.nan
+    if 'wind_speed_10m' not in df.columns:
+        df['wind_speed_10m'] = np.nan
+    if 'wind_direction_10m' not in df.columns:
+        df['wind_direction_10m'] = df['wdir'] if 'wdir' in df.columns else np.nan
+    return df
+
+
 def engineer_features(df, sensor_id_col='sensor_id', time_col='time_stamp',
                      include_targets=True, include_spatial_features=True):
     """
     Complete feature engineering pipeline.
+    Matches training (05_feature_engineering) column names and transformations.
     
     Args:
         df: Raw sensor data DataFrame
@@ -321,6 +344,9 @@ def engineer_features(df, sensor_id_col='sensor_id', time_col='time_stamp',
     
     # Sort by sensor and time
     df = df.sort_values([sensor_id_col, time_col]).reset_index(drop=True)
+    
+    # Normalize weather columns to match training schema (humidity->relative_humidity_2m, etc.)
+    df = normalize_weather_schema(df)
     
     # 0. Ensure wind direction features exist (create from wdir if missing)
     if 'wdir' in df.columns:
@@ -349,16 +375,16 @@ def engineer_features(df, sensor_id_col='sensor_id', time_col='time_stamp',
     print("Creating time features...")
     df = create_time_features(df, time_col)
     
-    # 2. Create lag features
+    # 2. Create lag features (must match training: relative_humidity_2m, temperature_2m)
     print("Creating lag features...")
     df = create_lag_features(df, sensor_id_col, 
-                            value_cols=['pm2_5_atm', 'humidity', 'temperature'],
+                            value_cols=['pm2_5_atm', 'relative_humidity_2m', 'temperature_2m'],
                             lags=[1, 2, 3, 4, 6, 12])
     
-    # 3. Create rolling features
+    # 3. Create rolling features (must match training)
     print("Creating rolling features...")
     df = create_rolling_features(df, sensor_id_col,
-                                value_cols=['pm2_5_atm', 'humidity', 'temperature'],
+                                value_cols=['pm2_5_atm', 'relative_humidity_2m', 'temperature_2m'],
                                 windows=[2, 4, 6, 12, 24])
     
     # 4. Create spatial interaction features (after we have PM2.5 data)
@@ -398,7 +424,12 @@ def engineer_features(df, sensor_id_col='sensor_id', time_col='time_stamp',
     
     # Remove infinite values
     df = df.replace([np.inf, -np.inf], np.nan)
-    df = df.bfill().ffill()  # Backward fill then forward fill
+    # Fix A: weather-only ffill within sensor (no bfill, no cross-sensor, matches training)
+    weather_cols = ['temperature_2m', 'relative_humidity_2m', 'wind_speed_10m', 
+                    'wind_direction_10m', 'wdir', 'wind_dir_x', 'wind_dir_y']
+    for col in weather_cols:
+        if col in df.columns:
+            df[col] = df.groupby(sensor_id_col)[col].transform('ffill')
     df = df.fillna(0)  # Fill any remaining NaNs with 0
     
     print(f"Feature engineering complete. Final shape: {df.shape}")

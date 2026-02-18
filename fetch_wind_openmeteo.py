@@ -17,9 +17,11 @@ warnings.filterwarnings('ignore')
 
 
 def fetch_historical_wind_openmeteo(latitude, longitude, start_date, end_date, 
-                                     height_meters=10, timezone='America/Los_Angeles'):
+                                    height_meters=10, timezone='America/Los_Angeles',
+                                    include_temp_humidity=True):
     """
-    Fetch historical wind direction and speed from Open-Meteo Archive API.
+    Fetch historical weather from Open-Meteo Archive API.
+    Returns wind, temperature, and humidity (all weather except PM2.5).
     
     Args:
         latitude: Latitude (e.g., 37.5483 for Fremont, CA)
@@ -28,9 +30,10 @@ def fetch_historical_wind_openmeteo(latitude, longitude, start_date, end_date,
         end_date: End date (datetime or string like '2026-01-08')
         height_meters: Wind data height (10 or 100 meters, default: 10)
         timezone: Timezone (default: 'America/Los_Angeles')
+        include_temp_humidity: If True (default), fetch temperature_2m and relative_humidity_2m
         
     Returns:
-        DataFrame with columns: timestamp_hour, wdir, wspd (wind speed, optional)
+        DataFrame with columns: timestamp_hour, wdir, wind_speed_10m, temperature_2m, relative_humidity_2m
     """
     # Convert dates to strings if datetime
     if isinstance(start_date, datetime):
@@ -49,14 +52,19 @@ def fetch_historical_wind_openmeteo(latitude, longitude, start_date, end_date,
     # Open-Meteo Archive API endpoint
     base_url = "https://archive-api.open-meteo.com/v1/archive"
     
-    # Parameters
+    # Hourly vars: wind + temp/humidity (matches training schema)
+    hourly_vars = f'wind_direction_{height_meters}m,wind_speed_{height_meters}m'
+    if include_temp_humidity:
+        hourly_vars += ',temperature_2m,relative_humidity_2m'
     params = {
         'latitude': latitude,
         'longitude': longitude,
         'start_date': start_date,
         'end_date': end_date,
-        'hourly': f'wind_direction_{height_meters}m,wind_speed_{height_meters}m',
-        'timezone': timezone
+        'hourly': hourly_vars,
+        'timezone': timezone,
+        'temperature_unit': 'fahrenheit',   # Match training (04_merge_weather uses °F)
+        'wind_speed_unit': 'mph'            # Match training
     }
     
     try:
@@ -80,12 +88,15 @@ def fetch_historical_wind_openmeteo(latitude, longitude, start_date, end_date,
         timestamps = pd.to_datetime(hourly_data['time'])
         wind_direction = hourly_data.get(f'wind_direction_{height_meters}m', [])
         wind_speed = hourly_data.get(f'wind_speed_{height_meters}m', [])
+        temp = hourly_data.get('temperature_2m', [np.nan] * len(timestamps))
+        humidity = hourly_data.get('relative_humidity_2m', [np.nan] * len(timestamps))
         
-        # Create DataFrame
         wind_df = pd.DataFrame({
             'timestamp_hour': timestamps,
             'wdir': wind_direction,
-            'wspd': wind_speed if wind_speed else [np.nan] * len(timestamps)
+            'wind_speed_10m': wind_speed if wind_speed else [np.nan] * len(timestamps),
+            'temperature_2m': temp,
+            'relative_humidity_2m': humidity
         })
         
         # Remove rows with NaN wind direction
@@ -99,12 +110,12 @@ def fetch_historical_wind_openmeteo(latitude, longitude, start_date, end_date,
         # Coverage statistics
         coverage_pct = (len(wind_df) / initial_count * 100) if initial_count > 0 else 0.0
         
-        print(f"\n✓ Data fetched successfully")
+        print(f"\n✓ Data fetched successfully (temp, humidity, wind)")
         print(f"  Total hourly records: {initial_count}")
         print(f"  Records with wind direction: {len(wind_df)} ({coverage_pct:.1f}%)")
         print(f"  Wind direction range: {wind_df['wdir'].min():.0f}° to {wind_df['wdir'].max():.0f}°")
-        if wind_speed:
-            print(f"  Wind speed range: {wind_df['wspd'].min():.2f} to {wind_df['wspd'].max():.2f} m/s")
+        if wind_speed and 'wind_speed_10m' in wind_df.columns:
+            print(f"  Wind speed range: {wind_df['wind_speed_10m'].min():.2f} to {wind_df['wind_speed_10m'].max():.2f} mph")
         
         return wind_df
         
@@ -119,9 +130,11 @@ def fetch_historical_wind_openmeteo(latitude, longitude, start_date, end_date,
 
 
 def fetch_forecast_wind_openmeteo(latitude, longitude, height_meters=10, 
-                                   forecast_days=1, timezone='America/Los_Angeles'):
+                                  forecast_days=1, timezone='America/Los_Angeles',
+                                  include_temp_humidity=True):
     """
-    Fetch forecast wind direction and speed from Open-Meteo Forecast API.
+    Fetch forecast weather from Open-Meteo Forecast API.
+    Returns wind, temperature, and humidity (all weather except PM2.5).
     
     Args:
         latitude: Latitude (e.g., 37.5483 for Fremont, CA)
@@ -129,9 +142,10 @@ def fetch_forecast_wind_openmeteo(latitude, longitude, height_meters=10,
         height_meters: Wind data height (10 or 100 meters, default: 10)
         forecast_days: Number of forecast days (default: 1)
         timezone: Timezone (default: 'America/Los_Angeles')
+        include_temp_humidity: If True (default), fetch temperature_2m and relative_humidity_2m
         
     Returns:
-        DataFrame with columns: timestamp_hour, wdir, wspd (wind speed, optional)
+        DataFrame with columns: timestamp_hour, wdir, wind_speed_10m, temperature_2m, relative_humidity_2m
     """
     print(f"\n{'='*80}")
     print(f"FETCHING FORECAST WIND DATA FROM OPEN-METEO")
@@ -144,13 +158,17 @@ def fetch_forecast_wind_openmeteo(latitude, longitude, height_meters=10,
     # Open-Meteo Forecast API endpoint
     base_url = "https://api.open-meteo.com/v1/forecast"
     
-    # Parameters
+    hourly_vars = f'wind_direction_{height_meters}m,wind_speed_{height_meters}m'
+    if include_temp_humidity:
+        hourly_vars += ',temperature_2m,relative_humidity_2m'
     params = {
         'latitude': latitude,
         'longitude': longitude,
-        'hourly': f'wind_direction_{height_meters}m,wind_speed_{height_meters}m',
+        'hourly': hourly_vars,
         'forecast_days': forecast_days,
-        'timezone': timezone
+        'timezone': timezone,
+        'temperature_unit': 'fahrenheit',
+        'wind_speed_unit': 'mph'
     }
     
     try:
@@ -174,12 +192,15 @@ def fetch_forecast_wind_openmeteo(latitude, longitude, height_meters=10,
         timestamps = pd.to_datetime(hourly_data['time'])
         wind_direction = hourly_data.get(f'wind_direction_{height_meters}m', [])
         wind_speed = hourly_data.get(f'wind_speed_{height_meters}m', [])
+        temp = hourly_data.get('temperature_2m', [np.nan] * len(timestamps))
+        humidity = hourly_data.get('relative_humidity_2m', [np.nan] * len(timestamps))
         
-        # Create DataFrame
         wind_df = pd.DataFrame({
             'timestamp_hour': timestamps,
             'wdir': wind_direction,
-            'wspd': wind_speed if wind_speed else [np.nan] * len(timestamps)
+            'wind_speed_10m': wind_speed if wind_speed else [np.nan] * len(timestamps),
+            'temperature_2m': temp,
+            'relative_humidity_2m': humidity
         })
         
         # Remove rows with NaN wind direction
@@ -190,11 +211,11 @@ def fetch_forecast_wind_openmeteo(latitude, longitude, height_meters=10,
         if removed > 0:
             print(f"⚠ Removed {removed} rows with missing wind direction")
         
-        print(f"\n✓ Forecast data fetched successfully")
+        print(f"\n✓ Forecast data fetched successfully (temp, humidity, wind)")
         print(f"  Total hourly records: {len(wind_df)}")
         print(f"  Wind direction range: {wind_df['wdir'].min():.0f}° to {wind_df['wdir'].max():.0f}°")
-        if wind_speed:
-            print(f"  Wind speed range: {wind_df['wspd'].min():.2f} to {wind_df['wspd'].max():.2f} m/s")
+        if wind_speed and 'wind_speed_10m' in wind_df.columns:
+            print(f"  Wind speed range: {wind_df['wind_speed_10m'].min():.2f} to {wind_df['wind_speed_10m'].max():.2f} mph")
         
         return wind_df
         

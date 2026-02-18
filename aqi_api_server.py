@@ -32,7 +32,8 @@ from test_predictions import (
     load_models, geocode_address, find_nearest_sensor,
     prepare_test_data_from_csv, prepare_features_for_prediction,
     make_predictions, load_sensor_locations,
-    fetch_current_sensor_data_api
+    fetch_current_sensor_data_api,
+    log_feature_pipeline_signature, dump_feature_row_sanity
 )
 from aqi_utils import pm25_to_aqi, aqi_to_category
 
@@ -279,6 +280,12 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
         # Prepare features
         feature_row = prepare_features_for_prediction(test_df, sensor_id)
         feature_columns = models['1h']['feature_columns']
+        
+        # API signature logging: missing_count, schema check, top 10 missing
+        log_feature_pipeline_signature(test_df, feature_row, feature_columns, context="API")
+        # Sanity dump: actual feature values for key weather/lag cols
+        dump_feature_row_sanity(feature_row, sensor_id=sensor_id,
+                                timestamp=test_df['time_stamp'].iloc[-1] if 'time_stamp' in test_df.columns else None)
         
         # Reorder features to match model order
         feature_row_reordered = pd.DataFrame()

@@ -3,7 +3,7 @@ services:
     name: aqi-prediction-api
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python aqi_api_server.py --host 0.0.0.0 --port $PORT
+    startCommand: python aqi_api_server.py --host 0.0.0.0 --port $PORT --data-dir . --model-dir P2-RouteFinder/models/v2_cleaned
     envVars:
       - key: PURPLEAIR_API_KEY
         sync: false  # Set this manually in Render dashboard
