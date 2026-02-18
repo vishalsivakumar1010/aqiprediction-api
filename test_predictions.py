@@ -104,6 +104,10 @@ def load_models(model_dir='models'):
         
         with open(feature_cols_path, 'rb') as f:
             feature_columns = pickle.load(f)
+        # Diagnostic: log what we actually loaded (helps verify Render vs local pkl)
+        sample = (feature_columns[:12] if len(feature_columns) >= 12 else feature_columns)
+        humidity_like = [c for c in feature_columns if 'humidity' in str(c).lower() or 'relative_humidity' in str(c).lower()]
+        print(f"[LOAD_MODEL] {horizon}: path={feature_cols_path}, n_features={len(feature_columns)}, sample={sample}, humidity_cols={humidity_like}")
         
         category_mapping = None
         if os.path.exists(category_mapping_path):
