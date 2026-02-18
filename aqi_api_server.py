@@ -88,6 +88,7 @@ def initialize_api(data_directory: str, model_directory: str, purpleair_api_key:
     data_dir = data_directory
     api_key = purpleair_api_key
     
+    print(f"Model directory: {model_directory}")
     print("Loading models...")
     models = load_models(model_directory)
     print(f"✓ Models loaded: {len(models)} horizons")
@@ -469,7 +470,9 @@ if __name__ == "__main__":
     if args.data_dir is None:
         args.data_dir = Path(__file__).parent
     if args.model_dir is None:
-        args.model_dir = Path(args.data_dir) / 'models'
+        # Prefer v2_cleaned (Open-Meteo schema) so Render/dashboard start without --model-dir still load correct models
+        v2_cleaned = Path(args.data_dir) / 'P2-RouteFinder' / 'models' / 'v2_cleaned'
+        args.model_dir = v2_cleaned if v2_cleaned.is_dir() and (v2_cleaned / 'feature_columns_1h.pkl').exists() else Path(args.data_dir) / 'models'
     if args.api_key is None:
         args.api_key = os.getenv('PURPLEAIR_API_KEY', 'C258449D-E52B-11F0-B596-4201AC1DC123')
     
