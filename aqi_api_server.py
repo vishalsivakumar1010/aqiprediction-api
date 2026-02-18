@@ -359,30 +359,41 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
               f"sensor_id={sensor_id}, sensor_lat={nearest['latitude']:.6f}, sensor_lon={nearest['longitude']:.6f}, "
               f"distance_km={distance_km:.3f}")
         
+        # Safe float for response (API/merge can return null; avoid float(None))
+        def _f(x):
+            if x is None: return 0.0
+            try:
+                v = float(x)
+                return 0.0 if np.isnan(v) else v
+            except (TypeError, ValueError):
+                return 0.0
+        _cp = _f(current_pm25)
+        _p1 = _f(pred_1h_pm25)
+        _p3 = _f(pred_3h_pm25)
         # Build debug information (temporary - for UI diagnosis)
         debug_info = {
             "selected_sensor_id": int(sensor_id),
-            "sensor_lat": round(float(nearest['latitude']), 6),
-            "sensor_lon": round(float(nearest['longitude']), 6),
-            "address_lat": round(float(target_lat), 6),
-            "address_lon": round(float(target_lon), 6),
-            "distance_km": round(distance_km, 3),
-            "current_pm25": round(float(current_pm25), 3),
-            "current_aqi": int(current_aqi),
-            "pred_1h_pm25": round(float(pred_1h_pm25), 3),
-            "pred_1h_aqi": int(pred_1h_aqi),
-            "pred_3h_pm25": round(float(pred_3h_pm25), 3),
-            "pred_3h_aqi": int(pred_3h_aqi),
+            "sensor_lat": round(_f(nearest.get('latitude')), 6),
+            "sensor_lon": round(_f(nearest.get('longitude')), 6),
+            "address_lat": round(_f(target_lat), 6),
+            "address_lon": round(_f(target_lon), 6),
+            "distance_km": round(_f(distance_km), 3),
+            "current_pm25": round(_cp, 3),
+            "current_aqi": int(current_aqi or 0),
+            "pred_1h_pm25": round(_p1, 3),
+            "pred_1h_aqi": int(pred_1h_aqi or 0),
+            "pred_3h_pm25": round(_p3, 3),
+            "pred_3h_aqi": int(pred_3h_aqi or 0),
             "comparison": {
                 "current_vs_1h": {
-                    "pm25_diff": round(float(pred_1h_pm25 - current_pm25), 3),
-                    "aqi_diff": int(pred_1h_aqi - current_aqi),
-                    "direction": "improving" if pred_1h_pm25 < current_pm25 else "worsening" if pred_1h_pm25 > current_pm25 else "flat"
+                    "pm25_diff": round(_f(_p1 - _cp), 3),
+                    "aqi_diff": int((pred_1h_aqi or 0) - (current_aqi or 0)),
+                    "direction": "improving" if _p1 < _cp else "worsening" if _p1 > _cp else "flat"
                 },
                 "current_vs_3h": {
-                    "pm25_diff": round(float(pred_3h_pm25 - current_pm25), 3),
-                    "aqi_diff": int(pred_3h_aqi - current_aqi),
-                    "direction": "improving" if pred_3h_pm25 < current_pm25 else "worsening" if pred_3h_pm25 > current_pm25 else "flat"
+                    "pm25_diff": round(_f(_p3 - _cp), 3),
+                    "aqi_diff": int((pred_3h_aqi or 0) - (current_aqi or 0)),
+                    "direction": "improving" if _p3 < _cp else "worsening" if _p3 > _cp else "flat"
                 }
             }
         }
@@ -397,11 +408,11 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
                 "longitude": target_lon
             },
             current_aqi={
-                "pm25_ugm3": round(float(current_pm25), 2),
-                "aqi": int(current_aqi),
+                "pm25_ugm3": round(_cp, 2),
+                "aqi": int(current_aqi or 0),
                 "category": current_category,
-                "temperature_f": float(current_row.get('temperature', 0)),
-                "humidity_percent": float(current_row.get('humidity', 0))
+                "temperature_f": _f(current_row.get('temperature_2m') or current_row.get('temperature')),
+                "humidity_percent": _f(current_row.get('relative_humidity_2m') or current_row.get('humidity'))
             },
             forecast_1h={
                 "pm25_ugm3": predictions['1h']['pm25_ugm3'],
@@ -415,10 +426,10 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
             },
             sensor_info={
                 "sensor_id": sensor_id,
-                "sensor_name": sensor_name,
-                "distance_km": round(distance_km, 2),
-                "latitude": nearest['latitude'],
-                "longitude": nearest['longitude']
+                "sensor_name": sensor_name or "",
+                "distance_km": round(_f(distance_km), 2),
+                "latitude": _f(nearest.get('latitude')),
+                "longitude": _f(nearest.get('longitude'))
             },
             message=warning_message,
             debug=debug_info

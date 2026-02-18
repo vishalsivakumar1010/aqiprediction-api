@@ -587,8 +587,8 @@ def fetch_current_wind_data_for_prediction(df, latitude=37.5483, longitude=-121.
                 return None
             
             # Filter to the date range we need (start_date/end_date already PST-naive)
-            start_h = start_date.floor('H')
-            end_h = end_date.ceil('H')
+            start_h = start_date.floor('h')
+            end_h = end_date.ceil('h')
             wind_df = wind_df[
                 (wind_df['timestamp_hour'] >= start_h) &
                 (wind_df['timestamp_hour'] <= end_h)
@@ -610,8 +610,8 @@ def fetch_current_wind_data_for_prediction(df, latitude=37.5483, longitude=-121.
                 print("⚠ Could not fetch historical wind data from Open-Meteo.")
                 return None
             # Keep only hours that cover our PurpleAir window (API returns full calendar days)
-            start_h = start_date.floor('H')
-            end_h = end_date.ceil('H')
+            start_h = start_date.floor('h')
+            end_h = end_date.ceil('h')
             wind_df = wind_df[
                 (wind_df['timestamp_hour'] >= start_h) &
                 (wind_df['timestamp_hour'] <= end_h)
@@ -693,10 +693,10 @@ def merge_wind_data_for_prediction(df, wind_data):
     df['time_stamp'] = pd.to_datetime(df['time_stamp'])
     if getattr(df['time_stamp'].dtype, 'tz', None) is not None:
         df['time_stamp'] = df['time_stamp'].dt.tz_convert(tz_local).dt.tz_localize(None)
-    df['timestamp_hour'] = df['time_stamp'].dt.floor('H')
+    df['timestamp_hour'] = df['time_stamp'].dt.floor('h')
     
     wind_df = wind_df.copy()
-    wind_df['timestamp_hour'] = pd.to_datetime(wind_df['timestamp_hour']).dt.floor('H')
+    wind_df['timestamp_hour'] = pd.to_datetime(wind_df['timestamp_hour']).dt.floor('h')
     if getattr(wind_df['timestamp_hour'].dtype, 'tz', None) is not None:
         wind_df['timestamp_hour'] = wind_df['timestamp_hour'].dt.tz_convert(tz_local).dt.tz_localize(None)
     
