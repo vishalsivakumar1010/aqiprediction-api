@@ -1268,11 +1268,15 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
                 # If pred >= current (worsening/flat), do NOT apply bias correction
                 # This allows worsening when evidence supports it (health-conservative)
                 
-                # Temporary diagnostic logging for 3h forecast
-                print(f"  [3h DIAGNOSTIC] current_pm25={current_pm25:.2f}, raw_ML={ml_predicted_pm25:.2f}, "
-                      f"ensemble_pre_bias={predicted_pm25_pre_bias:.2f}, bias_applied={bias_applied}, "
-                      f"bias_amount={bias_correction_3h:.2f}, applied_correction={applied_correction:.2f}, "
-                      f"final_3h={predicted_pm25:.2f}")
+                # Temporary diagnostic logging for 3h forecast (PM2.5 and AQI for clarity)
+                _cur_aqi = int(pm25_to_aqi(current_pm25)) if current_pm25 is not None else None
+                _ml_aqi = int(pm25_to_aqi(ml_predicted_pm25))
+                _pre_aqi = int(pm25_to_aqi(predicted_pm25_pre_bias))
+                _fin_aqi = int(pm25_to_aqi(predicted_pm25))
+                print(f"  [3h DIAGNOSTIC] current_pm25={current_pm25:.2f} current_aqi={_cur_aqi} raw_ML={ml_predicted_pm25:.2f} raw_ML_aqi={_ml_aqi} "
+                      f"ensemble_pre_bias={predicted_pm25_pre_bias:.2f} ensemble_pre_bias_aqi={_pre_aqi} bias_applied={bias_applied} "
+                      f"bias_amount={bias_correction_3h:.2f} applied_correction={applied_correction:.2f} "
+                      f"final_3h={predicted_pm25:.2f} final_3h_aqi={_fin_aqi}")
             elif bias_correction > 0:
                 # 1h bias correction (not recommended, but kept for compatibility)
                 predicted_pm25 = max(0.1, predicted_pm25 - bias_correction)
@@ -1321,13 +1325,23 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
                 # If pred >= current (worsening/flat), do NOT apply bias correction
                 # This allows worsening when evidence supports it (health-conservative)
                 
-                # Temporary diagnostic logging for 3h forecast
-                print(f"  [3h DIAGNOSTIC] current_pm25={current_pm25:.2f}, raw_ML={ml_predicted_pm25:.2f}, "
-                      f"ensemble_pre_bias={predicted_pm25_pre_bias:.2f}, bias_applied={bias_applied}, "
-                      f"bias_amount={bias_correction_3h:.2f}, applied_correction={applied_correction:.2f}, "
-                      f"final_3h={predicted_pm25:.2f}")
+                # Temporary diagnostic logging for 3h forecast (PM2.5 and AQI for clarity)
+                _cur_aqi = int(pm25_to_aqi(current_pm25)) if current_pm25 is not None else None
+                _ml_aqi = int(pm25_to_aqi(ml_predicted_pm25))
+                _pre_aqi = int(pm25_to_aqi(predicted_pm25_pre_bias))
+                _fin_aqi = int(pm25_to_aqi(predicted_pm25))
+                print(f"  [3h DIAGNOSTIC] current_pm25={current_pm25:.2f} current_aqi={_cur_aqi} raw_ML={ml_predicted_pm25:.2f} raw_ML_aqi={_ml_aqi} "
+                      f"ensemble_pre_bias={predicted_pm25_pre_bias:.2f} ensemble_pre_bias_aqi={_pre_aqi} bias_applied={bias_applied} "
+                      f"bias_amount={bias_correction_3h:.2f} applied_correction={applied_correction:.2f} "
+                      f"final_3h={predicted_pm25:.2f} final_3h_aqi={_fin_aqi}")
             elif bias_correction > 0:
                 predicted_pm25 = max(0.1, predicted_pm25 - bias_correction)
+        
+        if horizon == '1h' and current_pm25 is not None:
+            _cur_aqi = int(pm25_to_aqi(current_pm25))
+            _ml_aqi = int(pm25_to_aqi(ml_predicted_pm25))
+            _fin_aqi = int(pm25_to_aqi(predicted_pm25))
+            print(f"  [1h DIAGNOSTIC] current_pm25={current_pm25:.2f} current_aqi={_cur_aqi} raw_ML={ml_predicted_pm25:.2f} raw_ML_aqi={_ml_aqi} final_1h={predicted_pm25:.2f} final_1h_aqi={_fin_aqi}")
         
         # Convert to AQI
         predicted_aqi = pm25_to_aqi(predicted_pm25)
