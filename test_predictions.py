@@ -1108,8 +1108,10 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
                      max_worsening_rate=0.2, bias_correction=0.0, bias_correction_3h=None):
     """
     Make predictions using the loaded models with optional ensemble with persistence.
-    Uses regime-based ensemble weights: higher persistence weight during high pollution events.
-    Phase 2.1: Updated normal regime weights (1h: 40/60, 3h: 30/70) and added rate-of-change cap.
+    Uses regime-based ensemble weights (README / run_ensemble_evaluation.py):
+    3 AQI buckets: 0–50, 51–100, 100+
+    Blend in AQI space: ensemble_aqi = w_ml * pred_ml_aqi + (1 - w_ml) * current_aqi
+    0–50: 1h 50/50, 3h 70/30 | 51–100: 1h 60/40, 3h 85/15 | 100+: 1h 40/60, 3h 40/60
     Phase 2.1 Refinements: 3h-only bias correction and stricter 3h rate-of-change cap.
     Phase 2.1.5: Direction-aware bias correction - applies only when predicting improvement
                  (health-conservative: limits false reassurance, allows worsening when supported).
@@ -1120,10 +1122,9 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
         feature_columns: List of feature column names expected by model
         current_pm25: Current PM2.5 value for persistence baseline (optional)
         current_aqi: Current AQI value (optional, used for regime-based weighting)
-        ensemble_weight: Base weight for ML prediction (deprecated, now uses Phase 2.1 defaults)
-                        Normal regime: 1h=0.4, 3h=0.9 (experiment: 90% ML / 10% persistence)
-                        High pollution: 1h=0.2, 3h=0.9 (experiment: 90% ML / 10% persistence)
-        ensemble_weight_3h_override: If set, overrides 3h ML weight for both regimes (e.g. 0.9).
+        ensemble_weight: Base weight for ML prediction (deprecated, now uses 3-bucket weights)
+        ensemble_weight_1h_override: If set, overrides 1h ML weight (e.g. 0.6).
+        ensemble_weight_3h_override: If set, overrides 3h ML weight (e.g. 0.85).
         max_worsening_rate: Maximum allowed worsening rate per hour (default 0.2 = 20%)
         bias_correction: Bias correction factor for 1h (default 0.0 = disabled, not recommended)
         bias_correction_3h: Bias correction for 3h only (default None = auto from validation, ~3.3 μg/m³)
@@ -1139,19 +1140,22 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
     if current_aqi is None and current_pm25 is not None:
         current_aqi = pm25_to_aqi(current_pm25)
     
-    # Determine regime-based ensemble weights (Phase 2.1)
-    # If AQI >= 100 (or PM2.5 >= 35), use higher persistence weight
-    use_regime_weights = False
-    if current_aqi is not None and current_aqi >= 100:
-        use_regime_weights = True
-        # High pollution regime: 1h: 20% ML + 80% persistence, 3h: 90% ML + 10% persistence (experiment)
-        ensemble_weights = {'1h': 0.2, '3h': 0.9}
-    elif current_pm25 is not None and current_pm25 >= 35:
-        use_regime_weights = True
-        ensemble_weights = {'1h': 0.2, '3h': 0.9}
+    # Determine regime-based ensemble weights (README / run_ensemble_evaluation.py)
+    # 3 AQI buckets: 0–50, 51–100, 100+; blend in AQI space
+    # 0–50: 1h 50/50, 3h 70/30 | 51–100: 1h 60/40, 3h 85/15 | 100+: 1h 40/60, 3h 40/60
+    if current_aqi is not None:
+        if current_aqi < 50:
+            ensemble_weights = {'1h': 0.5, '3h': 0.7}
+            bucket_name = '0-50'
+        elif current_aqi < 100:
+            ensemble_weights = {'1h': 0.6, '3h': 0.85}
+            bucket_name = '51-100'
+        else:
+            ensemble_weights = {'1h': 0.4, '3h': 0.4}
+            bucket_name = '100+'
     else:
-        # Normal regime (Phase 2.1): 1h: 40% ML + 60% persistence, 3h: 90% ML + 10% persistence (experiment)
-        ensemble_weights = {'1h': 0.4, '3h': 0.9}
+        ensemble_weights = {'1h': 0.6, '3h': 0.85}  # fallback
+        bucket_name = 'fallback'
     
     if ensemble_weight_1h_override is not None:
         ensemble_weights['1h'] = float(ensemble_weight_1h_override)
@@ -1203,14 +1207,14 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
         # Ensure reasonable values (minimum 0.1 to avoid unrealistic 0.0 predictions)
         ml_predicted_pm25 = max(0.1, min(1000.0, float(ml_predicted_pm25)))
         
-        # Ensemble with persistence if current_pm25 is provided
+        # Ensemble with persistence if current_pm25 is provided (README: blend in AQI space)
         if current_pm25 is not None and not pd.isna(current_pm25):
-            persistence_pm25 = float(current_pm25)
-            # Combine ML prediction with persistence baseline using regime-based weights
-            predicted_pm25 = horizon_ensemble_weight * ml_predicted_pm25 + (1 - horizon_ensemble_weight) * persistence_pm25
-            
-            if use_regime_weights:
-                print(f"  Using regime-based weights: {int(horizon_ensemble_weight*100)}% ML + {int((1-horizon_ensemble_weight)*100)}% persistence (high pollution)")
+            pred_ml_aqi = pm25_to_aqi(ml_predicted_pm25)
+            cur_aqi = current_aqi if current_aqi is not None else pm25_to_aqi(current_pm25)
+            ensemble_aqi = horizon_ensemble_weight * pred_ml_aqi + (1 - horizon_ensemble_weight) * cur_aqi
+            ensemble_aqi = max(0, min(500, round(ensemble_aqi)))
+            predicted_pm25 = float(aqi_to_pm25(ensemble_aqi))
+            print(f"  Using ensemble: {int(horizon_ensemble_weight*100)}% ML + {int((1-horizon_ensemble_weight)*100)}% persistence (AQI bucket: {bucket_name})")
             
             # Apply rate-of-change cap (Phase 2.1)
             # Limit how much the prediction can worsen per hour
