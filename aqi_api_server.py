@@ -399,6 +399,14 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
             }
         }
         
+        # Temperature/humidity come from Open-Meteo (merged into test_df/feature_row), not PurpleAir
+        row_for_weather = feature_row if 'temperature_2m' in feature_row.columns else (test_df.iloc[[-1]] if len(test_df) > 0 else None)
+        if row_for_weather is not None and hasattr(row_for_weather, 'iloc'):
+            _temp = _f(row_for_weather['temperature_2m'].iloc[0] if 'temperature_2m' in row_for_weather.columns else None)
+            _hum = _f(row_for_weather['relative_humidity_2m'].iloc[0] if 'relative_humidity_2m' in row_for_weather.columns else None)
+        else:
+            _temp = _f(current_row.get('temperature_2m') or current_row.get('temperature'))
+            _hum = _f(current_row.get('relative_humidity_2m') or current_row.get('humidity'))
         # Build response
         return PredictionResponse(
             success=True,
@@ -412,8 +420,8 @@ async def make_prediction(address: Optional[str] = None, lat: Optional[float] = 
                 "pm25_ugm3": round(_cp, 2),
                 "aqi": int(current_aqi or 0),
                 "category": current_category,
-                "temperature_f": _f(current_row.get('temperature_2m') or current_row.get('temperature')),
-                "humidity_percent": _f(current_row.get('relative_humidity_2m') or current_row.get('humidity'))
+                "temperature_f": _temp,
+                "humidity_percent": _hum
             },
             forecast_1h={
                 "pm25_ugm3": predictions['1h']['pm25_ugm3'],
