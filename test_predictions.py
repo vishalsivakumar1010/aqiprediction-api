@@ -1109,8 +1109,8 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
     """
     Make predictions using the loaded models with optional ensemble with persistence.
     Uses regime-based ensemble weights (README / run_ensemble_evaluation.py):
-    3 AQI buckets: 0–50, 51–100, 100+
-    Blend in AQI space: ensemble_aqi = w_ml * pred_ml_aqi + (1 - w_ml) * current_aqi
+    3 AQI buckets: 0–50, 51–100, 100+ (bucket selects w_ml; blend is in PM2.5 space for consistency)
+    ensemble_pm25 = w_ml * ml_pm25 + (1 - w_ml) * current_pm25; caps/bias in PM2.5; AQI only at end
     0–50: 1h 50/50, 3h 70/30 | 51–100: 1h 60/40, 3h 85/15 | 100+: 1h 40/60, 3h 40/60
     Phase 2.1 Refinements: 3h-only bias correction and stricter 3h rate-of-change cap.
     Phase 2.1.5: Direction-aware bias correction - applies only when predicting improvement
@@ -1207,13 +1207,10 @@ def make_predictions(models, feature_row, feature_columns, current_pm25=None, cu
         # Ensure reasonable values (minimum 0.1 to avoid unrealistic 0.0 predictions)
         ml_predicted_pm25 = max(0.1, min(1000.0, float(ml_predicted_pm25)))
         
-        # Ensemble with persistence if current_pm25 is provided (README: blend in AQI space)
+        # Ensemble with persistence if current_pm25 is provided (blend in PM2.5 space for math consistency)
         if current_pm25 is not None and not pd.isna(current_pm25):
-            pred_ml_aqi = pm25_to_aqi(ml_predicted_pm25)
-            cur_aqi = current_aqi if current_aqi is not None else pm25_to_aqi(current_pm25)
-            ensemble_aqi = horizon_ensemble_weight * pred_ml_aqi + (1 - horizon_ensemble_weight) * cur_aqi
-            ensemble_aqi = max(0, min(500, round(ensemble_aqi)))
-            predicted_pm25 = float(aqi_to_pm25(ensemble_aqi))
+            persistence_pm25 = float(current_pm25)
+            predicted_pm25 = horizon_ensemble_weight * ml_predicted_pm25 + (1 - horizon_ensemble_weight) * persistence_pm25
             print(f"  Using ensemble: {int(horizon_ensemble_weight*100)}% ML + {int((1-horizon_ensemble_weight)*100)}% persistence (AQI bucket: {bucket_name})")
             
             # Apply rate-of-change cap (Phase 2.1)
