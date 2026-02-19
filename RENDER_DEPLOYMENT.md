@@ -165,7 +165,8 @@ services:
     name: aqi-prediction-api
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python aqi_api_server.py --host 0.0.0.0 --port $PORT
+    # Omit --port so the app reads PORT from the environment (avoids "Option '--port' requires an argument" when $PORT is not expanded)
+    startCommand: python aqi_api_server.py --host 0.0.0.0
     envVars:
       - key: PURPLEAIR_API_KEY
         sync: false  # Set this manually in Render dashboard
@@ -279,13 +280,27 @@ const API_URL = "https://your-service.onrender.com";
 3. Ensure model files are not in `.gitignore`
 4. Check logs for specific file not found errors
 
+### Issue: "Error: Option '--port' requires an argument"
+
+**Symptoms**: Deploy fails immediately with uvicorn error about `--port` requiring an argument.
+
+**Cause**: The start command uses `uvicorn ... --port $PORT` and `$PORT` is not expanded (empty), so uvicorn receives no port value.
+
+**Solutions**:
+1. **Recommended**: Use the app entrypoint so the app reads `PORT` from the environment. In Render dashboard **Start Command**, set:
+   ```bash
+   python aqi_api_server.py --host 0.0.0.0 --data-dir . --model-dir P2-RouteFinder/models/v2_cleaned
+   ```
+   Do **not** pass `--port $PORT`; the app uses `os.environ.get('PORT', 8000)` when `--port` is omitted.
+2. If you prefer uvicorn directly, use a shell so `$PORT` is expanded, e.g. `sh -c 'uvicorn aqi_api_server:app --host 0.0.0.0 --port $PORT'`.
+
 ### Issue: 502 Bad Gateway
 
 **Symptoms**: Service returns 502 errors
 
 **Solutions**:
 1. Check if service is running (may have crashed)
-2. Verify start command uses `$PORT` variable
+2. Use start command `python aqi_api_server.py --host 0.0.0.0` (app reads `PORT` from environment)
 3. Check health endpoint to see if service is responding
 4. Review logs for runtime errors
 
