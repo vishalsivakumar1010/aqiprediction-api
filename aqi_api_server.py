@@ -221,6 +221,8 @@ async def predict_points(request: PointsRequest):
 
     request_time_local = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     n_points = len(request.points)
+    print(f"[BATCH_POINTS] request started points={n_points} request_time_local={request_time_local}")
+
     # results[i] = PointResult for request.points[i], filled as we go
     results: List[Optional[PointResult]] = [None] * n_points
     point_to_sensor: dict = {}  # index -> (sensor_id, distance_km) or None if lookup failed
@@ -241,6 +243,11 @@ async def predict_points(request: PointsRequest):
         except Exception as e:
             point_to_sensor[i] = None
             results[i] = PointResult(id=pt.id, lat=pt.lat, lon=pt.lon, error=f"Invalid coordinates or sensor lookup failed: {str(e)}")
+            print(f"  [BATCH_POINTS] point lookup failed id={pt.id} lat={pt.lat} lon={pt.lon} error={e}")
+
+    n_lookup_failed = sum(1 for r in results if r is not None and r.error is not None)
+    if n_lookup_failed:
+        print(f"[BATCH_POINTS] sensor lookup failed for {n_lookup_failed} point(s), continuing with rest")
 
     # 2) Group by sensor_id: sensor_id -> [(index, point, distance_km), ...]
     groups: dict = {}
@@ -251,6 +258,7 @@ async def predict_points(request: PointsRequest):
         groups.setdefault(sid, []).append((i, pt, d))
 
     unique_sensors = len(groups)
+    print(f"[BATCH_POINTS] grouped into unique_sensors={unique_sensors} (inference calls to run)")
 
     # 3) One inference per unique sensor; fill results for all points in that group
     for sensor_id, points_list in groups.items():
@@ -259,10 +267,12 @@ async def predict_points(request: PointsRequest):
             resp = await make_prediction(lat=rep_point.lat, lon=rep_point.lon, api_key_override=api_key)
         except HTTPException as e:
             err_msg = e.detail if isinstance(e.detail, str) else str(e.detail)
+            print(f"  [BATCH_SENSOR_ERROR] sensor_id={sensor_id} points_affected={len(points_list)} error={err_msg}")
             for i, pt, d in points_list:
                 results[i] = PointResult(id=pt.id, lat=pt.lat, lon=pt.lon, error=err_msg)
             continue
         except Exception as e:
+            print(f"  [BATCH_SENSOR_ERROR] sensor_id={sensor_id} points_affected={len(points_list)} error=Inference failed: {e}")
             for i, pt, d in points_list:
                 results[i] = PointResult(id=pt.id, lat=pt.lat, lon=pt.lon, error=f"Inference failed: {str(e)}")
             continue
@@ -296,7 +306,9 @@ async def predict_points(request: PointsRequest):
     # End per-sensor loop
 
     out_results = [r for r in results if r is not None]
-    print(f"[BATCH_POINTS] total_points={n_points} unique_sensors={unique_sensors} request_time_local={request_time_local}")
+    n_ok = sum(1 for r in out_results if r.error is None)
+    n_err = sum(1 for r in out_results if r.error is not None)
+    print(f"[BATCH_POINTS] done total_points={n_points} unique_sensors={unique_sensors} results_ok={n_ok} results_error={n_err} request_time_local={request_time_local}")
 
     return PointsResponse(
         request_time_local=request_time_local,
