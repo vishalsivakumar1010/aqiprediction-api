@@ -10,7 +10,7 @@ Usage:
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List, Any
 import os
 import sys
 from pathlib import Path
@@ -81,6 +81,43 @@ class ErrorResponse(BaseModel):
     message: str
 
 
+# Batch points endpoint (route planner)
+class PointInput(BaseModel):
+    id: str
+    lat: float
+    lon: float
+
+
+class PointsRequest(BaseModel):
+    points: List[PointInput]
+
+
+class PointResult(BaseModel):
+    id: str
+    lat: float
+    lon: float
+    sensor_id: Optional[int] = None
+    distance_km: Optional[float] = None
+    current_pm25: Optional[float] = None
+    pm25_1h: Optional[float] = None
+    pm25_3h: Optional[float] = None
+    current_aqi: Optional[int] = None
+    aqi_1h: Optional[int] = None
+    aqi_3h: Optional[int] = None
+    error: Optional[str] = None
+
+
+class PointsMeta(BaseModel):
+    unique_sensors: int
+    total_points: int
+
+
+class PointsResponse(BaseModel):
+    request_time_local: str
+    results: List[PointResult]
+    meta: PointsMeta
+
+
 def initialize_api(data_directory: str, model_directory: str, purpleair_api_key: str):
     """Initialize the API with models and configuration."""
     global models, data_dir, api_key
@@ -105,6 +142,7 @@ async def root():
         "endpoints": {
             "/predict": "POST - Predict AQI for an address or coordinates",
             "/predict/address": "GET - Predict AQI for an address (query parameter)",
+            "/predict/points": "POST - Batch AQI forecast for many lat/lon points (route checkpoints)",
             "/health": "GET - Health check",
             "/docs": "GET - API documentation (Swagger UI)"
         }
@@ -162,6 +200,109 @@ async def predict(request: PredictionRequest):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/predict/points", response_model=PointsResponse)
+async def predict_points(request: PointsRequest):
+    """
+    Batch AQI forecast for many lat/lon points (e.g. route checkpoints).
+    Deduplicates by nearest sensor: one inference per unique sensor, results reused for all points mapping to it.
+    Returns current + 1h + 3h (PM2.5 and AQI) per point. No caching.
+
+    Example:
+      curl -X POST https://aqiprediction-api.onrender.com/predict/points \\
+        -H "Content-Type: application/json" \\
+        -d '{"points":[{"id":"r0_p0","lat":37.53,"lon":-122.00},{"id":"r0_p1","lat":37.54,"lon":-122.01}]}'
+    """
+    if models is None:
+        raise HTTPException(status_code=503, detail="Models not loaded. API not initialized.")
+    if not request.points:
+        raise HTTPException(status_code=400, detail="points list is required and must be non-empty")
+
+    request_time_local = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    n_points = len(request.points)
+    # results[i] = PointResult for request.points[i], filled as we go
+    results: List[Optional[PointResult]] = [None] * n_points
+    point_to_sensor: dict = {}  # index -> (sensor_id, distance_km) or None if lookup failed
+
+    try:
+        locations_df = load_sensor_locations(data_dir)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Sensor locations not available: {str(e)}")
+    if locations_df is None or locations_df.empty:
+        raise HTTPException(status_code=500, detail="Sensor locations not available")
+
+    # 1) Per-point sensor lookup; on failure set result with error
+    for i, pt in enumerate(request.points):
+        try:
+            info = find_nearest_sensor(pt.lat, pt.lon, locations_df)
+            nearest = info["nearest"]
+            point_to_sensor[i] = (nearest["sensor_id"], nearest["distance_km"])
+        except Exception as e:
+            point_to_sensor[i] = None
+            results[i] = PointResult(id=pt.id, lat=pt.lat, lon=pt.lon, error=f"Invalid coordinates or sensor lookup failed: {str(e)}")
+
+    # 2) Group by sensor_id: sensor_id -> [(index, point, distance_km), ...]
+    groups: dict = {}
+    for i, pt in enumerate(request.points):
+        if results[i] is not None:
+            continue
+        sid, d = point_to_sensor[i]
+        groups.setdefault(sid, []).append((i, pt, d))
+
+    unique_sensors = len(groups)
+
+    # 3) One inference per unique sensor; fill results for all points in that group
+    for sensor_id, points_list in groups.items():
+        rep_index, rep_point, _ = points_list[0]
+        try:
+            resp = await make_prediction(lat=rep_point.lat, lon=rep_point.lon, api_key_override=api_key)
+        except HTTPException as e:
+            err_msg = e.detail if isinstance(e.detail, str) else str(e.detail)
+            for i, pt, d in points_list:
+                results[i] = PointResult(id=pt.id, lat=pt.lat, lon=pt.lon, error=err_msg)
+            continue
+        except Exception as e:
+            for i, pt, d in points_list:
+                results[i] = PointResult(id=pt.id, lat=pt.lat, lon=pt.lon, error=f"Inference failed: {str(e)}")
+            continue
+
+        # Extract from PredictionResponse
+        cp = resp.current_aqi.get("pm25_ugm3")
+        c_aqi = resp.current_aqi.get("aqi")
+        p1 = resp.forecast_1h.get("pm25_ugm3")
+        a1 = resp.forecast_1h.get("aqi")
+        p3 = resp.forecast_3h.get("pm25_ugm3")
+        a3 = resp.forecast_3h.get("aqi")
+        temp = resp.current_aqi.get("temperature_f")
+        rh = resp.current_aqi.get("humidity_percent")
+
+        for i, pt, d in points_list:
+            results[i] = PointResult(
+                id=pt.id,
+                lat=pt.lat,
+                lon=pt.lon,
+                sensor_id=int(resp.sensor_info["sensor_id"]),
+                distance_km=round(float(d), 3),
+                current_pm25=round(float(cp), 2) if cp is not None else None,
+                pm25_1h=round(float(p1), 2) if p1 is not None else None,
+                pm25_3h=round(float(p3), 2) if p3 is not None else None,
+                current_aqi=int(c_aqi) if c_aqi is not None else None,
+                aqi_1h=int(a1) if a1 is not None else None,
+                aqi_3h=int(a3) if a3 is not None else None,
+            )
+        # Per-sensor log line
+        print(f"  [BATCH_SENSOR] sensor_id={resp.sensor_info['sensor_id']} current_pm25={cp} current_aqi={c_aqi} pred1h_aqi={a1} pred3h_aqi={a3} temp={temp} rh={rh} wind=N/A wdir=N/A")
+    # End per-sensor loop
+
+    out_results = [r for r in results if r is not None]
+    print(f"[BATCH_POINTS] total_points={n_points} unique_sensors={unique_sensors} request_time_local={request_time_local}")
+
+    return PointsResponse(
+        request_time_local=request_time_local,
+        results=out_results,
+        meta=PointsMeta(unique_sensors=unique_sensors, total_points=n_points),
+    )
 
 
 async def make_prediction(address: Optional[str] = None, lat: Optional[float] = None, 
